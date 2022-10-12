@@ -1,0 +1,268 @@
+------------------------------------------------------------
+GAME SETTINGS RELATED STUFF
+
+
+
+
+
+
+80100fdc is the address of the instruction to increase the goals when home scores
+"80C66449","80C664BB","80C7E3E1","80C7E453","80C7E64B","80C7E69F","80C7E6F3","80C7E747","80C7E79B","80CF58F7","80CF711B","81355F73"
+^all of these are possible memory addresses for the score of player on home
+
+
+"80C6644B","80C664B9","80C7E3E3","80C7E451","80C7E4A7","80C7E4FB","80C7E54F","80C7E5A3","80C7E5F7","80CF645F","80CF711F","81355F77"
+^all of these are possible memory addresses for the score of player on away
+
+
+DURING MATCH:
+80c5f22b - address that determines if it's timed or first to x (0 = Timed, 1 = FTX)
+80c5f22f - Initial Timer
+80c5f233 - score limit for First to X format during a game. At the start of a match, the value of the address 80c5f2ef (the one player selected in the menu) is copied in this address this adress 
+
+MENU:
+80c5f2e7 - address that is (0 = Timed, 1 = FTX) depending on what you selected on the menu
+80c5f2eb - time (in seconds) you select in the VS mode menu
+80c5f2ef - score limit for  First to X format in the menu, updates when clicking done after the settings menu with the first to X option
+
+
+80c5f2ff - Item Cheat
+80c5f303 - Stadium Cheat
+80c5f307 - Player Cheat
+
+^These update after you click ok on the cheat/match settings menu
+
+
+
+
+800fc3ac - the address of the instruction that sets the value that determines if it's timed or first to x
+800fc714 - does that too, but i believe this one's only in strikers challenges (?)
+
+8023717c - address of the instruction that updates the item cheat
+8023718c - address of the instruction that updates the player cheat
+
+
+
+80005fd0 - line that probably loads stadium cheat value from save file (?)
+
+
+
+
+80c5f33f - Mode menu?? 0 = VS mode, 3 = Striker cup, 4 = ABC/Challenges
+
+80c5f22f 80c7f3bf - both have initial time in challenge mode. the second one doesn't update in vs mode
+
+80c7f3cb - Possible ID of home captain?? (maybe only for challenges)
+
+
+
+
+
+
+80C7F3C7 - Condition in Strikers Challenge mode 
+(0 = none, 1 = score at least X goals more than your opponent (like peach's challenge), 2 = don't get scored on (like daisy's challenge), 3 = score at least X goals (like diddy's challenge) )
+
+80c7f3cf - Winparameter (The "X" of the conditions i listed above)
+
+
+-------------------------------------------------------------------
+ITEM RELATED STUFF
+
+
+item IDs:
+00 = Green Shell
+01 = Red Shell
+02 = Spikey Shell
+03 = Ice Shell
+04 = Banana
+05 = Bomb-omb
+06 = Chain Chomp
+07 = Mushroom
+08 = Star
+09 = SP Mario
+0A = SP Peach
+0B = SP Donkey Kong
+0C = SP Bowser
+0D = SP Luigi
+0E = SP Daisy
+0F = SP Wario
+10 = SP Waluigi
+11 = SP Bowser Jr.
+12 = SP Diddy Kong
+13 = SP Yoshi
+14 = SP Petey Piranha
+FF = No item
+these are really important to understand the part of the code that randomizes items 
+
+
+8009ba58 - this instruction gives the player a chain chomp (ID = 6)
+8009ba68 - this instruction gives the player a star (ID = 8)
+8009ba94 - this instruction gives the player spiny shells (ID = 2)
+8009baa4 - this instruction gives the player red shells (ID = 1)
+8009bab4 - this instruction gives the player bombs (ID = 5)
+8009bac4 - this instruction gives the player bananas (ID = 4)
+8009bad4 - this instruction gives the player Mushrooms (ID = 7)
+8009bae4 - this instruction gives the player green shells (ID = 0)
+8009baf4 - this instruction gives the player ice shells (ID = 3)
+8009ba20 - this instruction gives the player the default item (Mushroom) < If for some reason the game "doesn't know" what item to give to the player, it defaults to mushroom. (I don't think this has ever happened without mods)
+
+
+^in that part of the code there are a lot of instruction that compare r3 with another register
+cmpw r3, rX 
+r3 contains a randomly generated value. 
+the game gets the item chance values from somewhere in the memory (idk where yet) and puts them in a specific register we'll call rX
+
+rX =
+r30 for chomps
+r29 for stars
+r27 for specials
+r26 for spiny shells
+r25 for reds
+r24 for bombs
+r23 for nanas
+r22 for shrooms
+r21 for greens
+r31 for freeze shells
+
+
+
+8009ba60 is the line that checks if the RNG number (which btw is stored in r3) low enough to get a star, if the RNG number is higher or equal, it means player won't get a star
+
+
+
+
+the lines from 8009b8a8 to 8009b9e8 are used by the game when some item cheat is on, they set to zero the chances of the items you can't get if that cheat is on 
+
+
+ 80CF597F - 1st item slot on home ID
+ 80CF5983 - 1st item slot of home quantity 
+ 80CF598B - 2nd item slot on home ID
+ 80CF598F - 2nd item slot on home quantity
+
+ 80CF64E7 - 1st item slot on away ID
+ 80CF64EB - 1st item slot on away quantity
+ 80CF64F3 - 2nd item slot on away ID
+ 80CF64F7 - 2nd item slot on away quantity
+
+ 800a6280 - instruction that gives home an item on the first slot
+ 8009bcd4 - linked branch that leads to the function that gives you an item
+ 
+
+
+---------------------------------------------
+STADIUM SPEED
+
+
+909B656C Stadium speed 
+909B655C Stadium Slipperyness
+909B654C Stadium Friction
+909B653C Stadium Bounce
+^it's dynamic mem, it means the games loads a lot of other random sh!t which makes it a pain to work with these registers
+
+at around 8056a940 the path of the terrain ini file is loaded when starting a match, i guess with a code i could make it so the game always loads DryTerrain.ini no matter the stadium you're playing on, this way we can make every stadium fast w/out modifying files and have to create an iso
+
+------------------------------------------------------------
+CHARACTER PROPERTIES, COLORS, RGB...
+
+
+The higher a priority value is, the lower the priority is, so if you a character's priority to FF, they will change their color vs anyone with the same color (unless they're not the only character with FF)
+If 2 characters have the same prio noone changes color
+
+
+when i say "COLOR" i don't mean the actual RGB (Scroll down for that). With color i mean a value that the games checks to see if one of the selected characters needs to swap to alt color because it's too similar to the opponent's one. 
+This is how it works: there's a byte, and each of the bits in that byte is a boolean value that states if the character is of a certain color, if the bit = 0 it means the character isn't of that color, if it's 1 the character is of that color. A character can have multiple colors (Diddy and daisy are both Red and Yellow).
+The first three bits are unused, the other five bits are YELLOW, PURPLE, PINK, GREEN, RED. So if a character is green, the color byte is 00000010 (02 in Hex), if it's purple it's 00001000 (08 in hex), if it's both Red and yellow it's 00010001 (11 in hex). 
+If 2 characters share at least a color in common, one of them (The one with the lower priority) has to change color. 
+
+
+80504d03 Mario's color
+80504d07 Mario's prio
+80504d5f Bowser's color
+80504d63 Bowser's prio
+
+80504dbb Daisy's color
+80504dbf Daisy's prio
+80504e17 DK's color
+80504e1b DK's prio
+
+80504e73 Luigi's color
+80504e77 Luigi's prio
+80504ecf Peach's color
+80504ed3 Peach's prio
+
+80504f2b Walu's color
+80504f2f Walu's prio
+80504f87 Wario's color
+80504f8a Wario's prio
+
+80504fe3 Yoshi's color
+80504fe7 Yoshi's prio
+8050503f BJ's color
+80505043 BJ's prio
+
+8050509b Diddy's color
+8050509f Diddy's prio
+805050f7 Petey's color
+805050fb Petey's prio
+
+
+Examples of cheat codes to change priorities:
+04504ed0 000000f0  <- code to set peach priority really low
+04504dbf 000000f1  <- daisy prio even lower
+0450509f 000000f2  <- diddy prio lowest
+
+
+
+80504ff3 = the character that shows up if you select bowser jr.'s slot (if you chang this and click on bowser jr's slot you will select a different character instead)
+
+
+CHARACTER IDs:
+00 = mario
+01 = bowser
+02 = daisy
+03 = DK
+04 = Luigi
+05 = peach
+06 = walu
+07 = wario
+08 = yoshi
+09 = BJ
+0A = Diddy
+0B = Petey
+^These IDs are really important because if you know them it's easier to tell what's going on in certain places of the memory
+
+
+
+80504ff4 = if you edit a value of this word, BJ's picture doesn't show up when you select him
+
+80505003 = ?????? if you change it, junior loses all his stats
+
+RGB ADDRESSES
+80504d08 = Mario
+80504d64 = Bowser Skin 1
+80504d68 = Bowser Skin 2
+80504dc0 = Daisy Skin 1
+80504dc4 = Daisy Skin 2
+80504e1c = DK Skin 1
+80504e20 = DK Skin 2
+80504e78 = Luigi
+80504ed4 = Peach Skin 1
+80504ed8 = Peach Skin 2
+80504f30 = Walu
+80504f8b = Wario
+80504fe8 = Yoshi Skin 1
+80504fec = YOshi Skin 2
+80505044 = Bowser Junior Skin 1
+80505048 = Bowser Junior Skin 2
+805050a0 = Diddy Skin 1
+805050a4 = Diddy Skin 2
+805050fc = Petey Skin 1 
+80505100 = Petey Skin 2
+
+^The Words containing the RGB values should be located right after the Priority value of each character
+Format: 00RRGGBB
+
+
+
+
+-----------------------------------------------------------------------
