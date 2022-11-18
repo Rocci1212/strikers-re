@@ -34,7 +34,6 @@ MENU:
 
 
 
-
 800fc3ac - the address of the instruction that sets the value that determines if it's timed or first to x
 800fc714 - does that too, but i believe this one's only in strikers challenges (?)
 
@@ -266,3 +265,5 @@ Format: 00RRGGBB
 
 
 -----------------------------------------------------------------------
+
+800fca80 - Instruction address that checks for Mega Strike / Skillshot
