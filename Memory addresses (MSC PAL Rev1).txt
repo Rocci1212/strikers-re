@@ -171,7 +171,7 @@ STADIUM SPEED
 at around 8056a940 the path of the terrain ini file is loaded when starting a match, i guess with a code i could make it so the game always loads DryTerrain.ini no matter the stadium you're playing on, this way we can make every stadium fast w/out modifying files and have to create an iso
 
 ------------------------------------------------------------
-CHARACTER PROPERTIES, COLORS, RGB...
+CHARACTER COLORS/RGB...
 
 
 The higher a priority value is, the lower the priority is, so if you a character's priority to FF, they will change their color vs anyone with the same color (unless they're not the only character with FF)
@@ -299,3 +299,13 @@ Button values (source: https://mariokartwii.com/showthread.php?tid=44 ):
 2000 = Z
 4000 = C
 8000 = Home
+
+------------------------------------------------------------------------
+CHARACTER PROPERTIES
+
+8056A760 - mem address that has a pointer to certain home kritter's properties (?)
+8056A764 - mem address that has a pointer to certain away kritter's properties (?)
+add 678 to that pointer to find the address with the X position of that kritter
+add 67C to that pointer to find the address with the Y position of that kritter
+
+This info was found by analyzing Ferrer's "kritters on bench" code
