@@ -72,7 +72,7 @@ MENU:
 
 
 80cf50f8 - In-game timer (floating point value) (Starts from 0 and increases until it reaches the time limit)
-
+802b5534 - Instruction that decreases the timer
 
 -------------------------------------------------------------------
 ITEM RELATED STUFF
