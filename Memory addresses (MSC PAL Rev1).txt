@@ -278,3 +278,24 @@ Format: 00RRGGBB
 
 800fca80 - Instruction address that checks for Mega Strike / Skillshot
 
+-----------------------------------------------------------------------
+CONTROLLERS
+80585EE2 - Address with player's 1 controller button inputs
+805860D2 - Address with player's 2 controller button inputs
+805862C2 - Address with player's 3 controller button inputs
+805864B2 - Address with player's 4 controller button inputs
+
+Button values (source: https://mariokartwii.com/showthread.php?tid=44 ):
+0001 = Left
+0002 = Right
+0004 = Down
+0008 = Up
+0010 = +
+0100 = 2
+0200 = 1
+0400 = B
+0800 = A
+1000 = -
+2000 = Z
+4000 = C
+8000 = Home
