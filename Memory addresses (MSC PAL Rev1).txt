@@ -2,11 +2,7 @@
 GAME SETTINGS RELATED STUFF
 
 
-
-
-
-
-80100fdc is the address of the instruction to increase the goals when home scores
+80100fdc is the address of the instruction to increase the goals when someone scores
 "80C66449","80C664BB","80C7E3E1","80C7E453","80C7E64B","80C7E69F","80C7E6F3","80C7E747","80C7E79B","80CF58F7","80CF711B","81355F73"
 ^all of these are possible memory addresses for the score of player on home
 
@@ -24,16 +20,15 @@ MENU:
 80c5f2e7 - address that is (0 = Timed, 1 = FTX) depending on what you selected on the menu
 80c5f2eb - time (in seconds) you select in the VS mode menu
 80c5f2ef - score limit for  First to X format in the menu, updates when clicking done after the settings menu with the first to X option
+80c5f2f3 - Number of matches (Best of)
 
-
+CHEATS:
 80c5f2ff - Item Cheat
 80c5f303 - Stadium Cheat
 80c5f307 - Player Cheat
-
 ^These update after you click ok on the cheat/match settings menu
 
-
-
+SOME INSTRUCTIONS THAT ARE RELATED TO THE ADDRESSES LISTED ABOVE:
 800fc3ac - the address of the instruction that sets the value that determines if it's timed or first to x
 800fc714 - does that too, but i believe this one's only in strikers challenges (?)
 
@@ -42,11 +37,11 @@ MENU:
 
 
 
-80005fd0 - line that probably loads stadium cheat value from save file (?)
+80005fd0 - line that probably loads various stuff from save file
 
 
 
-
+RANDOM STUFF:
 80c5f33f - Mode menu?? 0 = VS mode, 3 = Striker cup, 4 = ABC/Challenges
 
 80c5f22f 80c7f3bf - both have initial time in challenge mode. the second one doesn't update in vs mode
@@ -57,11 +52,29 @@ MENU:
 
 
 
-
+STRIKER CHALLENGE CONDITIONS:
 80C7F3C7 - Condition in Strikers Challenge mode 
 (0 = none, 1 = score at least X goals more than your opponent (like peach's challenge), 2 = don't get scored on (like daisy's challenge), 3 = score at least X goals (like diddy's challenge) )
 
 80c7f3cf - Winparameter (The "X" of the conditions i listed above)
+
+
+
+ZOOM:
+80c5f2d8 - Zoom mode (1 = Dynamic, 0 = Static)
+80c5f2db - Zoom value (0000 = 1, 3e80 = 2, 3f00 = 3, 3f40 = 4, 3f80 = 5)
+80c5f2bc - another zoom related value, not sure what it does
+
+
+VOLUMES:
+80cf50f8 - In-game timer (floating point value) (Starts from 0 and increases until it reaches the time limit)
+802b5534 - Instruction that decreases the timer
+
+
+
+80C5F2C3 - Music Volume
+80C5F2C7 - SFX Volume
+80C5F2CB - Voice Volume
 
 
 -------------------------------------------------------------------
@@ -105,7 +118,6 @@ these are really important to understand the part of the code that randomizes it
 8009baf4 - this instruction gives the player ice shells (ID = 3)
 8009ba20 - this instruction gives the player the default item (Mushroom) < If for some reason the game "doesn't know" what item to give to the player, it defaults to mushroom. (I don't think this has ever happened without mods)
 
-
 ^in that part of the code there are a lot of instruction that compare r3 with another register
 cmpw r3, rX 
 r3 contains a randomly generated value. 
@@ -125,7 +137,7 @@ r31 for freeze shells
 
 
 
-8009ba60 is the line that checks if the RNG number (which btw is stored in r3) low enough to get a star, if the RNG number is higher or equal, it means player won't get a star
+8009ba60 is the line that checks if the Random generated number (which btw is stored in r3) low enough to get a star, if the RNG number is higher or equal, it means player won't get a star
 
 
 
@@ -133,6 +145,7 @@ r31 for freeze shells
 the lines from 8009b8a8 to 8009b9e8 are used by the game when some item cheat is on, they set to zero the chances of the items you can't get if that cheat is on 
 
 
+ITEM SLOTS:
  80CF597F - 1st item slot on home ID
  80CF5983 - 1st item slot of home quantity 
  80CF598B - 2nd item slot on home ID
@@ -161,7 +174,7 @@ STADIUM SPEED
 at around 8056a940 the path of the terrain ini file is loaded when starting a match, i guess with a code i could make it so the game always loads DryTerrain.ini no matter the stadium you're playing on, this way we can make every stadium fast w/out modifying files and have to create an iso
 
 ------------------------------------------------------------
-CHARACTER PROPERTIES, COLORS, RGB...
+CHARACTER COLORS/RGB...
 
 
 The higher a priority value is, the lower the priority is, so if you a character's priority to FF, they will change their color vs anyone with the same color (unless they're not the only character with FF)
@@ -215,7 +228,7 @@ Examples of cheat codes to change priorities:
 80504ff3 = the character that shows up if you select bowser jr.'s slot (if you chang this and click on bowser jr's slot you will select a different character instead)
 
 
-CHARACTER IDs:
+CAPTAINS IDs:
 00 = mario
 01 = bowser
 02 = daisy
@@ -231,12 +244,11 @@ CHARACTER IDs:
 ^These IDs are really important because if you know them it's easier to tell what's going on in certain places of the memory
 
 
-
 80504ff4 = if you edit a value of this word, BJ's picture doesn't show up when you select him
 
 80505003 = ?????? if you change it, junior loses all his stats
 
-RGB ADDRESSES
+RGB ADDRESSES:
 80504d08 = Mario
 80504d64 = Bowser Skin 1
 80504d68 = Bowser Skin 2
@@ -267,3 +279,86 @@ Format: 00RRGGBB
 -----------------------------------------------------------------------
 
 800fca80 - Instruction address that checks for Mega Strike / Skillshot
+
+-----------------------------------------------------------------------
+CONTROLLERS:
+80585EE2 - Player's 1 controller button inputs
+805860D2 - Player's 2 controller button inputs
+805862C2 - Player's 3 controller button inputs
+805864B2 - Player's 4 controller button inputs
+
+Button values (source: https://mariokartwii.com/showthread.php?tid=44 ):
+0001 = Left
+0002 = Right
+0004 = Down
+0008 = Up
+0010 = +
+0100 = 2
+0200 = 1
+0400 = B
+0800 = A
+1000 = -
+2000 = Z
+4000 = C
+8000 = Home
+
+------------------------------------------------------------------------
+CHARACTER POSITIONS AND OTHER DYNAMIC STUFF
+
+8056A760 - pointer to certain home kritter's properties (?)
+8056A764 - pointer to certain away kritter's properties (?)
+add 678 to that pointer to find the address with the X position of that kritter
+add 67C to that pointer to find the address with the Y position of that kritter
+
+This info was found by analyzing Ferrer's "kritters on bench" code
+
+
+806DF7A0 - pointer to the ball's properties
+add C0 to that pointer to find the address ball's charge
+add 10C to that pointer to find the address of the ball's X position
+add 110 to that pointer to find the address of the ball's Y position
+add 114 to that pointer to find the address of the ball's Z position (Vertical)
+add 118 to that pointer to find the address of the ball's X velocity 
+add 11C to that pointer to find the address of the ball's Y velocity 
+add 120 to that pointer to find the address of the ball's Z velocity (Vertical)
+
+8031c228 - code line that updates the ball's X position (the 2 following code lines update the Y and Z position)
+
+------------------------------------------------------------------------
+TEAMS
+
+(These values update when you select these characters from the menu in VS mode)
+80C663FB - Home captain
+80C663FF - Away captain
+80C66403 - Home Sidekick Top
+80C66407 - Home Sidekick Back
+80C6640B - Home Sidekick Bottom
+80C6640F - Away Sidekick Top
+80C66413 - Away Sidekick Back
+80C66417 - Away Sidekick Bottom
+
+CAPTAINS IDs:
+00 = mario
+01 = bowser
+02 = daisy
+03 = DK
+04 = Luigi
+05 = peach
+06 = walu
+07 = wario
+08 = yoshi
+09 = BJ
+0A = Diddy
+0B = Petey
+
+SIDEKICKS IDs:
+00 = toad
+01 = koopa
+02 = hammerbro
+03 = birdo
+04 = boo
+05 = drybones
+06 = monty
+07 = shyguy
+
+from 804DB71B to 804DB7E7 - Default teams (the teams you get when clicking on the 'default' button)
