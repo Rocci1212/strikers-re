@@ -303,14 +303,26 @@ Button values (source: https://mariokartwii.com/showthread.php?tid=44 ):
 8000 = Home
 
 ------------------------------------------------------------------------
-CHARACTER PROPERTIES
+CHARACTER POSITIONS AND OTHER DYNAMIC STUFF
 
-8056A760 - mem address that has a pointer to certain home kritter's properties (?)
-8056A764 - mem address that has a pointer to certain away kritter's properties (?)
+8056A760 - pointer to certain home kritter's properties (?)
+8056A764 - pointer to certain away kritter's properties (?)
 add 678 to that pointer to find the address with the X position of that kritter
 add 67C to that pointer to find the address with the Y position of that kritter
 
 This info was found by analyzing Ferrer's "kritters on bench" code
+
+
+806DF7A0 - pointer to the ball's properties
+add C0 to that pointer to find the address ball's charge
+add 10C to that pointer to find the address of the ball's X position
+add 110 to that pointer to find the address of the ball's Y position
+add 114 to that pointer to find the address of the ball's Z position (Vertical)
+add 118 to that pointer to find the address of the ball's X velocity 
+add 11C to that pointer to find the address of the ball's Y velocity 
+add 120 to that pointer to find the address of the ball's Z velocity (Vertical)
+
+8031c228 - code line that updates the ball's X position (the 2 following code lines update the Y and Z position)
 
 ------------------------------------------------------------------------
 TEAMS
