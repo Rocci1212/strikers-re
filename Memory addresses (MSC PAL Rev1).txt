@@ -284,7 +284,7 @@ Format: 00RRGGBB
 CONTROLLERS:
 80585EE2 - Player's 1 controller button inputs
 
-(The following addresses might actually be incorect)
+(The following addresses might actually be incorrect)
 80586154 or 805860D2 - Player's 2 controller button inputs
 805862C2 - Player's 3 controller button inputs
 805864B2 - Player's 4 controller button inputs
@@ -303,6 +303,9 @@ Button values (source: https://mariokartwii.com/showthread.php?tid=44 ):
 2000 = Z
 4000 = C
 8000 = Home
+
+
+8021d06c - instruction that assigns a certain player to a team when changing teams from the 'chose sides' menu or the pause menu
 
 ------------------------------------------------------------------------
 CHARACTER POSITIONS AND OTHER DYNAMIC STUFF
@@ -327,7 +330,7 @@ add 120 to that pointer to find the address of the ball's Z velocity (Vertical)
 8031c228 - code line that updates the ball's X position (the 2 following code lines update the Y and Z position)
 
 ------------------------------------------------------------------------
-TEAMS
+TEAMS (Characters that play in each team)
 
 (These values update when you select these characters from the menu in VS mode)
 80C663FB - Home captain
@@ -364,3 +367,4 @@ SIDEKICKS IDs:
 07 = shyguy
 
 from 804DB71B to 804DB7E7 - Default teams (the teams you get when clicking on the 'default' button)
+
