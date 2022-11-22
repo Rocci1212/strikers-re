@@ -66,12 +66,12 @@ ZOOM:
 80c5f2bc - another zoom related value, not sure what it does
 
 
-VOLUMES:
+TIMER:
 80cf50f8 - In-game timer (floating point value) (Starts from 0 and increases until it reaches the time limit)
 802b5534 - Instruction that decreases the timer
 
 
-
+VOLUMES:
 80C5F2C3 - Music Volume
 80C5F2C7 - SFX Volume
 80C5F2CB - Voice Volume
@@ -169,9 +169,9 @@ STADIUM SPEED
 909B655C Stadium Slipperyness
 909B654C Stadium Friction
 909B653C Stadium Bounce
-^it's dynamic mem, it means the games loads a lot of other random sh!t which makes it a pain to work with these registers
+^it's dynamic mem, it means the games loads a lot of other random stuff which makes it a pain to work with these registers
 
-at around 8056a940 the path of the terrain ini file is loaded when starting a match, i guess with a code i could make it so the game always loads DryTerrain.ini no matter the stadium you're playing on, this way we can make every stadium fast w/out modifying files and have to create an iso
+800081ec - possible instruction that updates terrain speed?
 
 ------------------------------------------------------------
 CHARACTER COLORS/RGB...
@@ -283,7 +283,9 @@ Format: 00RRGGBB
 -----------------------------------------------------------------------
 CONTROLLERS:
 80585EE2 - Player's 1 controller button inputs
-805860D2 - Player's 2 controller button inputs
+
+(The following addresses might actually be incorect)
+80586154 or 805860D2 - Player's 2 controller button inputs
 805862C2 - Player's 3 controller button inputs
 805864B2 - Player's 4 controller button inputs
 
