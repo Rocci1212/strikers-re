@@ -77,6 +77,7 @@ VOLUMES:
 80C5F2CB - Voice Volume
 
 
+
 -------------------------------------------------------------------
 ITEM RELATED STUFF
 
@@ -343,12 +344,13 @@ CHARACTER STATS:
 8056a758 - pointer to Away Bottom Sidekick stats
 8056a75c - pointer to Away Back Sidekick stats
 
-I think if you add 0x324 to any of these pointer, you'll find the pointer to the stats of the specific characters (So if I'm playin drybones as home top sidekick, I go to (pointer that's at 0x8056a744 + 0x324) I'll find drybones's stats. I haven't fully tested this yet tho, so I'm not 100% sure) 
+I think if you add 0x324 to any of these pointer, you'll find a pointer which points to a list of 10 pointers that point at the stats of a specific character, So if I'm playin drybones as home top sidekick, I go to (pointer that's at 0x8056a744) + 0x324 I'll find a bunch of pointers that point to drybones's stats. 
+
 
 ------------------------------------------------------------------------
 TEAMS (Characters that play in each team)
 
-(These values update when you select these characters from the menu in VS mode)
+The following values update when you select these characters from the menu in VS mode. If you're playing in other modes such as striker challenges, these values won't be accurate
 80C663FB - Home captain
 80C663FF - Away captain
 80C66403 - Home Sidekick Top
@@ -383,4 +385,19 @@ SIDEKICKS IDs:
 07 = shyguy
 
 from 804DB71B to 804DB7E7 - Default teams (the teams you get when clicking on the 'default' button)
+
+---------------------------------------------------------------------------------------
+RESULT SCREEN STATS
+Home:
+80c7e3d1 - Red ball shots
+80c7e3d3 - Yellow ball shots
+80c7e3d5 - White ball shots
+80c7e3fb and 80c7e3fd - Passes
+80c7e401 - Passes that went well
+80c7e405 - Slide tackles done
+80c7e409 - Dekes done
+80c7e40c - Ball possession
+
+Add 0x70 to these addresses to get the away equivalent
+
 
