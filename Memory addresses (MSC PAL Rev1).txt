@@ -344,7 +344,7 @@ CHARACTER STATS:
 8056a758 - pointer to Away Bottom Sidekick stats
 8056a75c - pointer to Away Back Sidekick stats
 
-I think if you add 0x324 to any of these pointer, you'll find a pointer which points to a list of 10 pointers that point at the stats of a specific character, So if I'm playin drybones as home top sidekick, I go to (pointer that's at 0x8056a744) + 0x324 I'll find a bunch of pointers that point to drybones's stats. 
+If you add 0x324 to any of these pointer, you'll find a pointer which points to a list of 10 pointers that point at the stats of a specific character, So if I'm playin drybones as home top sidekick, I go to (pointer that's at 0x8056a744) + 0x324 I'll find a bunch of pointers that point to drybones's stats. 
 
 
 ------------------------------------------------------------------------
