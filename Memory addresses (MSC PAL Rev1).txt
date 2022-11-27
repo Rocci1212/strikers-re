@@ -283,12 +283,12 @@ Format: 00RRGGBB
 
 -----------------------------------------------------------------------
 CONTROLLERS:
-80585EE2 - Player's 1 controller button inputs
+80585EE2 - controller 1 button inputs
+805860D2 - controller 2 button inputs
+805862C2 - controller 3 button inputs
+805864B2 - controller 4 button inputs
+(Sometimes controllers swap randomly during loading screen, so P1 inputs will be stored at the P2 controller address and vice versa)
 
-(The following addresses might actually be incorrect)
-80586154 or 805860D2 - Player's 2 controller button inputs
-805862C2 - Player's 3 controller button inputs
-805864B2 - Player's 4 controller button inputs
 
 Button values (source: https://mariokartwii.com/showthread.php?tid=44 ):
 0001 = Left
@@ -346,6 +346,7 @@ CHARACTER STATS:
 
 If you add 0x324 to any of these pointer, you'll find a pointer which points to a list of 10 pointers that point at the stats of a specific character, So if I'm playin drybones as home top sidekick, I go to (pointer that's at 0x8056a744) + 0x324 I'll find a bunch of pointers that point to drybones's stats. 
 
+8001ba24 - instruction that stat values??
 
 ------------------------------------------------------------------------
 TEAMS (Characters that play in each team)
@@ -359,6 +360,9 @@ The following values update when you select these characters from the menu in VS
 80C6640F - Away Sidekick Top
 80C66413 - Away Sidekick Back
 80C66417 - Away Sidekick Bottom
+
+80C7E3B4 - Home captain (every gamemode)
+80C7E424 - Away captain (every gamemode)
 
 CAPTAINS IDs:
 00 = mario
@@ -387,17 +391,46 @@ SIDEKICKS IDs:
 from 804DB71B to 804DB7E7 - Default teams (the teams you get when clicking on the 'default' button)
 
 ---------------------------------------------------------------------------------------
-RESULT SCREEN STATS
+MATCH STATS
+(These don't get reset after the match is finished)
 Home:
 80c7e3d1 - Red ball shots
-80c7e3d3 - Yellow ball shots
-80c7e3d5 - White ball shots
+80c7e3d3 - Orange ball shots
+80c7e3d5 - Yellow/White ball shots
+80c7e3e7 - Total megastrike shots
+80c7e3e9 - Megastrike goals
 80c7e3fb and 80c7e3fd - Passes
 80c7e401 - Passes that went well
 80c7e405 - Slide tackles done
 80c7e409 - Dekes done
-80c7e40c - Ball possession
+80c7e40c - Ball possession time (probably a word, unlike most other values which are halfwords)
 
 Add 0x70 to these addresses to get the away equivalent
 
 
+MATCH STATS
+(These are reset after the match is finished)
+Home:
+80c7e831 - Red ball shots
+80c7e833 - Orange ball shots
+80c7e835 - Yellow/White ball shots
+80c7e847 - Total megastrike shots
+80c7e849 - Megastrike goals
+
+Away:
+80c7e7df - Red ball shots
+80c7e7e1 - Orange ball shots
+80c7e7e3 - Yellow/White ball shots
+80c7e7f3 - Total megastrike shots
+80c7e7f5 - Megastrike goals
+
+802c2c34 - instruction that writes on the total megastrikes (and probably other stuff aswell)
+
+VALUES THAT AFFECT RESULTS SCREEN
+Home:
+80C6644F - Megastrike shot counter that is shown on the RESULT SCREEN
+80C66451 - Megastrike goal counter that is shown on the RESULT SCREEN
+
+Away:
+80C664C1 - Megastrike shot counter that is shown on the RESULT SCREEN
+80C664C3 - Megastrike goal counter that is shown on the RESULT SCREEN
