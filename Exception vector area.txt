@@ -1,0 +1,14 @@
+---------------------------------------------------------------------------------
+
+The Exception Vector Area is basically unused space in the Wii's RAM that gecko code creators often use to store values.
+For more info about it, check https://mariokartwii.com/showthread.php?tid=1106
+
+The purpose of this file is to keep track of Exception Vector Area usage in MSC gecko codes, because if the same address of the Exeption Vector Area is used by multiple codes, these won't work correctly.
+
+If you need to use the Exception Vector Area in your gecko code to store data, do not use addresses that are listed here, if possible.
+
+---------------------------------------------------------------------------------
+
+0x80001550 thru 0x0000155F: Total Item Modifier [Ferrer]
+0x800015A0 thru 0x000015C7: Transform MSC gameplay to MSC 7 [Ferrer]
+0x800015C8 thru 0x000015D7: Kritter scores [Ferrer]

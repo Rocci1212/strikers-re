@@ -66,15 +66,16 @@ ZOOM:
 80c5f2bc - another zoom related value, not sure what it does
 
 
-VOLUMES:
+TIMER:
 80cf50f8 - In-game timer (floating point value) (Starts from 0 and increases until it reaches the time limit)
 802b5534 - Instruction that decreases the timer
 
 
-
+VOLUMES:
 80C5F2C3 - Music Volume
 80C5F2C7 - SFX Volume
 80C5F2CB - Voice Volume
+
 
 
 -------------------------------------------------------------------
@@ -169,9 +170,9 @@ STADIUM SPEED
 909B655C Stadium Slipperyness
 909B654C Stadium Friction
 909B653C Stadium Bounce
-^it's dynamic mem, it means the games loads a lot of other random sh!t which makes it a pain to work with these registers
+^it's dynamic mem, it means the games loads a lot of other random stuff which makes it a pain to work with these registers
 
-at around 8056a940 the path of the terrain ini file is loaded when starting a match, i guess with a code i could make it so the game always loads DryTerrain.ini no matter the stadium you're playing on, this way we can make every stadium fast w/out modifying files and have to create an iso
+800081ec - possible instruction that updates terrain speed?
 
 ------------------------------------------------------------
 CHARACTER COLORS/RGB...
@@ -282,10 +283,12 @@ Format: 00RRGGBB
 
 -----------------------------------------------------------------------
 CONTROLLERS:
-80585EE2 - Player's 1 controller button inputs
-805860D2 - Player's 2 controller button inputs
-805862C2 - Player's 3 controller button inputs
-805864B2 - Player's 4 controller button inputs
+80585EE2 - controller 1 button inputs
+805860D2 - controller 2 button inputs
+805862C2 - controller 3 button inputs
+805864B2 - controller 4 button inputs
+(Sometimes controllers swap randomly during loading screen, so P1 inputs will be stored at the P2 controller address and vice versa)
+
 
 Button values (source: https://mariokartwii.com/showthread.php?tid=44 ):
 0001 = Left
@@ -302,32 +305,53 @@ Button values (source: https://mariokartwii.com/showthread.php?tid=44 ):
 4000 = C
 8000 = Home
 
-------------------------------------------------------------------------
-CHARACTER POSITIONS AND OTHER DYNAMIC STUFF
 
+8021d06c - instruction that assigns a certain player to a team when changing teams from the 'chose sides' menu or the pause menu
+
+------------------------------------------------------------------------
+CHARACTER POSITIONS, STATS AND OTHER DYNAMIC STUFF
+
+KRITTER:
 8056A760 - pointer to certain home kritter's properties (?)
 8056A764 - pointer to certain away kritter's properties (?)
-add 678 to that pointer to find the address with the X position of that kritter
-add 67C to that pointer to find the address with the Y position of that kritter
+add 0x678 to that pointer to find the address with the X position of that kritter
+add 0x67C to that pointer to find the address with the Y position of that kritter
 
 This info was found by analyzing Ferrer's "kritters on bench" code
 
 
+BALL: 
 806DF7A0 - pointer to the ball's properties
-add C0 to that pointer to find the address ball's charge
-add 10C to that pointer to find the address of the ball's X position
-add 110 to that pointer to find the address of the ball's Y position
-add 114 to that pointer to find the address of the ball's Z position (Vertical)
-add 118 to that pointer to find the address of the ball's X velocity 
-add 11C to that pointer to find the address of the ball's Y velocity 
-add 120 to that pointer to find the address of the ball's Z velocity (Vertical)
+add 0xC0 to that pointer to find the address ball's charge
+add 0x10C to that pointer to find the address of the ball's X position
+add 0x110 to that pointer to find the address of the ball's Y position
+add 0x114 to that pointer to find the address of the ball's Z position (Vertical)
+add 0x118 to that pointer to find the address of the ball's X velocity 
+add 0x11C to that pointer to find the address of the ball's Y velocity 
+add 0x120 to that pointer to find the address of the ball's Z velocity (Vertical)
 
 8031c228 - code line that updates the ball's X position (the 2 following code lines update the Y and Z position)
+(Unlike kritter's position, You can't actually edit these ball values, not from these addreses at least)
+
+
+CHARACTER STATS:
+8056a740 - pointer to Home Captain stats
+8056a744 - pointer to Home Top Sidekick stats
+8056a748 - pointer to Home Bottom Sidekick stats
+8056a74c - pointer to Home Back Sidekick stats
+8056a750 - pointer to Away Captain stats
+8056a754 - pointer to Away Top Sidekick stats
+8056a758 - pointer to Away Bottom Sidekick stats
+8056a75c - pointer to Away Back Sidekick stats
+
+If you add 0x324 to any of these pointer, you'll find a pointer which points to a list of 10 pointers that point at the stats of a specific character, So if I'm playin drybones as home top sidekick, I go to (pointer that's at 0x8056a744) + 0x324 I'll find a bunch of pointers that point to drybones's stats. 
+
+8001ba24 - instruction that stat values??
 
 ------------------------------------------------------------------------
-TEAMS
+TEAMS (Characters that play in each team)
 
-(These values update when you select these characters from the menu in VS mode)
+The following values update when you select these characters from the menu in VS mode. If you're playing in other modes such as striker challenges, these values won't be accurate
 80C663FB - Home captain
 80C663FF - Away captain
 80C66403 - Home Sidekick Top
@@ -336,6 +360,9 @@ TEAMS
 80C6640F - Away Sidekick Top
 80C66413 - Away Sidekick Back
 80C66417 - Away Sidekick Bottom
+
+80C7E3B4 - Home captain (every gamemode)
+80C7E424 - Away captain (every gamemode)
 
 CAPTAINS IDs:
 00 = mario
@@ -362,3 +389,48 @@ SIDEKICKS IDs:
 07 = shyguy
 
 from 804DB71B to 804DB7E7 - Default teams (the teams you get when clicking on the 'default' button)
+
+---------------------------------------------------------------------------------------
+MATCH STATS
+(These don't get reset after the match is finished)
+Home:
+80c7e3d1 - Red ball shots
+80c7e3d3 - Orange ball shots
+80c7e3d5 - Yellow/White ball shots
+80c7e3e7 - Total megastrike shots
+80c7e3e9 - Megastrike goals
+80c7e3fb and 80c7e3fd - Passes
+80c7e401 - Passes that went well
+80c7e405 - Slide tackles done
+80c7e409 - Dekes done
+80c7e40c - Ball possession time (probably a word, unlike most other values which are halfwords)
+
+Add 0x70 to these addresses to get the away equivalent
+
+
+MATCH STATS
+(These are reset after the match is finished)
+Home:
+80c7e831 - Red ball shots
+80c7e833 - Orange ball shots
+80c7e835 - Yellow/White ball shots
+80c7e847 - Total megastrike shots
+80c7e849 - Megastrike goals
+
+Away:
+80c7e7df - Red ball shots
+80c7e7e1 - Orange ball shots
+80c7e7e3 - Yellow/White ball shots
+80c7e7f3 - Total megastrike shots
+80c7e7f5 - Megastrike goals
+
+802c2c34 - instruction that writes on the total megastrikes (and probably other stuff aswell)
+
+VALUES THAT AFFECT RESULTS SCREEN
+Home:
+80C6644F - Megastrike shot counter that is shown on the RESULT SCREEN
+80C66451 - Megastrike goal counter that is shown on the RESULT SCREEN
+
+Away:
+80C664C1 - Megastrike shot counter that is shown on the RESULT SCREEN
+80C664C3 - Megastrike goal counter that is shown on the RESULT SCREEN
