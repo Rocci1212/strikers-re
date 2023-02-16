@@ -1,9 +1,11 @@
-﻿$WIP Cancel Mega Strike [Rocci]
+$WIP Cancel Mega Strike [Rocci]
 0405d988 60000000
 *☆
+
 $Match Time = 1 hour [Nutmeg]
 04cf2dd4 45610000
 *☆
+
 $Super Home Item Hack [Bully@Wiiplaza]
 28585ee2 efff1000
 8000000e 00000007
@@ -46,6 +48,7 @@ DE000000 80008180
 14000BF4 000000ZZ
 E0000000 80008000
 *Incomplete version, only works for single items yet*
+
 $Home Score Modifier [Bully@Wiiplaza]
 48000000 806DF9D8
 DE000000 80008180
@@ -53,6 +56,7 @@ DE000000 80008180
 1000182B 000000XX
 E0000000 80008000
 *Both XX should be the same HEX value!*
+
 $Away Score Modifier [Bully@Wiiplaza]
 48000000 806DF9D8
 DE000000 80008180
@@ -60,6 +64,7 @@ DE000000 80008180
 1000182F 000000XX
 E0000000 80008000
 *Both XX should be the same HEX value!*
+
 $Instant Sudden Death (A+B+C+Z for ON/OFF) [Bully@Wiiplaza]
 28585ee2 00006c00
 0405a6bc 60000000
@@ -67,22 +72,26 @@ cc000000 00000000
 0405a6bc c05f001c
 e0000000 80008000
 *☆
+
 $Goals never count [Bully@Wiiplaza]
 04059044 60000000
 041add48 60000000
 *☆
+
 $Always add X Goals [Bully@Wiiplaza]
 04059040 03803002
 041add40 03804002
 *Rocci's Note: Immediately got a bug in Dolphin 15105, added 4 goals instead of 2 then all other goals did not count
 *
 *2 = The HEX amount of goals teams will get for every goal*
+
 $Force next Item [Bully@Wiiplaza]
 c20a6280 00000003
 2c090001 40820008
 00388008 00000000
 60000000 00000000
 *Does not seem to work for me
+
 $Home Score Manipulation [Bully@Wiiplaza]
 28585EE2 DFEF2010
 48000000 806DF9D8
@@ -101,6 +110,7 @@ DE000000 80008180
 94110000 00000006
 E0000000 80008000
 *Increase with (+) and decrease with (-)*
+
 $Away Score Manipulation [Bully@Wiiplaza]
 28585EE2 00000010
 48000000 806DF9D8
@@ -119,27 +129,33 @@ DE000000 80008180
 94110000 00000B6E
 E0000000 80008000
 *Increase with (+) Decrease with (-)*
+
 $Item modifier *working on every stadium* [mdmwii]
 28585EE2 YYYYXXXX
 48000000 806DF9D8
 1400008C 000000ZZ
 E0000000 80008000
+
 $P1 score modifier [jassim]
 02CF711A 000000XX
+
 $P2 score modifier [jassim]
 02CF711E 000000XX
+
 $Season Point Modifier -PAL- [Munchy]
 04C58930 XXXXXXXX
 04C52D38 XXXXXXXX
 24C52D38 000005DC
 04C52D38 000005DC
 E0000000 80008000
+
 $Remove NK Bug [Ferrer]
 48000000 806df7a0
 de000000 80008180
 14000178 01010012
 e0000000 80008000
 *☆
+
 $Size modifier [Ferrer]
 28585ee2 00000012
 48000000 8056a740
@@ -192,12 +208,14 @@ de000000 80008180
 94210000 000000a0
 e0000000 80008000
 *Did not work for me, not sure how to activate it
+
 $The ball always stays uncharged [Ferrer]
 48000000 806df7a0
 de000000 80008180
 140000c0 00000000
 e0000000 80008000
 *☆
+
 $Total Item Modifier [Ferrer]
 28585EE2 00001008
 04001550 00000001
@@ -271,6 +289,7 @@ DE000000 80008180
 82200000 8000155C
 94210000 00000BF8
 E0000000 80008000
+
 $Kritters always on bench [Ferrer]
 48000000 8056a760
 de000000 80008180
@@ -283,6 +302,7 @@ de000000 80008180
 1400067c 41600000
 e0000000 80008000
 *☆
+
 $Kritter can't knock you down [Ferrer]
 48000000 8056a740
 de000000 80008180
@@ -318,6 +338,7 @@ de000000 80008180
 e0000000 80008000
 *☆
 *Can still take ball away
+
 $Kritter scores [Ferrer]
 040015c8 42200000
 040015cc 42480000
@@ -333,6 +354,7 @@ de000000 90009340
 140000e0 800015d4
 e0000000 80008000
 *☆
+
 $Set online stat to 0:1337 [Ferrer]
 28585EE2 00000B00
 04C52D44 0000053A
@@ -343,6 +365,7 @@ $Set online stat to 0:1337 [Ferrer]
 04C52D70 00000000
 E0000000 80008000
 *Press A+1+2 ingame (online match)
+
 $Set losses to 0 [Jimboom]
 28585EE2 00000B00
 04C52D44 00000000
@@ -350,6 +373,7 @@ $Set losses to 0 [Jimboom]
 04C52D74 00000000
 E0000000 80008000
 *Press A+1+2 ingame (online match)
+
 $Check if host is enabled [Ferrer]
 20C50D08 00000000
 26C50D48 7FFFFFFF
@@ -357,6 +381,7 @@ $Check if host is enabled [Ferrer]
 86100005 FFFFFFFF
 84200005 80C50D48
 E0000000 80008000
+
 $Change opponent's team [Ferrer]
 28585EE2 00008200
 04C50D30 00000009
@@ -370,6 +395,7 @@ E0000000 80008000
 04C50ED8 00000002
 04C50EDC 00000002
 E0000000 80008000
+
 $NK Bug detector [Ferrer]
 48000000 806df7a0
 de000000 80008180
@@ -378,6 +404,7 @@ de000000 80008180
 de000000 80008180
 14001834 3d4ccccd
 e0000000 80008000
+
 $Escape online matches without losing [Ferrer]
 C0000000 00000008
 9421FFB0 BDC10008
@@ -389,6 +416,7 @@ A1CE0000 3DE00000
 40A2FFF8 B9C10008
 38210050 4E800020
 *Press  A+B+C+Z to enable the code
+
 $Cause Lag [Ferrer]
 C0000000 00000008
 9421FFB0 BDC10008
@@ -400,6 +428,7 @@ A1CE0000 3DE00000
 40A2FFF8 B9C10008
 38210050 4E800020
 *Press  1 to enable the code
+
 $Cause Lag [Improved]
 C0000000 00000008
 9421FFB0 BDC10008
@@ -411,6 +440,7 @@ A1CE0000 3DE00000
 40A2FFF8 B9C10008
 38210050 4E800020
 *Press + to enable the code
+
 $Transform MSC gameplay to MSC 7 (Signature) [Ferrer]
 040015a0 40a00000
 040015a4 40a00000
@@ -479,6 +509,7 @@ de000000 90009340
 20090010 00000004
 e0000000 80008000
 *☆ It means improved (a lot) all stats to just fastest passes, strongest shots, fastest movement, fastest acceleration, greatest defense... just a new gameplay to replay the game. It can works on online if both players use the same code
+
 $Camera hack [Ferrer]
 c20f412c 0000000f
 9421ffb0 bdc10008
@@ -497,13 +528,16 @@ d00400bc b9c10008
 38210050 c00400bc
 60000000 00000000
 *STAR Just press "+" or "-" to zoom in or zoom out. Before you have to change camera to Static and dont return to camera menu options! Or wii can crash.
+
 $Fix camera settings [Ferrer]
 04C5F2D8 00000000
 04C5F2DC 00000000
+
 $Daily Points Modifier [Bully@Wiiplaza]
 26C52153 000001F4
 04C52D53 0000XXXX
 E0000000 80008000
+
 $Always Have 10 Striker Shots (Both Teams) [Bully@Wiiplaza]
 C2285A14 00000005
 9421FFF0 91610008
@@ -512,6 +546,7 @@ C2285A14 00000005
 38210010 C01B0390
 60000000 00000000
 *41200000 can be changed to another Float*
+
 $Always Have Perfect Mega Striker Shot Strengh (Both Teams) [Bully@Wiiplaza]
 C20580F0 00000005
 9421FFF0 91610008
@@ -519,6 +554,7 @@ C20580F0 00000005
 91630394 81610008
 38210010 C3E30394
 60000000 00000000
+
 $Always Have 8 Striker Shots (Both Teams) [J0k3r]
 C2285A14 00000005
 9421FFF0 91610008
@@ -526,11 +562,13 @@ C2285A14 00000005
 917B0390 81610008
 38210010 C01B0390
 60000000 00000000
+
 $CPU v CPU
 c2251eec 00000003
 2c000001 40820008
 38000000 9804008e
 60000000 00000000
+
 $Always Have 2 Striker Shots (Both Teams) [Rocci]
 c2285a14 00000005
 9421fff0 91610008
@@ -538,6 +576,7 @@ c2285a14 00000005
 917b0390 81610008
 38210010 c01b0390
 60000000 00000000
+
 $Always Have 4 Striker Shots (Both Teams) [Rocci]
 c2285a14 00000005
 9421fff0 91610008
@@ -545,6 +584,7 @@ c2285a14 00000005
 917b0390 81610008
 38210010 c01b0390
 60000000 00000000
+
 $Blue Peach [Wiifinity Gauntlet]
 04504ed0 000000f0
 04504dbf 000000f1
@@ -572,6 +612,7 @@ C22784A8 00000003
 40A20008 38600000
 2C030000 00000000
 *Blue Peach v Red Characters
+
 $Win By 2 [Feder]
 C2100FDC 0000000A
 3E6080C5 6273F230
@@ -584,17 +625,21 @@ A2A6002E 7C14A800
 41820008 3A940001
 3A940001 B2930002
 B106002C 00000000
+
 $Strikers Cup First to 5 [Feder]
 c20fc3ac 00000002
 38800001 909c0008
 60000000 00000000
+
 $60 Minute Matches [Feder]
 C2057148 00000002
 3EC04561 92DD001C
 60000000 00000000
+
 $Purple DK [Feder]
 04504e14 00000013
 04504e18 000000f3
+
 $All fast stadiums [Feder]
 C20081EC 0000000D
 D01F000C 3D60909B
@@ -610,6 +655,7 @@ D01F000C 3D60909B
 7C1F5800 40820010
 3D803F19 618C999A
 919F000C 00000000
+
 $Control Kritters with D-Pad [Feder]
 48000000 8056a760
 de000000 00007fff
@@ -731,12 +777,14 @@ EC421828 D04A0678
 *Press 2 to stop controlling kritters
 *
 *If a kritter is already being controller by another player, you won't be able to take control of him until that player stops controlling him
+
 $Press + to Stop timer [Feder]
 28585ee2 00000010
 042b5534 60000000
 cc000000 00000000
 042b5534 d01d0008
 e0000000 80008000
+
 $Sudden Death at 9-9 [Feder]
 C205A6BC 00000007
 3D8080C6 A16CF232
@@ -746,6 +794,7 @@ A12C64B8 7C0A4800
 40820010 3D604396
 3D8080CF 916C50F8
 C05F001C 00000000
+
 $No Kritter for Player in Challenges [Feder]
 28c5f33e 00000004
 48000000 8056A760
@@ -754,3 +803,34 @@ DE000000 80008180
 1400067C 41600000
 E0000000 80008000
 *To make it more difficult
+
+Replace "freezing shells" cheat with NO STARS cheat (PAL Revision 1) [Feder]
+0409b8c4 60000000
+0409b8c8 60000000
+0409b8cc 60000000
+0409b8d0 60000000
+0409b8d4 60000000
+0409b8d8 60000000
+0409b8dc 60000000
+0409b8e4 60000000
+0409b8e8 3B800005
+Replace "freezing shells" cheat with NO STARS cheat (PAL Revision 2) (untested) [Feder]
+0409bb98 60000000
+0409bb9c 60000000
+0409bba0 60000000
+0409bba4 60000000
+0409bba8 60000000
+0409bbac 60000000
+0409bbb0 60000000
+0409bbb8 60000000
+0409bbbc 3B800005
+Replace "freezing shells" cheat with NO STARS cheat (NTSC) [Feder]
+0409bef0 60000000
+0409bef4 60000000
+0409bef8 60000000
+0409befc 60000000
+0409bf00 60000000
+0409bf04 60000000
+0409bf08 60000000
+0409bf10 60000000
+0409bf14 3B800005
