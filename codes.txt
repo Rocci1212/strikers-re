@@ -572,24 +572,6 @@ C22784A8 00000003
 40A20008 38600000
 2C030000 00000000
 *Blue Peach v Red Characters
-$Captain Item Removal Code [Feder]
-c209bccc 00000004
-2c1c0009 41800010
-2c1c0014 41810008
-3b800005 7f84e378
-60000000 00000000
-*Replace X for different item:
-*0 = Green Shell
-*1 = Red Shell
-*2 = Spikey Shell
-*3 = Ice Shell
-*4 = Banana
-*5 = Bomb-omb
-*6 = Chain Chomp
-*7 = Mushroom
-*8 = Star
-*
-*(It's currently on 5)
 $Win By 2 [Feder]
 C2100FDC 0000000A
 3E6080C5 6273F230
@@ -602,8 +584,6 @@ A2A6002E 7C14A800
 41820008 3A940001
 3A940001 B2930002
 B106002C 00000000
-$Remove Stars [Feder]
-0409ba68 60000000
 $Strikers Cup First to 5 [Feder]
 c20fc3ac 00000002
 38800001 909c0008
