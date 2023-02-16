@@ -1,5 +1,6 @@
 ------------------------------------------------------------
-GAME SETTINGS RELATED STUFF
+GAME SETTINGS RELATED STUFF 
+(Some of the mem addresses listed here might only be valid for certain game modes)
 
 
 80100fdc is the address of the instruction to increase the goals when someone scores
@@ -22,7 +23,7 @@ MENU:
 80c5f2ef - score limit for  First to X format in the menu, updates when clicking done after the settings menu with the first to X option
 80c5f2f3 - Number of matches (Best of)
 
-CHEATS:
+CHEATS (VS MODE ONLY):
 80c5f2ff - Item Cheat
 80c5f303 - Stadium Cheat
 80c5f307 - Player Cheat
