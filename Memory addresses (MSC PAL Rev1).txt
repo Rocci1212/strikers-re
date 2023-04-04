@@ -35,7 +35,8 @@ SOME INSTRUCTIONS THAT ARE RELATED TO THE ADDRESSES LISTED ABOVE:
 
 8023717c - address of the instruction that updates the item cheat
 8023718c - address of the instruction that updates the player cheat
-
+8056a740 - address of the home captain "Player" object
+8056a750 - address of the away captain "Player" object
 
 
 80005fd0 - line that probably loads various stuff from save file
