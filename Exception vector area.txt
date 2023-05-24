@@ -9,6 +9,7 @@ If you need to use the Exception Vector Area in your gecko code to store data, d
 
 ---------------------------------------------------------------------------------
 
-0x80001550 thru 0x0000155F: Total Item Modifier [Ferrer]
-0x800015A0 thru 0x000015C7: Transform MSC gameplay to MSC 7 [Ferrer]
-0x800015C8 thru 0x000015D7: Kritter scores [Ferrer]
+0x800001b4-0x800001b5: Control Kritters v0.3 [Feder]
+0x80001550-0x0000155F: Total Item Modifier [Ferrer]
+0x800015A0-0x000015C7: Transform MSC gameplay to MSC 7 [Ferrer]
+0x800015C8-0x000015D7: Kritter scores [Ferrer]
