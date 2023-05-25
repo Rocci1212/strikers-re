@@ -1,16 +1,13 @@
 ------------------------------------------------------------
-GAME SETTINGS RELATED STUFF 
+MATCH SETTINGS/SCORE/OTHER MATCH STUFF
 (Some of the mem addresses listed here might only be valid for certain game modes)
-
 
 80100fdc is the address of the instruction to increase the goals when someone scores
 "80C66449","80C664BB","80C7E3E1","80C7E453","80C7E64B","80C7E69F","80C7E6F3","80C7E747","80C7E79B","80CF58F7","80CF711B","81355F73"
 ^all of these are possible memory addresses for the score of player on home
 
-
 "80C6644B","80C664B9","80C7E3E3","80C7E451","80C7E4A7","80C7E4FB","80C7E54F","80C7E5A3","80C7E5F7","80CF645F","80CF711F","81355F77"
 ^all of these are possible memory addresses for the score of player on away
-
 
 DURING MATCH:
 80c5f22b - address that determines if it's timed or first to x (0 = Timed, 1 = FTX)
@@ -23,11 +20,15 @@ MENU:
 80c5f2ef - score limit for  First to X format in the menu, updates when clicking done after the settings menu with the first to X option
 80c5f2f3 - Number of matches (Best of)
 
-CHEATS (VS MODE ONLY):
+CHEATS (DOMINATION MODE):
 80c5f2ff - Item Cheat
 80c5f303 - Stadium Cheat
 80c5f307 - Player Cheat
-^These update after you click ok on the cheat/match settings menu
+^These update after you click ok on the cheat/match settings menu in domination mode
+CHEATS (ONLINE MODE):
+80c5f297 - Item Cheat
+80c5f29b - Stadium Cheat
+80c5f29f - Player Cheat
 
 SOME INSTRUCTIONS THAT ARE RELATED TO THE ADDRESSES LISTED ABOVE:
 800fc3ac - the address of the instruction that sets the value that determines if it's timed or first to x
@@ -38,51 +39,34 @@ SOME INSTRUCTIONS THAT ARE RELATED TO THE ADDRESSES LISTED ABOVE:
 8056a740 - address of the home captain "Player" object
 8056a750 - address of the away captain "Player" object
 
-
-80005fd0 - line that probably loads various stuff from save file
-
-
+80005fd0 - line that loads match settings from save file (probably loads anything you have in your save file, not just match settings)
 
 RANDOM STUFF:
-80c5f33f - Mode menu?? 0 = VS mode, 3 = Striker cup, 4 = ABC/Challenges
-
+80c5f33f - Mode menu 0 = VS mode, 3 = Striker cup, 4 = ABC/Challenges
 80c5f22f 80c7f3bf - both have initial time in challenge mode. the second one doesn't update in vs mode
-
 80c7f3cb - Possible ID of home captain?? (maybe only for challenges)
-
-
-
-
 
 STRIKER CHALLENGE CONDITIONS:
 80C7F3C7 - Condition in Strikers Challenge mode 
 (0 = none, 1 = score at least X goals more than your opponent (like peach's challenge), 2 = don't get scored on (like daisy's challenge), 3 = score at least X goals (like diddy's challenge) )
-
 80c7f3cf - Winparameter (The "X" of the conditions i listed above)
-
-
 
 ZOOM:
 80c5f2d8 - Zoom mode (1 = Dynamic, 0 = Static)
 80c5f2db - Zoom value (0000 = 1, 3e80 = 2, 3f00 = 3, 3f40 = 4, 3f80 = 5)
 80c5f2bc - another zoom related value, not sure what it does
 
-
 TIMER:
 80cf50f8 - In-game timer (floating point value) (Starts from 0 and increases until it reaches the time limit)
 802b5534 - Instruction that decreases the timer
-
 
 VOLUMES:
 80C5F2C3 - Music Volume
 80C5F2C7 - SFX Volume
 80C5F2CB - Voice Volume
 
-
-
 -------------------------------------------------------------------
 ITEM RELATED STUFF
-
 
 item IDs:
 00 = Green Shell
