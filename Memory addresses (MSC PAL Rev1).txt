@@ -420,3 +420,8 @@ Home:
 Away:
 80C664C1 - Megastrike shot counter that is shown on the RESULT SCREEN
 80C664C3 - Megastrike goal counter that is shown on the RESULT SCREEN
+
+---------------------------------------------------------------------------------------
+STADIUM GRAPHICS:
+8059adf6 - is fog enabled? (true or false)
+
