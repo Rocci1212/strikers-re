@@ -65,6 +65,10 @@ VOLUMES:
 80C5F2C7 - SFX Volume
 80C5F2CB - Voice Volume
 
+GOAL SIZES:
+806da97c - post radius (float)
+806df948 - post offset (float)
+
 -------------------------------------------------------------------
 ITEM RELATED STUFF
 
@@ -422,7 +426,9 @@ Away:
 80C664C3 - Megastrike goal counter that is shown on the RESULT SCREEN
 
 ---------------------------------------------------------------------------------------
-STADIUM GRAPHICS:
+STADIUM GRAPHICS
+
+FOG:
 8059adf6 - is fog enabled? (boolean)
 8059ad3c - fog start (float)
 8059ad5c - fog end (float)
