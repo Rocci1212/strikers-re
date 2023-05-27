@@ -423,5 +423,10 @@ Away:
 
 ---------------------------------------------------------------------------------------
 STADIUM GRAPHICS:
-8059adf6 - is fog enabled? (true or false)
-
+8059adf6 - is fog enabled? (boolean)
+8059ad3c - fog start (float)
+8059ad5c - fog end (float)
+8059ad7f - fog red
+8059ad9f - fog green
+8059adbf - fog blue
+8059addc - fog intensity (float)
