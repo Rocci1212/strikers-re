@@ -1,0 +1,9 @@
+$Always Have 10 Striker Shots (Both Teams) (PAL, Rev1) [Bully@Wiiplaza]
+C2285A14 00000005
+9421FFF0 91610008
+3D604120 616B0000
+917B0390 81610008
+38210010 C01B0390
+60000000 00000000
+*41200000 can be changed to another Float.
+*This is probably the original code, all the other codes that affect megastrike shot count are edits of this one

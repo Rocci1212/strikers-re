@@ -1,0 +1,6 @@
+$Always add X Goals [Bully@Wiiplaza]
+04059040 03803002
+041add40 03804002
+*Rocci's Note: Immediately got a bug in Dolphin 15105, added 4 goals instead of 2 then all other goals did not count
+*
+*2 = The HEX amount of goals teams will get for every goal*

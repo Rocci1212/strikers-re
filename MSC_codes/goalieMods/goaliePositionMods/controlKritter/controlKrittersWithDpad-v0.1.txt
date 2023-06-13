@@ -1,0 +1,247 @@
+$Control Kritters with D-Pad v0.1 (PAL, Rev1) [Feder]
+28585ee2 fff70008
+C0000000 00000005
+3D808057 814CA760
+C04A067C 3D603E4C
+616BCCCD 916A067C
+C06A067C EC42182A
+D04A067C 4E800020
+E0000000 80008000
+28585ee2 fffb0004
+C0000000 00000005
+3D808057 814CA760
+C04A067C 3D603E4C
+616BCCCD 916A067C
+C06A067C EC421828
+D04A067C 4E800020
+E0000000 80008000
+28585ee2 fffe0001
+C0000000 00000005
+3D808057 814CA760
+C04A0678 3D603E4C
+616BCCCD 916A0678
+C06A0678 EC421828
+D04A0678 4E800020
+E0000000 80008000
+28585ee2 fffd0002
+C0000000 00000005
+3D808057 814CA760
+C04A0678 3D603E4C
+616BCCCD 916A0678
+C06A0678 EC42182A
+D04A0678 4E800020
+E0000000 80008000
+28586154 fff70008
+C0000000 00000005
+3D808057 814CA764
+C04A067C 3D603E4C
+616BCCCD 916A067C
+C06A067C EC42182A
+D04A067C 4E800020
+E0000000 80008000
+28586154 fffb0004
+C0000000 00000005
+3D808057 814CA764
+C04A067C 3D603E4C
+616BCCCD 916A067C
+C06A067C EC421828
+D04A067C 4E800020
+E0000000 80008000
+28586154 fffe0001
+C0000000 00000005
+3D808057 814CA764
+C04A0678 3D603E4C
+616BCCCD 916A0678
+C06A0678 EC421828
+D04A0678 4E800020
+E0000000 80008000
+28586154 fffd0002
+C0000000 00000005
+3D808057 814CA764
+C04A0678 3D603E4C
+616BCCCD 916A0678
+C06A0678 EC42182A
+D04A0678 4E800020
+E0000000 80008000
+
+CODE EXPLAINED:
+28585ee2 fff70008		# Checks if ___ pressed
+C0000000 00000005		# Start of ASM-Code 1, first of the 4 codes to move home kritter (Scroll Down)
+3D808057 814CA760
+C04A067C 3D603E4C
+616BCCCD 916A067C
+C06A067C EC42182A
+D04A067C 4E800020
+E0000000 80008000	 	# Final terminator
+28585ee2 fffb0004		# Checks if ___ pressed
+C0000000 00000005		# Start of ASM-Code 2 (Scroll Down)
+3D808057 814CA760
+C04A067C 3D603E4C
+616BCCCD 916A067C
+C06A067C EC421828
+D04A067C 4E800020
+E0000000 80008000		# Final terminator
+28585ee2 fffe0001		# Checks if ___ pressed
+C0000000 00000005		# Start of ASM-Code 3 (Scroll Down)
+3D808057 814CA760
+C04A0678 3D603E4C
+616BCCCD 916A0678
+C06A0678 EC421828
+D04A0678 4E800020
+E0000000 80008000		# Final terminator
+28585ee2 fffd0002		# Checks if ___ pressed
+C0000000 00000005		# Start of ASM-Code 4 (Scroll Down)
+3D808057 814CA760
+C04A0678 3D603E4C
+616BCCCD 916A0678
+C06A0678 EC42182A
+D04A0678 4E800020
+E0000000 80008000		# Final terminator
+28586154 fff70008		# Checks if ___ pressed
+C0000000 00000005		# Start of ASM-Code 5, first of the 4 codes to move away kritter (Scroll Down)
+3D808057 814CA764
+C04A067C 3D603E4C
+616BCCCD 916A067C
+C06A067C EC42182A
+D04A067C 4E800020
+E0000000 80008000		# Final terminator
+28586154 fffb0004		# Checks if ___ pressed
+C0000000 00000005		# Start of ASM-Code 6 (Scroll Down)
+3D808057 814CA764
+C04A067C 3D603E4C
+616BCCCD 916A067C
+C06A067C EC421828
+D04A067C 4E800020
+E0000000 80008000		# Final terminator
+28586154 fffe0001		# Checks if ___ pressed
+C0000000 00000005		# Start of ASM-Code 7 (Scroll Down)
+3D808057 814CA764
+C04A0678 3D603E4C
+616BCCCD 916A0678
+C06A0678 EC421828
+D04A0678 4E800020
+E0000000 80008000		# Final terminator
+28586154 fffd0002		# Checks if ___ pressed
+C0000000 00000005		# Start of ASM-Code 8 (Scroll Down)
+3D808057 814CA764
+C04A0678 3D603E4C
+616BCCCD 916A0678
+C06A0678 EC42182A
+D04A0678 4E800020
+E0000000 80008000		# Final terminator
+
+ASM-Code 1:
+# This is a C0 code, meaning that it doesn't have an insertion address, but it's executed once per frame (60 times per second)
+# This gecko code has 8 ASM codes in total, 4 for each of the kritters, one of them per each direction
+lis r12, 0x8057
+lwz r10, 0xffffA760 (r12) # load the pointer
+
+lfs f2, 0x67C (r10) # load kritter's position
+
+lis r11, 0x3e4c  # float value for 0.2
+ori r11, r11, 0xcccd
+stw r11, 0x67C (r10)
+lfs f3, 0x67C (r10)
+
+fadds f2, f2, f3 # increase the value
+stfs f2, 0x67C (r10) # store it back
+blr
+
+ASM-Code 2:
+# This is a C0 code, meaning that it doesn't have an insertion address, but it's executed once per frame (60 times per second)
+# Couldn't find the source code for this and the next ones, so I decompilated them. It's similar to the code above, but for a different direction
+loc_0x0:
+  lis r12, 0x8057
+  lwz r10, -22688(r12)
+  lfs f2, 1660(r10)
+  lis r11, 0x3E4C
+  ori r11, r11, 0xCCCD
+  stw r11, 1660(r10)
+  lfs f3, 1660(r10)
+  fsubs f2, f2, f3
+  stfs f2, 1660(r10)
+  blr 
+
+ASM-Code 3:
+# This is a C0 code, meaning that it doesn't have an insertion address, but it's executed once per frame (60 times per second)
+loc_0x0:
+  lis r12, 0x8057
+  lwz r10, -22688(r12)
+  lfs f2, 1656(r10)
+  lis r11, 0x3E4C
+  ori r11, r11, 0xCCCD
+  stw r11, 1656(r10)
+  lfs f3, 1656(r10)
+  fsubs f2, f2, f3
+  stfs f2, 1656(r10)
+  blr 
+
+ASM-Code 4:
+# This is a C0 code, meaning that it doesn't have an insertion address, but it's executed once per frame (60 times per second)
+loc_0x0:
+  lis r12, 0x8057
+  lwz r10, -22688(r12)
+  lfs f2, 1656(r10)
+  lis r11, 0x3E4C
+  ori r11, r11, 0xCCCD
+  stw r11, 1656(r10)
+  lfs f3, 1656(r10)
+  fadds f2, f2, f3
+  stfs f2, 1656(r10)
+  blr 
+
+ASM-Code 5:
+# This is a C0 code, meaning that it doesn't have an insertion address, but it's executed once per frame (60 times per second)
+loc_0x0:
+  lis r12, 0x8057
+  lwz r10, -22684(r12)
+  lfs f2, 1660(r10)
+  lis r11, 0x3E4C
+  ori r11, r11, 0xCCCD
+  stw r11, 1660(r10)
+  lfs f3, 1660(r10)
+  fadds f2, f2, f3
+  stfs f2, 1660(r10)
+  blr 
+
+ASM-Code 6:
+# This is a C0 code, meaning that it doesn't have an insertion address, but it's executed once per frame (60 times per second)
+loc_0x0:
+  lis r12, 0x8057
+  lwz r10, -22684(r12)
+  lfs f2, 1660(r10)
+  lis r11, 0x3E4C
+  ori r11, r11, 0xCCCD
+  stw r11, 1660(r10)
+  lfs f3, 1660(r10)
+  fsubs f2, f2, f3
+  stfs f2, 1660(r10)
+  blr 
+
+ASM-Code 7:
+# This is a C0 code, meaning that it doesn't have an insertion address, but it's executed once per frame (60 times per second)
+loc_0x0:
+  lis r12, 0x8057
+  lwz r10, -22684(r12)
+  lfs f2, 1656(r10)
+  lis r11, 0x3E4C
+  ori r11, r11, 0xCCCD
+  stw r11, 1656(r10)
+  lfs f3, 1656(r10)
+  fsubs f2, f2, f3
+  stfs f2, 1656(r10)
+  blr 
+
+ASM-Code 8:
+# This is a C0 code, meaning that it doesn't have an insertion address, but it's executed once per frame (60 times per second)
+loc_0x0:
+  lis r12, 0x8057
+  lwz r10, -22684(r12)
+  lfs f2, 1656(r10)
+  lis r11, 0x3E4C
+  ori r11, r11, 0xCCCD
+  stw r11, 1656(r10)
+  lfs f3, 1656(r10)
+  fadds f2, f2, f3
+  stfs f2, 1656(r10)
+  blr 

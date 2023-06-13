@@ -1,0 +1,40 @@
+$Tennis Tie-Breaker v1.1 (PAL, Rev1) [Feder]
+C0000000 00000009
+3E6080C5 6273F230
+A2930002 2C080001
+4181000C A25300BE
+7E549378 3A94FFFF
+7C144000 40820014
+A2A6002E 7C14A800
+40820008 3A940001
+3A940001 B2930002
+B106002C 00000000
+
+CODE EXPLAINED:
+#To be inserted at 80100fdc
+lis r19, 0x80C5  	
+ori r19, r19, 0xF230		# Load 0x80c5f230 (Address of the SCORE LIMIT a.k.a. value of goals you need to get in order to win) in r19
+
+lhz r20, 2 (r19) 			# Load value of goals you need to get in order to win in r20
+
+cmpwi r8, 1				# If Home player has 1 or less goals, reset the score limit
+bgt dont_reset
+lhz r18, 0x00BE (r19) 		# Load score limit player selected in the match settings menu (this value always stays the same during a match) into r18
+mr r20, r18 
+
+dont_reset:
+subi r20, r20, 1			
+cmpw r20, r8			# Check if HomePlayerScore = ScoreLimit - 1
+bne no_overtime
+lhz r21, 0x002E (r6)		# Load Away player's score into r21
+
+cmpw r20, r21			# Compare both players' scores
+bne no_overtime
+
+addi r20, r20, 1			# If scores are tied and they are equal to ScoreLimit - 1, then increase the Score limit by +1
+
+no_overtime:
+addi r20, r20, 1			# Restore score limit's original value
+sth r20, 2 (r19)			# Overwrite score limit with its new value
+
+sth r8, 0x002C (r6)

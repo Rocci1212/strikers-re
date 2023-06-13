@@ -1,0 +1,70 @@
+
+CODE EXPLAINED:
+# Player indicator color as Input indicator (PAL, Rev1)
+# C0 code
+
+lis r12, 0x8058			# Load 0x80585ee2 (controller 1 inputs) in r12
+lhz r3, 0x5ee2 (r12)			# Load inputs in r3
+
+andi. r10, r3, 0x2000			# Check if Z pressed
+bne- Z_PRESS			# If it is then take the branch
+
+andi. r10, r3, 0x0400			# Check if B pressed
+bne- B_PRESS			# If it is then take the branch
+
+andi. r10, r3, 0x0800			# Check if A pressed
+bne- A_PRESS			# If it is then take the branch
+
+andi. r10, r3, 0x000f			# Check if D-Pad pressed
+bne- D_PAD_PRESS			# If it is then take the branch
+
+
+lis r5, 0x0000			# Load Black RGB in r5 (DEFAULT COLOR)
+b UPDATE_INDICATOR
+
+Z_PRESS:
+andi. r10, r3, 0x0400			# Check if B pressed
+bne- B_AND_Z_PRESS			# If it is then take the branch
+
+andi. r10, r3, 0x0800			# Check if A pressed
+bne- A_AND_Z_PRESS			# If it is then take the branch
+
+lis r5, 0x00ff			# Load Yellow RGB in r5
+ori r5, r5, 0xff00
+b UPDATE_INDICATOR
+
+
+B_AND_Z_PRESS:
+lis r5, 0x0088          # Load Green-Yellow
+B_PRESS:
+ori r5, r5, 0xff00			# Load Green RGB in r5
+b UPDATE_INDICATOR
+
+A_AND_Z_PRESS:
+lis r5, 0x00ff          # Load Orange
+ori r5, r5, 0x8800
+b UPDATE_INDICATOR
+
+A_PRESS:
+lis r5, 0x00ff			# Load Red RGB in r5	
+b UPDATE_INDICATOR
+
+D_PAD_PRESS:			
+ori r5, r5, 0x00ff			# Load blue RGB in r5
+
+
+UPDATE_INDICATOR:
+lis r11, 0x8050			# Load 0x80504d04 (Address for character colors) in r11
+ori r11, r11, 0x4d08
+
+li r12, 12
+
+THE_LOOP:
+stw r5, 0 (r11)			# store value of r5 instead of original character RGB
+stw r5, 4 (r11)
+addi r11, r11, 0x5c			# increment r11
+cmpwi r12, 0
+subi r12, r12, 1
+bgt+ THE_LOOP			# If r12 > 0 don't stop looping
+
+blr

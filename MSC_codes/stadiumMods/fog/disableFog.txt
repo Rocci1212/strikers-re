@@ -1,0 +1,6 @@
+$Disable fog (PAL, Rev1) [Feder]
+0059adf6 00000000
+*It's great for foggy stadiums such as pipeline/wastelands/stormship
+
+CODE EXPLAINED: 
+0059adf6 00000000		# Set the fog boolean variable to false

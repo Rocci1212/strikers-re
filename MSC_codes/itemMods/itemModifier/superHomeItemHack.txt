@@ -1,0 +1,36 @@
+$Super Home Item Hack [Bully@Wiiplaza]
+28585ee2 efff1000
+8000000e 00000007
+e0000000 00000000
+28585ee2 feff0100
+8000000e 00000001
+e0000000 00000000
+28585ee2 ffef0010
+8000000e 00000014
+e2000001 00000000
+48000000 806df9d8
+de000000 80008180
+9421000e 0000008c
+e0000000 80008000
+28585ee2 efff1000
+8000000e 00000003
+e0000000 00000000
+28585ee2 feff0100
+8000000e 00000008
+e0000000 00000000
+28585ee2 ffef0010
+8000000e 00000005
+e2000001 00000000
+48000000 806df788
+de000000 80008180
+9421000e 00000250
+e0000000 80008000
+*Rocci's Notes: I don't understand what this is supposed to do, but it does manipulate items.
+*This is the first complete working item hack for Mario Strikers, since it also modifies the amount of the items, means that every item now works!!*
+**Instructions*
+*3x Mushroom: hold -
+*Red Shells: hold 2
+*Captain Power: hold +
+*If last item was Mushroom, you have permanent freeze shells (if you dont press another item button)
+*If last item was red shell, you have permanent stars (if you dont press another item button)
+*If last item was captain power, you have permanent Bomb Hail (if you dont press another item button)

@@ -1,0 +1,5 @@
+$The ball always stays uncharged [Ferrer]
+48000000 806df7a0
+de000000 80008180
+140000c0 00000000
+e0000000 80008000

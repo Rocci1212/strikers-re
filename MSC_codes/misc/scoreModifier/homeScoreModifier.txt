@@ -1,0 +1,7 @@
+$Home Score Modifier [Bully@Wiiplaza]
+48000000 806DF9D8
+DE000000 80008180
+10000007 000000XX
+1000182B 000000XX
+E0000000 80008000
+*Both XX should be the same HEX value!*

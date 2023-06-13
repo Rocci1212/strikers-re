@@ -1,0 +1,7 @@
+$Away Score Modifier [Bully@Wiiplaza]
+48000000 806DF9D8
+DE000000 80008180
+10000B6F 000000XX
+1000182F 000000XX
+E0000000 80008000
+*Both XX should be the same HEX value!*

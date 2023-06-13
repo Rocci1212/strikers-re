@@ -1,0 +1,34 @@
+$White+Yellow shots counter (PAL, Rev1) [Feder]
+C0000000 00000008
+3D8080C8 3D4080C6
+A12CE830 A16CE832
+7D6B4A14 B16A644E
+A16CE834 B16A6450
+A12CE7DE A16CE7E0
+7D6B4A14 B16A64C0
+A16CE7E2 B16A64C2
+4E800020 00000000
+*Show White + Yellow shots counter in result screen 
+*Instead of showing Megastrikes_goals"/"Megastrike_shots it shows (White_shots+Yellow_shots)"/"(Red_shots+Orange_shots)
+
+CODE EXPLAINED:
+# This is a C0 code, meaning that it doesn't have an insertion address, but it's executed once per frame (60 times per second)
+lis r12, 0x80c8
+lis r10, 0x80c6
+
+## HOME ##
+lhz r9, 0xFFFFe830 (r12) 	# Red balls
+lhz r11, 0xFFFFe832 (r12) 	# Orange balls
+add r11, r11, r9  		# Sum Red and Orange
+sth r11, 0x644e (r10) 		# Store instead of total megastrikes
+lhz r11, 0xFFFFe834 (r12) 	# White and Yellow balls
+sth r11, 0x6450 (r10)		# Store instead of megastrikes goals
+## AWAY ##
+lhz r9, 0xFFFFe7de (r12) 	# Red balls
+lhz r11, 0xFFFFe7e0 (r12) 	# Orange balls
+add r11, r11, r9  		# Sum Red and Orange
+sth r11, 0x64c0 (r10) 		# Store instead of total megastrikes
+lhz r11, 0xFFFFe7e2 (r12) 	# White and Yellow balls
+sth r11, 0x64c2 (r10) 		# Store instead of megastrike goals
+
+blr 				# Branch link return because all C0 codes must end like this

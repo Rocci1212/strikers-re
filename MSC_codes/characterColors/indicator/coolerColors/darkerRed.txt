@@ -1,0 +1,13 @@
+Darker Red (PAL, Rev1) [Feder]
+04504d08 00440000
+04504d64 00440000
+04505044 00440000
+045050fc 00440000
+*The end of each line is the RGB value in the following format: 00RRGGBB
+*If you want different colors then edit those values
+
+CODE EXPLAINED:
+04504d08 00440000		# Set Mario's indicator color to #440000
+04504d64 00440000		# Set Bowser's indicator color to #440000
+04505044 00440000		# Set ___'s indicator color to #440000
+045050fc 00440000		# Set ___'s indicator color to #440000

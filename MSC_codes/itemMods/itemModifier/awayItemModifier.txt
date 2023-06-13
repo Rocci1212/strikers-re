@@ -1,0 +1,6 @@
+$Away item modifier [Bully@Wiiplaza]
+48000000 806DF9D8
+DE000000 80008180
+14000BF4 000000ZZ
+E0000000 80008000
+*Incomplete version, only works for single items yet*

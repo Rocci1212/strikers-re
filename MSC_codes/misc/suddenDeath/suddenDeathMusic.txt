@@ -1,0 +1,33 @@
+$Sudden Death at 9-9 (PAL, Rev1) [Feder]
+C205A6BC 00000007
+3D8080C6 A16CF232
+A14C64BA 396BFFFF
+7C0B5000 4082001C
+A12C64B8 7C0A4800
+40820010 3D604396
+3D8080CF 916C50F8
+C05F001C 00000000
+*Desyncs online if opponent doesn't have this code
+
+CODE EXPLAINED:
+#To be inserted at 8005a6bc
+lis r12, 0x80C6  	
+
+lhz r11, 0xFFFFF232 (r12) 	# this is the number of goals you need to score in order to win
+lhz r10, 0x64BA (r12) 		# goals of home team
+
+subi r11, r11, 1 		# check if home player is one goal away from victory
+cmpw r11, r10
+bne no_overtime
+
+lhz r9, 0x64B8 (r12)
+cmpw r10, r9  		# check if both players have the same score
+bne no_overtime
+
+
+# Set timer to 0
+lis r11, 0x4396 # float value of 300 (the number of seconds there are in a 5 minute match. This means that this code probably won't work if you have played a timed match with more than 5 minutes previously)
+lis r12, 0x80cf
+stw r11, 0x50f8(r12) # stores value of initial timer in the elapsed time address, this way sudden death will start (yes, even if you're playing first to X mode)
+no_overtime:
+lfs f2, 0x001C (r31) # default instruction

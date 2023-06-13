@@ -1,0 +1,27 @@
+$Striker Challenges First to X by editing .ini files (PAL, Rev1) [Feder]
+C20FC714 00000006
+3C8080C8 8184F3BC
+2C0C0FA1 41800018
+2C0C1004 41810010
+386CF060 907C0010
+38600001 907C0008
+60000000 00000000
+*Edit .ini files and set a time value between 4001 and 4100
+*Score limit will be set to (time - 4000). So for instance, if you set the time to 4010, the challenge will be a first to 10 goals
+
+CODE EXPLAINED:
+#To be inserted at 800FC714
+loc_0x0:
+  lis r4, 0x80C8
+  lwz r12, 0xfffff3bc(r4)		# Load the value of time (seconds) in r12
+  cmpwi r12, 4001				# Check if it's below 4001
+  blt non_cambiare
+  cmpwi r12, 4100				# Check if it's below 4100
+  bgt non_cambiare
+  
+  subi r3, r12, 4000
+  stw r3, 0x10 (r28) 			# If time is between 4001 and 4100 seconds, then set the score limit to time - 4000
+  li r3, 0x1				# Set gamemode to First to X instead of timed
+
+non_cambiare:
+  stw r3, 8(r28)

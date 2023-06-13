@@ -1,0 +1,8 @@
+$Always Have KEKW Megastrike shots (PAL, Rev1) [F3der]
+c2285a14 00000005
+9421fff0 91610008
+3d604420 616b0000
+917b0390 81610008
+38210010 c01b0390
+60000000 00000000
+*(Spoiler) Break the game like this: https://youtu.be/3QhY5lajhoY

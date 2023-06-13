@@ -1,0 +1,6 @@
+$Disable goalpost collision (PAL, Rev1) [Feder]
+046df948 3f800000
+*No more annoying posts that stop your serve-it ups :letsgo: 
+
+CODE EXPLAINED:
+046df948 3f800000		# Set goalpost offset to 1, this way it's into the wall and the ball can't collide with it

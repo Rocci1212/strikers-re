@@ -1,0 +1,5 @@
+$Item modifier *working on every stadium* [mdmwii]
+28585EE2 YYYYXXXX
+48000000 806DF9D8
+1400008C 000000ZZ
+E0000000 80008000

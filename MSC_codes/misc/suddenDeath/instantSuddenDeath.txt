@@ -1,0 +1,6 @@
+$Instant Sudden Death (A+B+C+Z for ON/OFF) [Bully@Wiiplaza]
+28585ee2 00006c00
+0405a6bc 60000000
+cc000000 00000000
+0405a6bc c05f001c
+e0000000 80008000

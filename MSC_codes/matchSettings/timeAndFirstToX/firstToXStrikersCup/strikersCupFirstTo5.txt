@@ -1,0 +1,4 @@
+$Strikers Cup First to 5 (PAL, Rev1) [Feder]
+c20fc3ac 00000002
+38800001 909c0008
+60000000 00000000

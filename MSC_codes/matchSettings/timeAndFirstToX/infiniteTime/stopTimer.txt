@@ -1,0 +1,14 @@
+$Press + to Stop timer (PAL, Rev1) [Feder]
+28585ee2 00000010
+042b5534 60000000
+cc000000 00000000
+042b5534 d01d0008
+e0000000 80008000
+
+CODE EXPLAINED:
+# This code uses an OFF/ON switch, meaning that the first time the condition is TRUE the first code is executed, the second time it is TRUE the second code is executed.
+28585ee2 00000010		# Check if '+' pressed
+042b5534 60000000		# NOP the instruction that decreases timer
+cc000000 00000000		# OFF/ON Switch
+042b5534 d01d0008		# Restore the instruction
+e0000000 80008000		

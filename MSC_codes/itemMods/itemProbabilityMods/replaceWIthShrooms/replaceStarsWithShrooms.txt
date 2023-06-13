@@ -1,0 +1,5 @@
+$Replace stars with shrooms (PAL, Rev1) [Feder]
+0409ba68 60000000
+
+CODE EXPLAINED:
+0409ba68 60000000		# NOP the instruction that gives the player's a star, this way every time the game tries to give a star to a player it will give them a mushroom, the default item

@@ -1,0 +1,98 @@
+$Change all three cheats after each goal [F3der#2228]
+C20FC3AC 00000003
+909C0008 38800000
+9083001C 90830020
+90830024 00000000
+C2100FDC 0000000D
+3A940001 3E6080C5
+6273F2FC 82530004
+2C120005 4080000C
+3A520001 48000008
+3A400000 92530004
+82530000 2C12000B
+4080000C 3A520001
+48000008 3A400000
+92530000 82530008
+2C120004 4080000C
+3A520001 48000008
+3A400000 92530008
+60000000 00000000
+
+CODE EXPLAINED:
+C2100FDC 0000000D   # Start of ASM-code 1
+3A940001 3E6080C5
+6273F2FC 82530004
+2C120005 4080000C
+3A520001 48000008
+3A400000 92530004
+82530000 2C12000B
+4080000C 3A520001
+48000008 3A400000
+92530000 82530008
+2C120004 4080000C
+3A520001 48000008
+3A400000 92530008
+60000000 00000000
+C20FC3AC 00000003   # Start of ASM-code 2
+909C0008 38800000
+9083001C 90830020
+90830024 00000000
+
+
+ASM-Code 1:
+#To be inserted at 80100fdc
+addi r20, r20, 1
+lis r19, 0x80c5
+ori r19, r19, 0xf2fc    # load the offset for cheat values in r19
+
+# UPDATE STADIUM CHEAT
+lwz r18, 4(r19)
+cmpwi r18, 5
+bge reset
+
+addi r18, r18, 1    # increment cheat
+b end
+
+reset:
+li r18, 0           # set cheat to none
+
+end:
+stw r18, 4(r19)
+
+# UPDATE ITEM CHEAT 
+lwz r18, 0(r19)
+cmpwi r18, 11
+bge reset_2
+
+addi r18, r18, 1    # increment cheat
+b end_2
+
+reset_2:
+li r18, 0           # set cheat to none
+
+end_2:
+stw r18, 0(r19)
+
+# UPDATE PLAYER CHEAT
+lwz r18, 8(r19)
+cmpwi r18, 4
+bge reset_3
+
+addi r18, r18, 1    # increment cheat
+b end_3
+
+reset_3:
+li r18, 0           # set cheat to none
+
+end_3:
+stw r18, 8(r19)
+
+
+ASM-Code 2:
+#To be inserted at 800fc3ac
+# This codes resets the cheats, this way, every time you start a new game, you start with all cheats off
+stw r4, 0x0008 (r28)
+li r4, 0
+stw r4, 0x1c(r3)
+stw r4, 0x20(r3)
+stw r4, 0x24(r3)

@@ -1,0 +1,72 @@
+$All stadiums are fast without the need of editing ini files [F3der#2228]
+C20081EC 0000000D
+D01F000C 3D60909B
+616B6560 7C1F5800
+40820010 3D803F26
+618C6666 919F000C
+396BFFF0 7C1F5800
+4082000C 3D800000
+919F000C 396BFFF0
+7C1F5800 40820010
+3D803E4C 618CCCCD
+919F000C 396BFFF0
+7C1F5800 40820010
+3D803F19 618C999A
+919F000C 00000000
+
+
+CODE EXPLAINED:
+#To be inserted at 800081ec
+# This code makes every stadium terrain fast, so that it can be playable competitive (and it's also more fun because c'mon no one wants slow stadiums).
+# In order to make a terrain fast we need to give to it the properties of fast terrains: Speed=0.65, Slipperiness=0, Friction=0.2, Bounce=0.6
+stfs f0, 0x000C (r31) # default instruction
+# This instruction is probaly inside of a loop, in fact it is used a lot of times for different values
+# value of r31 = the address where this instruction stores some value.
+# By checking what value is in r31 we can tell what this instruction is overwriting in the current iteration of the loop
+
+#check if the code is updating stadium speed
+lis r11, 0x909b
+ori r11, r11, 0x6560
+cmpw r31, r11				# Check if it's trying to write in 0x909b6560
+bne itsNotSpeed
+
+lis r12, 0x3f26 			 # Set speed to 0.65
+ori r12, r12, 0x6666
+stw r12, 0x000C (r31)
+
+itsNotSpeed:
+
+
+#check if the code is updating slipperyness
+subi r11, r11, 0x10
+cmpw r31, r11				# Check if it's trying to write in 0x909b6550
+bne itsNotSlipperyness
+
+lis r12, 0x0000 			# Set slipperyness to 0
+stw r12, 0x000C (r31)
+
+itsNotSlipperyness:
+
+
+#check if the code is updating friction
+subi r11, r11, 0x10
+cmpw r31, r11				# Check if it's trying to write in 0x909b6540
+bne itsNotFriction
+
+lis r12, 0x3e4c 			# Set friction to 0.2
+ori r12, r12, 0xcccd
+stw r12, 0x000C (r31)
+
+itsNotFriction:
+
+
+#check if the code is updating bounce
+subi r11, r11, 0x10
+cmpw r31, r11				# Check if it's trying to write in 0x909b6530
+bne itsNotBounce
+
+lis r12, 0x3f19 			# Set bounce to 0.6
+ori r12, r12, 0x999a
+stw r12, 0x000C (r31)
+
+itsNotBounce:

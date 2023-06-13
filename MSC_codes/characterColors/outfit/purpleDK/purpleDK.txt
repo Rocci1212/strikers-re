@@ -1,0 +1,8 @@
+$Purple DK (PAL, Rev1) [Feder]
+04504e14 00000013
+04504e18 000000f3
+*He becomes purple vs anyone who's not purple or pink
+
+CODE EXPLAINED:
+04504e14 00000013		# Set the color flags byte to 0x13 (00010011) (Yellow=True, Purple=False, Pink=False, Green=True, Red=True) This means that DK will be using his secondary outfit whenever he plays an opponent that's either yellow, red or green (The only two characters that he will play with his primary outfit are Waluigi and Peach)
+04504e18 000000f3		# Set priority to 243 (A really low priority, this way he's always the one who changes outfit)

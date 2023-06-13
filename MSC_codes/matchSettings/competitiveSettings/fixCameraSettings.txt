@@ -1,0 +1,8 @@
+$Fix camera settings (PAL, Rev1) [Ferrer]
+04C5F2D8 00000000
+04C5F2DC 00000000
+*Fix cam settings to Static 1 (The best cam settings)
+
+CODE EXPLAINED:
+04C5F2D8 00000000		# Zoom mode (1 = Dynamic, 0 = Static)
+04C5F2DC 00000000		# Zoom intensity (float value) (00000000 = 0.0 = Zoom1, 3e800000 = 0.25 = Zoom2, 3f000000 = 0.5 = Zoom3, 3f400000 = 0.75 = Zoom4, 3f800000 = 1.0 = Zoom5)

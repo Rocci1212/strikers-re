@@ -1,0 +1,18 @@
+$Camera hack (PAL, Rev1) [Ferrer]
+c20f412c 0000000f
+9421ffb0 bdc10008
+3dc08058 61ce5ee2
+a1ce0000 2c0e0010
+40820024 3de03e80
+3e008000 62101540
+91f00000 c00400bc
+c2d00000 fc00b02a
+d00400bc 2c0e1000
+40820024 3de03e80
+3e008000 62101540
+91f00000 c00400bc
+c2d00000 fc00b028
+d00400bc b9c10008
+38210050 c00400bc
+60000000 00000000
+*STAR Just press "+" or "-" to zoom in or zoom out. Before you have to change camera to Static and dont return to camera menu options! Or wii can crash.
