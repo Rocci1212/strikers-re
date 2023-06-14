@@ -43,6 +43,7 @@ SOME INSTRUCTIONS THAT ARE RELATED TO THE ADDRESSES LISTED ABOVE:
 
 RANDOM STUFF:
 80c5f33f - Mode menu 0 = VS mode, 3 = Striker cup, 4 = ABC/Challenges
+80c5f340 - 1 = Online, 0 = Offline
 80c5f22f 80c7f3bf - both have initial time in challenge mode. the second one doesn't update in vs mode
 80c7f3cb - Possible ID of home captain?? (maybe only for challenges)
 
