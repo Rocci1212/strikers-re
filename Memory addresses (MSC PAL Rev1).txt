@@ -150,20 +150,6 @@ ITEM SLOTS:
 
  800a6280 - instruction that gives home an item on the first slot
  8009bcd4 - linked branch that leads to the function that gives you an item
- 
-
-
----------------------------------------------
-STADIUM SPEED
-
-
-909B656C Stadium speed 
-909B655C Stadium Slipperyness
-909B654C Stadium Friction
-909B653C Stadium Bounce
-^it's dynamic mem, it means the games loads a lot of other random stuff which makes it a pain to work with these registers
-
-800081ec - possible instruction that updates terrain speed?
 
 ------------------------------------------------------------
 CHARACTER COLORS/RGB...
@@ -429,8 +415,7 @@ Away:
 ---------------------------------------------------------------------------------------
 STADIUM SETTINGS
 --------
-GRAPHICS
-FOG:
+GRAPHICS - FOG:
 (Tested offline in domination mode)
 8059adf6 - is fog enabled? (boolean)
 8059ad3c - fog start (float)
@@ -445,4 +430,18 @@ GOAL SIZE:
 (Tested offline in domination mode)
 806da970 - Goal height
 806da974 - Goal width(??)
+STADIUM SPEED
 
+--------
+TERRAINS:
+909B656C Stadium speed 
+909B655C Stadium Slipperyness
+909B654C Stadium Friction
+909B653C Stadium Bounce
+^it's dynamic mem, it means the games loads a lot of other random stuff which makes it a pain to work with these registers
+
+800081ec - possible instruction that updates terrain speed?
+
+---------------------------------------------------------------------------------------
+SPOOKY DEV STUFF:
+803332d8 - it compares r3 and r0, at that point in time, it's comparing the CRCs of machine 0 and machine 1
