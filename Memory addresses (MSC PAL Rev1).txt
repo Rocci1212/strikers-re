@@ -284,13 +284,13 @@ Button values (source: https://mariokartwii.com/showthread.php?tid=44 ):
 8021d06c - instruction that assigns a certain player to a team when changing teams from the 'chose sides' menu or the pause menu
 
 ------------------------------------------------------------------------
-CHARACTER POSITIONS, STATS AND OTHER DYNAMIC STUFF
+OBJECTS AND OTHER DYNAMIC STUFF
 
 KRITTER:
-8056A760 - pointer to certain home kritter's properties (?)
-8056A764 - pointer to certain away kritter's properties (?)
-add 0x678 to that pointer to find the address with the X position of that kritter
-add 0x67C to that pointer to find the address with the Y position of that kritter
+8056A760 - Address of Home "Kritter" Object
+8056A764 - Address of Away "Kritter" Object
+Offset 0x678: address of the X position of the kritter
+Offset 0x67C: address of the Y position of the kritter
 
 This info was found by analyzing Ferrer's "kritters on bench" code
 
@@ -318,8 +318,9 @@ PLAYER OBJECTS:
 8056a754 - Address of Away Top Sidekick "Player" Object
 8056a758 - Address of Away Bottom Sidekick "Player" Object
 8056a75c - Address of Away Back Sidekick "Player" Object
-
-If you add 0x324 to any of these pointer, you'll find a pointer which points to a list of 10 pointers that point at the stats of a specific character, So if I'm playin drybones as home top sidekick, I go to (pointer that's at 0x8056a744) + 0x324 I'll find a bunch of pointers that point to drybones's stats. 
+Offset 0x324: Address of the player's stats (10 pointers that point at the stats of a specific character)
+Offset 0x5d0: X position
+Offset 0x5d4: Y position
 
 8001ba24 - instruction that stat values??
 
