@@ -386,6 +386,7 @@ Add 0x70 to these addresses to get the away equivalent
 
 MATCH STATS
 (These are reset after the match is finished)
+(Offline mode)
 Home:
 80c7e831 - Red ball shots
 80c7e833 - Orange ball shots
@@ -399,6 +400,17 @@ Away:
 80c7e7e3 - Yellow/White ball shots
 80c7e7f3 - Total megastrike shots
 80c7e7f5 - Megastrike goals
+
+(Online mode)
+Opponent:
+80c7e7dd - Red ball shots
+80c7e7df - Orange ball shots
+80c7e7e1 - Yellow/White ball shots
+
+You:
+80c7e3d1 - Red ball shots
+80c7e3d3 - Orange ball shots
+80c7e3d5 - Yellow/White shots
 
 802c2c34 - instruction that writes on the total megastrikes (and probably other stuff aswell)
 
