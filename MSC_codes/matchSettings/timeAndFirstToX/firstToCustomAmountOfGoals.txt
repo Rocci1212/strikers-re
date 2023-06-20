@@ -3,3 +3,9 @@ C20FC3BC 00000002
 3880000X 909C0010
 60000000 00000000
 *Replace X with the amount of goals you want
+
+
+CODE EXPLAINED:
+#To be inserted at 800fc3bc
+li r4, X			# Loads X in r4
+stw r4, 16(r28)			# Store X at the 'goals to score' address

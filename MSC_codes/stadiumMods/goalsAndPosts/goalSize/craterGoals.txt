@@ -1,0 +1,5 @@
+$Every goal has SMS crater height [Feder]
+046da970 40a00000
+
+CODE EXPLAINED:
+046da970 40a00000		# Set goal height to 5

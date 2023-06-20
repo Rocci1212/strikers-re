@@ -1,5 +1,5 @@
 $Kritter scores [Ferrer]
-040015c8 42200000
+040015c8 42200000		
 040015cc 42480000
 040015d0 40a00000
 040015d4 41a00000
@@ -12,3 +12,22 @@ de000000 90009340
 140000d0 800015d0
 140000e0 800015d4
 e0000000 80008000
+
+
+CODE EXPLAINED:
+# First 4 lines of code write floating point values in the exception vector area, these values will be used later by the code
+040015c8 42200000		# Write 40 at 0x800015c8
+040015cc 42480000		# Write 50 at 0x800015cc
+040015d0 40a00000		# Write 5 at 0x800015d0
+040015d4 41a00000		# Write 20 at 0x800015d4
+48000000 8056a760		# po = [0x8056a760] (po should now become a pointer to a mem80 or mem81 address)
+de000000 80008180		# Check if po is between 0x80000000 and 0x81800000 (Check if a match is ongoing and kritter(??) is loaded)
+58010000 00000324		# po = [po + 0x00000324] (po should now become a pointer to a mem90 address)
+de000000 90009340		# Check if po is between 0x90000000 and 0x90009340
+# Now the next 4 lines of code will overwrite some pointers with the addresses of the custom value that were wrote with the first 4 lines of code
+140000b0 800015c8		# Write 0x800015c8 at po+0xb0
+140000c0 800015cc		# Write 0x800015cc at po+0xc0
+140000d0 800015d0		# Write 0x800015d0 at po+0xd0
+140000e0 800015d4		# Write 0x800015d4 at po+0xe0
+e0000000 80008000
+

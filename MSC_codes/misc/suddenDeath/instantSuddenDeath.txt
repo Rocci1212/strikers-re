@@ -4,3 +4,11 @@ $Instant Sudden Death (A+B+C+Z for ON/OFF) [Bully@Wiiplaza]
 cc000000 00000000
 0405a6bc c05f001c
 e0000000 80008000
+
+
+CODE EXPLAINED:
+28585ee2 00006c00		# Check if C, Z, A and B are all pressed. If true then toggle OFF/ON Switch
+0405a6bc 60000000		# Replace instruction at 0x8005a6bc with NOP
+cc000000 00000000		# OFF/ON Switch.
+0405a6bc c05f001c		# Restore instruction
+e0000000 80008000

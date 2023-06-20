@@ -1,0 +1,5 @@
+$No goals [Feder]
+046da974 00000000
+
+CODE EXPLAINED:
+046da974 00000000		# Set goal width to 0

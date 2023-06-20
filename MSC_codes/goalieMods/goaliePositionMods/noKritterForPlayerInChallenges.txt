@@ -10,8 +10,8 @@ E0000000 80008000
 
 CODE EXPLAINED:
 28c5f33e 00000004		# Check if gamemode is Strikers challenges or ABC
-48000000 8056A760		# Set po to 0x8056A760
-DE000000 80008180		# Check if the halfword at po (halfword at 0x8056A760) is between 0x8000 and 0x8180 (it checks this because that's where the pointer to kritter's stats is usually loaded, and if it's a value between 0x8000 and 0x8180 it means it is, otherwise it's not)
-14000678 C1f00000		#  Write at the address pointed by [po] + 0×678. So since po is 0x8056A760 it checks what value is at that address, let's say it's 0x81001200, now the code handler will look for the address 0x81001200 + 0x678, so 0x81001878 and write the word 0xC1f00000 there. 0xC1f00000 is the floating point value for -30
-1400067C 41600000		# same thing, except this time you add 0x67C, and you will write 0x41600000
+48000000 8056A760		# po = [0x8056A760]
+DE000000 80008180		# Check if po is between 0x80000000 and 0x81800000 (checks if the pointer to kritter's stats is loaded)
+14000678 C1f00000		#  Write 0xc1f00000 at po + 0×678. So let's say po is 0x81001200, now the code handler will look for the address 0x81001200 + 0x678, so 0x81001878 and write the word 0xC1f00000 there. 0xC1f00000 is the floating point value for -30
+1400067C 41600000		# write 0x41600000 at po + 0x67c
 E0000000 80008000		# Final terminator, resets the ba and the po 

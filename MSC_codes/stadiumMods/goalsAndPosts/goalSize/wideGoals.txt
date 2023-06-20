@@ -1,0 +1,5 @@
+$Wide goals [Feder]
+046da974 41a00000
+
+CODE EXPLAINED:
+046da974 41a00000		# Set goal width to 20

@@ -3,3 +3,10 @@ $The ball always stays uncharged [Ferrer]
 de000000 80008180
 140000c0 00000000
 e0000000 80008000
+
+
+CODE EXPLAINED:
+48000000 806df7a0		# po = [0x806df7a0]
+de000000 80008180		# Check if po is between 0x80000000 and 0x81800000 (Check if a match is ongoing and the pointer to the ball charge value is loaded)
+140000c0 00000000		# Write 0x00000000 at po+0xc0 (ball charge)
+e0000000 80008000

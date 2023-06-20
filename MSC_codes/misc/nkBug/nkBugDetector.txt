@@ -6,3 +6,13 @@ de000000 80008180
 de000000 80008180
 14001834 3d4ccccd
 e0000000 80008000
+
+
+CODE EXPLAINED:
+48000000 806df7a0		# po = [0x806df7a0]
+de000000 80008180		# Check if po is between 0x80000000 and 0x81800000
+3a000178 00000101		# check if halfword [po+0x178] != 0x0101. If yes, execute code below (else code execution set to false).
+48000000 806df9d8		# po = [0x806df9d8]
+de000000 80008180		# Check if po is between 0x80000000 and 0x81800000
+14001834 3d4ccccd		# Write 0x3d4ccccd (0.05) at po+0x1834 (Look at what value there's in po address (address at 0x806df9d8) then go to the address at that value + 0x1834 and write 0.05 there)
+e0000000 80008000

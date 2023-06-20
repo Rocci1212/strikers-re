@@ -1,3 +1,3 @@
-$WIP Cancel Mega Strike [Rocci]
+$WIP Cancel Mega Strike [Bully@Wiiplaza]
 0405d988 60000000
 * Makes megastrikes count as 0, but not in sudden death

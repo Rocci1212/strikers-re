@@ -10,11 +10,13 @@ de000000 80008180
 1400067c 41600000
 e0000000 80008000
 
+
 CODE EXPLAINED:
-48000000 8056a760		# Set po to 0x8056A760
-de000000 80008180		# Check if the halfword at po (halfword at 0x8056A760) is between 0x8000 and 0x8180 (it checks this because that's where the pointer to kritter's stats is usually loaded, and if it's a value between 0x8000 and 0x8180 it means it is, otherwise it's not)
-14000678 c1000000		#  Write at the address pointed by [po] + 0×678. So since po is 0x8056A760 it checks what value is at that address, let's say it's 0x81001200, now the code handler will look for the address 0x81001200 + 0x678, so 0x81001878 and write the word 0xC1000000 there.
-1400067c 41600000		# same thing, except this time you add 0x67C, and you will write 0x41600000
+# This code locks both kritters at some coordinates outside of the field
+48000000 8056a760		# po = [0x8056A760] (Set po to the value at 0x8056A760)
+de000000 80008180		# Check if po is between 0x80000000 and 0x81800000 (checks if pointer to kritter's stats is loaded)
+14000678 c1000000		# Write 0xc1000000 at po + 0×678. So let's say po is 0x81001200, now the code handler will look for the address 0x81001200 + 0x678, so 0x81001878 and write the word 0xC1000000 there.
+1400067c 41600000		# write 0x41600000 at po + 0x67c
 e0000000 80008000		# Final terminator, resets the ba and the po
 48000000 8056a764		# Beginning of the second part of the code: it's similar to the first part, except it's for Away kritter, so some values are different
 de000000 80008180		
