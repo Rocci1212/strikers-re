@@ -71,3 +71,92 @@ DE000000 80008180
 82200000 8000155C
 94210000 00000BF8
 E0000000 80008000
+
+
+CODE EXPLAINED:
+# (every line with e0000000 80008000 is an endif)
+# Activate this cheat for home side:
+28585EE2 00001008		# Check if - and D-Pad Up pressed. If they are...
+04001550 00000001		# Write word 1 into 0x80001550
+0400155C 00000001		# Write word 1 into 0x8000155c
+48000000 806DF9D8		# po = [0x806DF9D8]
+DE000000 80008180		# Check if po is between 0x80000000 and 0x81800000. If it is...
+92210000 0000008C		# gr0 = 32bits at [0x8c+po]
+84200000 80001554		# Store gr0 at 0x80001554
+E0000000 80008000
+# Activate this cheat for away side:
+28585EE2 00000018		# Check if + and D-Pad Up pressed. If they are...
+04001550 00000002		# Write word 2 into 0x80001550
+0400155C 00000001		# Write word 1 into 0x8000155c
+48000000 806DF9D8		# po = [0x806DF9D8]
+DE000000 80008180		# Check if po is between 0x80000000 and 0x81800000. If it is...
+92210000 00000BF4		# gr0 = 32bits at [0xbf4+po]
+84200000 80001554		# Store gr0 at 0x80001554
+E0000000 80008000
+# Deactivate this cheat for any side:
+28585EE2 00000108		# Check if 2 and D-Pad Up pressed. If they are...
+04001550 00000000		# Write word 0 into 0x80001550
+04001554 00000000		# Write word 0 into 0x80001554
+E0000000 80008000
+# Increase item ID:
+28585EE2 00000010		# Check if + pressed. If it is...
+22001558 00000001		# Check if word at 0x80001558 != 1. If it is...
+04001558 00000001		# Write word 1 into 0x80001558
+82200000 80001554		# gr0 = 32bits at [0x80001554]
+86000000 00000001		# gr0 = gr0 + 1
+84200000 80001554		# Store gr0 at 0x80001554
+E0000000 80008000
+# decrease item ID:
+28585EE2 00001000		# Check if - pressed. If it is...
+22001558 00000001		# Check if word at 0x80001558 != 1. If it is...	
+04001558 00000001		# Write word 1 into 0x80001558
+82200000 80001554		# gr0 = 32bits at [0x80001554]
+86000000 FFFFFFFF		# gr0 = gr0 + 0xffffffff (gr0 -= 1)
+84200000 80001554		# store gr0 at 0x80001554
+E0000000 80008000
+# Set item quantity to 255:
+28585EE2 0000000A		# Check if D-Pad Right and D-Pad Up pressed
+0400155C 000000FF		# Write word 0x000000ff in 0x8000155c
+E0000000 80008000
+# Set item quantity to 1:		
+28585EE2 00000009		# Check if D-Pad Left and D-Pad Up pressed
+0400155C 00000001		# Write word 0x00000001 in 0x8000155c
+E0000000 80008000
+# Code to make it so that by holding + or - you only increase/decrease item ID once, instead of every frame
+2A585EE2 00000010		# Check if + NOT pressed. If it's not...
+2A585EE2 00001000		# Check if - NOT pressed. If it's not...
+04001558 00000000		# Write word 0 at 0x80001558
+E0000000 80008000
+28585EE2 00000010		# Check if + pressed. if it is...
+04001558 00000001		# Write word 1 at 0x80001558
+E0000000 80008000
+28585EE2 00001000		# Check if - pressed. if it is...
+04001558 00000001		# Write word 1 at 0x80001558
+E0000000 80008000
+# If item ID too low then set it to the highest possible value:
+20001554 FFFFFFFE		# Check if word at 0x80001554 = 0xfffffffe (Check if player pressed - while he had no item causing the item ID to become -2)
+04001554 00000014		# Write word 0x14 at 0x80001554 (Set item to the item with the highest ID)
+E0000000 80008000
+# If item ID too high then set it to the lowest possible value (-1, which means no item):
+20001554 00000015		# Check if word at 0x80001554 = 0x00000015 (Check if player pressed + while he had the item with the highest ID causing it to become 0x15, an item that does not exist)
+04001554 FFFFFFFF		# Write word 0xffffffff at 0x80001554 (Set item to no item (-1))
+E0000000 80008000
+# (HOME) Copy values of selected items in the actual item slot addresses:
+20001550 00000001		# Check if word at 0x80001550 = 1. If it is...
+48000000 806DF9D8		# po = [0x806df9d8]
+DE000000 80008180		# Check if po is between 0x80000000 and 0x81800000. If it is...
+82200000 80001554		# gr0 = 32bits at [0x80001554]
+94210000 0000008C		# Store gr0 at 0x8c+po
+82200000 8000155C		# gr0 = 32bits at [0x8000155c]
+94210000 00000090		# Store gr0 at 0x90+po
+E0000000 80008000
+# (AWAY) Copy values of selected items in the actual item slot addresses:
+20001550 00000002		# Check if word at 0x80001550 = 2. If it is...
+48000000 806DF9D8		# po = [0x806df9d8]
+DE000000 80008180		# Check if po is between 0x80000000 and 0x81800000. If it is...
+82200000 80001554		# gr0 = 32bits at [0x80001554]
+94210000 00000BF4		# Store gr0 at 0xbf4+po
+82200000 8000155C		# gr0 = 32bits at [0x8000155c]
+94210000 00000BF8		# Store gr0 at 0xbf8+po
+E0000000 80008000
+
