@@ -1,0 +1,275 @@
+Better training mode v1.2 (PAL, Rev1) [Feder]
+C0000000 00000022
+3D808058 A16C5EE2
+3D808000 2C0B0110
+40A2000C 39400002
+994C01B6 2C0B1100
+40A2000C 39400001
+994C01B6 2C0B0500
+418200CC 3D2080C6
+8949F340 2C0A0001
+41A200BC 894C01B6
+2C0A0000 41A200B0
+3CA00000 98A9F22B
+3D2080CF 90A950F8
+2C0A0001 3D808057
+4182004C 812CA750
+814CA754 816CA758
+818CA75C 2C0C0000
+4182007C 3CA041B0
+90AC05D0 90AB05D0
+90AA05D0 3CA00000
+90A905D0 3CA04100
+90AC05D4 90AB05D4
+90AA05D4 90A905D4
+48000058 812CA740
+814CA744 816CA748
+818CA74C 2C0C0000
+41820034 3CA0C1B0
+90AC05D0 90AB05D0
+90AA05D0 3CA00000
+90A905D0 3CA04100
+90AC05D4 90AB05D4
+90AA05D4 90A905D4
+48000010 3D808000
+38600000 986C01B6
+4E800020 00000000
+C0000000 0000001E
+3D208000 886901B6
+2C030000 41A200E0
+3D808058 A16C5EE2
+88A91550 89491551
+2C0500FF 40820008
+38A0FFFF 2C0A0000
+40820008 39400001
+89891552 2C0C0000
+40820064 2C0B0101
+40A20014 38A5FFFF
+2C05FFFE 40820008
+38A00014 2C0B0102
+40A20014 38A50001
+2C050015 40820008
+38A0FFFF 2C0B0104
+40A20014 394AFFFF
+2C0A0000 40820008
+39400019 2C0B0108
+40A20014 394A0001
+2C0A001A 40820008
+39400001 39800000
+7160000F 41A20008
+39800001 98A91550
+99491551 99891552
+3960FFFF 3D8080CF
+2C030001 41820014
+90AC597C 914C5980
+916C64E4 48000010
+90AC64E4 914C64E8
+916C597C 4E800020
+* Works in both ABC and Domination mode
+* I know this is a lot of commands, if you find it to hard to remember try to press 2 and other random buttons together :kekw:
+* Press 2 and + to make away team disappear
+* Press 2 and - to make home team disappear
+* Press 2 and B to disable this code
+* Press 2 and a D-Pad button to change the item...
+* Left/Right to scroll through items
+* Up/Down to change quantity
+
+
+CODE EXPLAINED:
+There are two C0 ASM codes...
+===============================================
+FIRST ASM code:
+===============================================
+# This is a C0 code, it runs once per frame
+
+##### PART 1 - BUTTON COMBOS #####
+# Check buttons
+lis r12, 0x8058			# Load 0x80585ee2, address of controller inputs
+lhz r11, 0x5ee2 (r12)
+
+lis r12, 0x8000
+cmpwi r11, 0x0110 			# Check if 2 and + are pressed
+bne+ DONT_KILL_AWAY
+li r10, 2		
+stb r10, 0x1b6 (r12)			# SET TRAINING MODE STATUS TO 2 (Kill away)
+DONT_KILL_AWAY:
+
+cmpwi r11, 0x1100 			# Check if 2 and - are pressed
+bne+ DONT_KILL_HOME
+li r10, 1
+stb r10, 0x1b6 (r12)			# SET TRAINING MODE STATUS TO 1 (Kill home)
+DONT_KILL_HOME:
+
+cmpwi r11, 0x0500 			# Check if 2 and B are pressed
+beq- TRAINING_MODE_NOT_ACTIVE
+
+
+##### PART 2 - STOP TIMER #####
+lis r9, 0x80c6			# Load 0x80c60000 in r9
+lbz r10, 0xFFFFf340 (r9)	# Load "isOnline", then Disable training mode if playing online
+cmpwi r10, 1
+beq+ TRAINING_MODE_NOT_ACTIVE
+lbz r10, 0x1b6 (r12)			# LOAD TRAINING MODE STATUS, then diable training mode if it's 0
+cmpwi r10, 0
+beq+ TRAINING_MODE_NOT_ACTIVE
+lis r5, 0			# Load 0x80c5f22b, address with isFirstToX boolean value and Set it to 0 (timed)
+stb r5, 0xFFFFf22b (r9)
+lis r9, 0x80cf			# Load 0x80cf50f8, address with timer
+stw r5, 0x50f8 (r9)			# Set it to 0
+
+
+##### PART 3 - MAKE OPPONENTS DISAPPEAR #####
+cmpwi r10, 1			# Check TRAINING MODE STATUS
+lis r12, 0x8057			# Load address for Player objects in r12
+beq KILL_HOME_TEAM
+
+### KILL AWAY TEAM ###
+lwz r9, 0xFFFFa750 (r12) 	# Captain object
+lwz r10, 0xFFFFa754 (r12) # Top sidekick object
+lwz r11, 0xFFFFa758 (r12) # Bottom sidekick object
+lwz r12, 0xFFFFa75c (r12)	# Back sidekick object
+cmpwi r12, 0
+beq PLAYERS_ARENT_LOADED
+lis r5, 0x41b0			# FLOAT 22 for X Position
+stw r5, 0x5d0 (r12) # move back SK to X 22
+stw r5, 0x5d0 (r11) # move bottom SK to X 22
+stw r5, 0x5d0 (r10) # move top SK to X 22
+lis r5, 0			# FLOAT 0 for X Position
+stw r5, 0x5d0 (r9) # move captain to X 0
+lis r5, 0x4100			# FLOAT 6 for Y position
+stw r5, 0x5d4 (r12) # move back SK to Y 6
+stw r5, 0x5d4 (r11) # move bottom SK to Y 6
+stw r5, 0x5d4 (r10) # move top SK to Y 6
+stw r5, 0x5d4 (r9)  # move captain to Y 6
+b END
+
+### KILL HOME TEAM ###
+KILL_HOME_TEAM:
+lwz r9, 0xFFFFa740 (r12) 	# Captain object
+lwz r10, 0xFFFFa744 (r12) # Top sidekick object
+lwz r11, 0xFFFFa748 (r12) # Bottom sidekick object
+lwz r12, 0xFFFFa74c (r12)	# Back sidekick object
+cmpwi r12, 0
+beq PLAYERS_ARENT_LOADED
+lis r5, 0xc1b0			# FLOAT -22 for X Position
+stw r5, 0x5d0 (r12) # move back SK to X -22
+stw r5, 0x5d0 (r11) # move bottom SK to X -22
+stw r5, 0x5d0 (r10) # move top SK to X -22
+lis r5, 0			# FLOAT 0 for X Position
+stw r5, 0x5d0 (r9) # move captain to X 0
+lis r5, 0x4100			# FLOAT 6 for Y position
+stw r5, 0x5d4 (r12) # move back SK to Y 6
+stw r5, 0x5d4 (r11) # move bottom SK to Y 6
+stw r5, 0x5d4 (r10) # move top SK to Y 6
+stw r5, 0x5d4 (r9)  # move captain to Y 6
+b END
+
+
+PLAYERS_ARENT_LOADED:
+TRAINING_MODE_NOT_ACTIVE:
+lis r12, 0x8000
+li r3, 0
+stb r3, 0x1b6 (r12)			# SET TRAINING MODE STATUS TO 0 (Off)
+
+END:
+blr	# BLR IS HOW EVERY C0 CODE ENDS
+
+
+===============================================
+SECOND ASM code:
+===============================================
+# This is a C0 code, it runs once per frame
+# BETTER TRAINING MODE v1.2 (ASM CODE 2) WITH ITEM MODIFIER INTEGRATED!
+# Exception vector area bytes used: 0x1b6, 0x1550, 0x1551, 0x1552
+
+##### PART 1 - CHECK IF TRAINING MODE IS ON #####
+lis r9, 0x8000			# Load 0x800001b6, address of training mode status
+lbz r3, 0x1b6 (r9)			# Load TRAINING MODE STATUS in r3
+cmpwi r3, 0			# Check if Training mode is off and if so, jump to end 
+beq+ END
+
+##### PART 2 - BUTTON COMBOS #####
+lis r12, 0x8058			# Load 0x80585ee2, address of controller inputs
+lhz r11, 0x5ee2 (r12)			# Load current inputs in r11
+lbz r5, 0x1550 (r9)			# Load current selected item
+lbz r10, 0x1551 (r9)			# Load current selected item's quantity
+
+cmpwi r5, 0xff			# If r5 = 0xff then it becomes 0xffffffff, otherwise it would break the game
+bne DONT_ADJUST_ID_VALUE
+li r5, 0xFFFFffff
+DONT_ADJUST_ID_VALUE:
+cmpwi r10, 0			# If r10 = 0 then certain items won't work because quantity = 0
+bne DONT_ADJUST_QUANTITY_VALUE
+li r10, 1
+DONT_ADJUST_QUANTITY_VALUE:
+
+
+lbz r12, 0x1552 (r9)			# Load a value that tells the code if a button was pressed in the last frame
+cmpwi r12, 0
+bne- DPAD_WAS_PRESSED_LAST_FRAME
+
+cmpwi r11, 0x0101 			# Check if 2 and D-Pad Left are pressed
+bne+ DONT_DECREASE_ITEM
+subi r5, r5, 1
+	cmpwi r5, 0xFFFFfffe
+	bne DONT_LOOP_A
+	li r5, 0x14
+	DONT_LOOP_A:
+DONT_DECREASE_ITEM:
+
+cmpwi r11, 0x0102 			# Check if 2 and D-Pad Right are pressed
+bne+ DONT_INCREASE_ITEM
+addi r5, r5, 1
+	cmpwi r5, 0x15
+	bne DONT_LOOP_B
+	li r5, 0xFFFFffff
+	DONT_LOOP_B:
+DONT_INCREASE_ITEM:
+
+cmpwi r11, 0x0104 			# Check if 2 and D-Pad Down are pressed
+bne+ DONT_DECREASE_QUANTITY
+subi r10, r10, 1	
+	cmpwi r10, 0
+	bne DONT_LOOP_C
+	li r10, 25
+	DONT_LOOP_C:
+DONT_DECREASE_QUANTITY:
+
+cmpwi r11, 0x0108 			# Check if 2 and D-Pad Up are pressed
+bne+ DONT_INCREASE_QUANTITY
+addi r10, r10, 1
+	cmpwi r10, 26
+	bne DONT_LOOP_D
+	li r10, 1
+	DONT_LOOP_D:
+DONT_INCREASE_QUANTITY:
+
+DPAD_WAS_PRESSED_LAST_FRAME:
+li r12, 0
+andi. r0, r11, 0x000f
+beq+ BUTTON_NOT_HELD
+	li r12, 1			# D-PAD HAS BEEN PRESSED THIS FRAME
+BUTTON_NOT_HELD:
+	
+
+stb r5, 0x1550	(r9)		# Store item you picked into 0x80001550
+stb r10, 0x1551	(r9)		# Store item quantity into 0x80001551
+stb r12, 0x1552 (r9)			# Update the value in 0x80001552
+
+##### PART 3 - STORE ITEMS #####
+li r11, 0xFFFFffff			# Load -1 in r11
+lis r12, 0x80cf
+cmpwi r3, 1			# Check if training mode is on for home or if it's for away
+beq- GIVE_ITEM_TO_AWAY 
+stw r5, 0x597c (r12)			# Store home's new item
+stw r10, 0x5980 (r12)			# Store home's new item quantity
+stw r11, 0x64e4 (r12)			# Remove away's items
+b END
+
+GIVE_ITEM_TO_AWAY:
+stw r5, 0x64e4 (r12)			# Store away's new item
+stw r10, 0x64e8 (r12)			# Store away's new item quantity
+stw r11, 0x597c (r12)			# Remove home's items
+
+END:
+blr
