@@ -1,0 +1,222 @@
+Better training mode (PAL, Rev1) [Feder]
+C0000000 00000022
+3D808058 A16C5EE2
+3D808000 2C0B0110
+40A2000C 39400002
+994C01B6 2C0B1100
+40A2000C 39400001
+994C01B6 2C0B0500
+418200CC 3D2080C6
+8949F340 2C0A0001
+41A200BC 894C01B6
+2C0A0000 41A200B0
+3CA00000 98A9F22B
+3D2080CF 90A950F8
+2C0A0001 3D808057
+4182004C 812CA750
+814CA754 816CA758
+818CA75C 2C0C0000
+4182007C 3CA041B0
+90AC05D0 90AB05D0
+90AA05D0 3CA00000
+90A905D0 3CA04100
+90AC05D4 90AB05D4
+90AA05D4 90A905D4
+48000058 812CA740
+814CA744 816CA748
+818CA74C 2C0C0000
+41820034 3CA0C1B0
+90AC05D0 90AB05D0
+90AA05D0 3CA00000
+90A905D0 3CA04100
+90AC05D4 90AB05D4
+90AA05D4 90A905D4
+48000010 3D808000
+38600000 986C01B6
+4E800020 00000000
+C0000000 00000011
+3D808000 886C01B6
+2C030000 41A20074
+38A0FFFE 39400001
+3D808058 A16C5EE2
+2C0B0101 40A20008
+38A00007 2C0B0102
+40A20008 38A00010
+2C0B0104 40A2000C
+38A00004 3940000F
+2C0B0108 40A2000C
+38A00004 39400001
+2C05FFFE 41A20024
+3D8080CF 2C030001
+41820010 90AC597C
+914C5980 4800000C
+90AC64E4 914C64E8
+4E800020 00000000
+* Press 2 and + to make home team disappear
+* Press 2 and - to make away team disappear
+* Press 2 and B to disable this mode (gamemode will still be timed, but timer and players won't be frozen anymore)
+* While in training mode, Press 2 and a D-Pad button for an item...
+* Left for Shroom
+* Right for Captain Special
+* Up for Big Banana
+* Down for Small Bananas
+* Training mode won't activate online, so there's no way to accidentally desync with this code on!
+
+
+CODE EXPLAINED:
+There are two C0 ASM codes...
+===============================================
+FIRST ASM code:
+===============================================
+# This is a C0 code, it runs once per frame
+
+##### PART 1 - BUTTON COMBOS #####
+# Check buttons
+lis r12, 0x8058			# Load 0x80585ee2, address of controller inputs
+lhz r11, 0x5ee2 (r12)
+
+lis r12, 0x8000
+cmpwi r11, 0x0110 			# Check if 2 and + are pressed
+bne+ DONT_KILL_AWAY
+li r10, 2		
+stb r10, 0x1b6 (r12)			# SET TRAINING MODE STATUS TO 2 (Kill away)
+DONT_KILL_AWAY:
+
+cmpwi r11, 0x1100 			# Check if 2 and - are pressed
+bne+ DONT_KILL_HOME
+li r10, 1
+stb r10, 0x1b6 (r12)			# SET TRAINING MODE STATUS TO 1 (Kill home)
+DONT_KILL_HOME:
+
+cmpwi r11, 0x0500 			# Check if 2 and B are pressed
+beq- TRAINING_MODE_NOT_ACTIVE
+
+
+##### PART 2 - STOP TIMER #####
+lis r9, 0x80c6			# Load 0x80c60000 in r9
+lbz r10, 0xFFFFf340 (r9)	# Load "isOnline", then Disable training mode if playing online
+cmpwi r10, 1
+beq+ TRAINING_MODE_NOT_ACTIVE
+lbz r10, 0x1b6 (r12)			# LOAD TRAINING MODE STATUS, then diable training mode if it's 0
+cmpwi r10, 0
+beq+ TRAINING_MODE_NOT_ACTIVE
+lis r5, 0			# Load 0x80c5f22b, address with isFirstToX boolean value and Set it to 0 (timed)
+stb r5, 0xFFFFf22b (r9)
+lis r9, 0x80cf			# Load 0x80cf50f8, address with timer
+stw r5, 0x50f8 (r9)			# Set it to 0
+
+
+##### PART 3 - MAKE OPPONENTS DISAPPEAR #####
+cmpwi r10, 1			# Check TRAINING MODE STATUS
+lis r12, 0x8057			# Load address for Player objects in r12
+beq KILL_HOME_TEAM
+
+### KILL AWAY TEAM ###
+lwz r9, 0xFFFFa750 (r12) 	# Captain object
+lwz r10, 0xFFFFa754 (r12) # Top sidekick object
+lwz r11, 0xFFFFa758 (r12) # Bottom sidekick object
+lwz r12, 0xFFFFa75c (r12)	# Back sidekick object
+cmpwi r12, 0
+beq PLAYERS_ARENT_LOADED
+lis r5, 0x41b0			# FLOAT 22 for X Position
+stw r5, 0x5d0 (r12) # move back SK to X 22
+stw r5, 0x5d0 (r11) # move bottom SK to X 22
+stw r5, 0x5d0 (r10) # move top SK to X 22
+lis r5, 0			# FLOAT 0 for X Position
+stw r5, 0x5d0 (r9) # move captain to X 0
+lis r5, 0x4100			# FLOAT 6 for Y position
+stw r5, 0x5d4 (r12) # move back SK to Y 6
+stw r5, 0x5d4 (r11) # move bottom SK to Y 6
+stw r5, 0x5d4 (r10) # move top SK to Y 6
+stw r5, 0x5d4 (r9)  # move captain to Y 6
+b END
+
+### KILL HOME TEAM ###
+KILL_HOME_TEAM:
+lwz r9, 0xFFFFa740 (r12) 	# Captain object
+lwz r10, 0xFFFFa744 (r12) # Top sidekick object
+lwz r11, 0xFFFFa748 (r12) # Bottom sidekick object
+lwz r12, 0xFFFFa74c (r12)	# Back sidekick object
+cmpwi r12, 0
+beq PLAYERS_ARENT_LOADED
+lis r5, 0xc1b0			# FLOAT -22 for X Position
+stw r5, 0x5d0 (r12) # move back SK to X -22
+stw r5, 0x5d0 (r11) # move bottom SK to X -22
+stw r5, 0x5d0 (r10) # move top SK to X -22
+lis r5, 0			# FLOAT 0 for X Position
+stw r5, 0x5d0 (r9) # move captain to X 0
+lis r5, 0x4100			# FLOAT 6 for Y position
+stw r5, 0x5d4 (r12) # move back SK to Y 6
+stw r5, 0x5d4 (r11) # move bottom SK to Y 6
+stw r5, 0x5d4 (r10) # move top SK to Y 6
+stw r5, 0x5d4 (r9)  # move captain to Y 6
+b END
+
+
+PLAYERS_ARENT_LOADED:
+TRAINING_MODE_NOT_ACTIVE:
+lis r12, 0x8000
+li r3, 0
+stb r3, 0x1b6 (r12)			# SET TRAINING MODE STATUS TO 0 (Off)
+
+END:
+blr	# BLR IS HOW EVERY C0 CODE ENDS
+
+
+
+===============================================
+SECOND ASM code:
+===============================================
+# This is a C0 code, it runs once per frame
+
+##### PART 1 - CHECK IF TRAINING MODE IS ON #####
+lis r12, 0x8000			# Load 0x800001b6, address of training mode status
+lbz r3, 0x1b6 (r12)			# Load TRAINING MODE STATUS in r3
+cmpwi r3, 0			# Check if Training mode is off and if so, jump to end 
+beq+ END
+
+##### PART 2 - BUTTON COMBOS #####
+li r5, 0xFFFFfffe			# r5 = -2 (r5 is the register we'll use to store the item ID)
+li r10, 1			# r10 = 1 (r10 is the register we'll use to store the item Quantity)
+lis r12, 0x8058			# Load 0x80585ee2, address of controller inputs
+lhz r11, 0x5ee2 (r12)			# Load current inputs in r11
+
+cmpwi r11, 0x0101 			# Check if 2 and D-Pad Left are pressed
+bne+ DONT_GIVE_SHROOM
+li r5, 7
+DONT_GIVE_SHROOM:
+
+cmpwi r11, 0x0102 			# Check if 2 and D-Pad Right are pressed
+bne+ DONT_GIVE_SPECIAL
+li r5, 0x10
+DONT_GIVE_SPECIAL:
+
+cmpwi r11, 0x0104 			# Check if 2 and D-Pad Down are pressed
+bne+ DONT_GIVE_SMOL_NANAS
+li r5, 4
+li r10, 15
+DONT_GIVE_SMOL_NANAS:
+
+cmpwi r11, 0x0108 			# Check if 2 and D-Pad Up are pressed
+bne+ DONT_GIVE_BEEG_NANA
+li r5, 4
+li r10, 1
+DONT_GIVE_BEEG_NANA:
+
+
+##### PART 3 - STORE ITEMS #####
+cmpwi r5, 0xFFFFfffe			# Check if an item has been selected, otherwise jump to end
+beq+ END
+lis r12, 0x80cf
+cmpwi r3, 1				# Check if training mode is on for home or if it's for away
+beq- GIVE_ITEM_TO_AWAY 
+stw r5, 0x597c (r12)			# Store home's new item
+stw r10, 0x5980 (r12)			# Store home's new item quantity
+b END
+
+GIVE_ITEM_TO_AWAY:
+stw r5, 0x64e4 (r12)			# Store away's new item
+stw r10, 0x64e8 (r12)			# Store away's new item quantity
+
+END:
+blr
