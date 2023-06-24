@@ -4,10 +4,14 @@ MATCH SETTINGS/SCORE/OTHER MATCH STUFF
 
 80100fdc is the address of the instruction to increase the goals when someone scores
 "80C66449","80C664BB","80C7E3E1","80C7E453","80C7E64B","80C7E69F","80C7E6F3","80C7E747","80C7E79B","80CF58F7","80CF711B","81355F73"
-^all of these are possible memory addresses for the score of player on home
+^all of these are possible memory addresses for the score of player on home, but the best ones are:
+80CF58F7 - for the actual amount of goals
+80CF711B - for the goal counter that is displayed
 
 "80C6644B","80C664B9","80C7E3E3","80C7E451","80C7E4A7","80C7E4FB","80C7E54F","80C7E5A3","80C7E5F7","80CF645F","80CF711F","81355F77"
-^all of these are possible memory addresses for the score of player on away
+^all of these are possible memory addresses for the score of player on away, but the best ones are:
+80CF645F - for the actual amount of goals
+80CF711F - for the goal counter that is displayed
 
 DURING MATCH:
 80c5f22b - address that determines if it's timed or first to x (0 = Timed, 1 = FTX)
