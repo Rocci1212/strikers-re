@@ -10,6 +10,9 @@ If you need to use the Exception Vector Area in your gecko code to store data, d
 ---------------------------------------------------------------------------------
 
 0x800001b4-0x800001b5: Control Kritters v0.3 [Feder]
+0x800001b6: Better training mode v0.1+ [Feder]
+0x800001b7-0x800001d0: Restore match status after disconnection [Feder] (Work in progress, might change in the future)
 0x80001550-0x0000155F: Total Item Modifier [Ferrer]
+0x80001550-0x80001552: Better training mode v1.2+ [Feder]
 0x800015A0-0x000015C7: Transform MSC gameplay to MSC 7 [Ferrer]
 0x800015C8-0x000015D7: Kritter scores [Ferrer]
