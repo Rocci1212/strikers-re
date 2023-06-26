@@ -3,15 +3,30 @@ MATCH SETTINGS/SCORE/OTHER MATCH STUFF
 (Some of the mem addresses listed here might only be valid for certain game modes)
 
 80100fdc is the address of the instruction to increase the goals when someone scores
-"80C66449","80C664BB","80C7E3E1","80C7E453","80C7E64B","80C7E69F","80C7E6F3","80C7E747","80C7E79B","80CF58F7","80CF711B","81355F73"
-^all of these are possible memory addresses for the score of player on home, but the best ones are:
-80CF58F7 - for the actual amount of goals
-80CF711B - for the goal counter that is displayed
 
-"80C6644B","80C664B9","80C7E3E3","80C7E451","80C7E4A7","80C7E4FB","80C7E54F","80C7E5A3","80C7E5F7","80CF645F","80CF711F","81355F77"
-^all of these are possible memory addresses for the score of player on away, but the best ones are:
-80CF645F - for the actual amount of goals
-80CF711F - for the goal counter that is displayed
+--------
+MATCH STATUS STRUCT:
+Address of this struct is at 0x806DF9D8
+its value is often 0x80CF58F0, which can trick people into thinking this struct's data is static mem, but pick a hazard stadium and it will change.
+
+Offsets:
+SCORES (halfword):
+0x6 - home score
+0x182a - home score display
+0xb6e - away score
+0x182e - away score display
+
+ITEM SLOTS (word):
+0x8c - home item 1
+0x90 - home item 1 quantity 
+0x98 - home item 2
+0x9c - home item 2 quantity
+0xbf4 - away item 1 
+0xbf8 - away item 1 quantity
+0xc00 - away item 2 
+0xc04 - away item 2 quantity
+For more information about items scroll down until you find the items section
+--------
 
 DURING MATCH:
 80c5f22b - address that determines if it's timed or first to x (0 = Timed, 1 = FTX)
@@ -129,29 +144,27 @@ r22 for shrooms
 r21 for greens
 r31 for freeze shells
 
-
-
 8009ba60 is the line that checks if the Random generated number (which btw is stored in r3) low enough to get a star, if the RNG number is higher or equal, it means player won't get a star
-
-
-
 
 the lines from 8009b8a8 to 8009b9e8 are used by the game when some item cheat is on, they set to zero the chances of the items you can't get if that cheat is on 
 
+--------
+MATCH STATUS STRUCT:
+Address of this struct is at 0x806DF9D8
+Offsets:
+ITEM SLOTS (word):
+0x8c - home item 1
+0x90 - home item 1 quantity 
+0x98 - home item 2
+0x9c - home item 2 quantity
+0xbf4 - away item 1 
+0xbf8 - away item 1 quantity
+0xc00 - away item 2 
+0xc04 - away item 2 quantity
+--------
 
-ITEM SLOTS:
- 80CF597F - 1st item slot on home ID
- 80CF5983 - 1st item slot of home quantity 
- 80CF598B - 2nd item slot on home ID
- 80CF598F - 2nd item slot on home quantity
-
- 80CF64E7 - 1st item slot on away ID
- 80CF64EB - 1st item slot on away quantity
- 80CF64F3 - 2nd item slot on away ID
- 80CF64F7 - 2nd item slot on away quantity
-
- 800a6280 - instruction that gives home an item on the first slot
- 8009bcd4 - linked branch that leads to the function that gives you an item
+800a6280 - instruction that gives home an item on the first slot
+8009bcd4 - linked branch that leads to the function that gives you an item
 
 ------------------------------------------------------------
 CHARACTER COLORS/RGB...
