@@ -1,4 +1,4 @@
-------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 MATCH SETTINGS/SCORE/OTHER MATCH STUFF
 (Some of the mem addresses listed here might only be valid for certain game modes)
 
@@ -87,7 +87,7 @@ GOAL SIZES:
 806da97c - post radius (float)
 806df948 - post offset (float)
 
--------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 ITEM RELATED STUFF
 
 item IDs:
@@ -166,7 +166,7 @@ ITEM SLOTS (word):
 800a6280 - instruction that gives home an item on the first slot
 8009bcd4 - linked branch that leads to the function that gives you an item
 
-------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 CHARACTER COLORS/RGB...
 
 
@@ -269,11 +269,11 @@ Format: 00RRGGBB
 
 
 
------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 800fca80 - Instruction address that checks for Mega Strike / Skillshot
 
------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 CONTROLLERS:
 80585EE2 - controller 1 button inputs
 805860D2 - controller 2 button inputs
@@ -300,7 +300,7 @@ Button values (source: https://mariokartwii.com/showthread.php?tid=44 ):
 
 8021d06c - instruction that assigns a certain player to a team when changing teams from the 'chose sides' menu or the pause menu
 
-------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 OBJECTS AND OTHER DYNAMIC STUFF
 
 KRITTER:
@@ -341,7 +341,7 @@ Offset 0x5d4: Y position
 
 8001ba24 - instruction that stat values??
 
-------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 TEAMS (Characters that play in each team)
 
 The following values update when you select these characters from the menu in VS mode. If you're playing in other modes such as striker challenges, these values won't be accurate
@@ -383,7 +383,7 @@ SIDEKICKS IDs:
 
 from 804DB71B to 804DB7E7 - Default teams (the teams you get when clicking on the 'default' button)
 
----------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 MATCH STATS
 (These don't get reset after the match is finished)
 Home:
@@ -440,7 +440,7 @@ Away:
 80C664C1 - Megastrike shot counter that is shown on the RESULT SCREEN
 80C664C3 - Megastrike goal counter that is shown on the RESULT SCREEN
 
----------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 STADIUM SETTINGS
 --------
 GRAPHICS - FOG:
@@ -470,6 +470,20 @@ TERRAINS:
 
 800081ec - possible instruction that updates terrain speed?
 
----------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+TEXT
+80c229d0 - Pointer to an array(??) with all the text strings of the game
+
+Offsets:
+0x1d0cb - "SEASON TIME..."
+
+contains "NINTENDO WFC":
+0x52d4 - "CONNECTING TO NINTENDO WFC"
+0xBD0B - "NINTENDO WFC CENTRAL"
+0x1160D - "NINTENDO WFC INVITATION"
+0x28CCB - "... HAS INVITED YOU TO JOIN A NINTENDO WFC MATCH"
+0x2B74D - "CONNECTION TO NINTENDO WFC SUCCESSFUL"
+
+------------------------------------------------------------------------------------------------------------------------
 SPOOKY DEV STUFF:
 803332d8 - it compares r3 and r0, at that point in time, it's comparing the CRCs of machine 0 and machine 1
