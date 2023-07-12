@@ -38,7 +38,7 @@ MENU:
 80c5f2eb - time (in seconds) you select in the VS mode menu
 80c5f2ef - score limit for  First to X format in the menu, updates when clicking done after the settings menu with the first to X option
 80c5f2f3 - Number of matches (Best of)
-80585eec - Instruction that sets the Horizontal location of the pointer?
+80363654 - Instruction that sets the Horizontal location of the pointer?
 
 CHEATS (DOMINATION MODE):
 80c5f2ff - Item Cheat
