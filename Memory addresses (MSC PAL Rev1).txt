@@ -314,14 +314,15 @@ This info was found by analyzing Ferrer's "kritters on bench" code
 
 --------
 BALL: 
-806DF7A0 - pointer to the ball's properties
-add 0xC0 to that pointer to find the address ball's charge
-add 0x10C to that pointer to find the address of the ball's X position
-add 0x110 to that pointer to find the address of the ball's Y position
-add 0x114 to that pointer to find the address of the ball's Z position (Vertical)
-add 0x118 to that pointer to find the address of the ball's X velocity 
-add 0x11C to that pointer to find the address of the ball's Y velocity 
-add 0x120 to that pointer to find the address of the ball's Z velocity (Vertical)
+806DF7A0 - pointer to the ball Object
+Offsets:
+0xC0 - Ball's charge
+0x218 - Ball's X position
+0x21c - Ball's Y position
+0x220 - Ball's Z position (Vertical)
+0x268 - Ball's X velocity 
+0x26c - Ball's Y velocity 
+0x270 - Ball's Z velocity (Vertical)
 
 8031c228 - code line that updates the ball's X position (the 2 following code lines update the Y and Z position)
 (Unlike kritter's position, You can't actually edit these ball values, not from these addreses at least)
