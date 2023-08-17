@@ -1,0 +1,118 @@
+Better training mode v1.1 (PAL, Rev1) [Feder]
+C0000000 00000022
+3D808058 A16C5EE2
+3D808000 2C0B0110
+40A2000C 39400002
+994C01B6 2C0B1100
+40A2000C 39400001
+994C01B6 2C0B0500
+418200CC 3D2080C6
+8949F340 2C0A0001
+41A200BC 894C01B6
+2C0A0000 41A200B0
+3CA00000 98A9F22B
+3D2080CF 90A950F8
+2C0A0001 3D808057
+4182004C 812CA750
+814CA754 816CA758
+818CA75C 2C0C0000
+4182007C 3CA041B0
+90AC05D0 90AB05D0
+90AA05D0 3CA00000
+90A905D0 3CA04100
+90AC05D4 90AB05D4
+90AA05D4 90A905D4
+48000058 812CA740
+814CA744 816CA748
+818CA74C 2C0C0000
+41820034 3CA0C1B0
+90AC05D0 90AB05D0
+90AA05D0 3CA00000
+90A905D0 3CA04100
+90AC05D4 90AB05D4
+90AA05D4 90A905D4
+48000010 3D808000
+38600000 986C01B6
+4E800020 00000000
+C0000000 00000013
+3D208000 886901B6
+2C030000 41A20088
+3D808058 A16C5EE2
+88A91550 89491551
+2C0B0101 40A20008
+38A00007 2C0B0102
+40A20008 38A00010
+2C0B0104 40A2000C
+38A00004 39400019
+2C0B0108 40A2000C
+38A00004 38A00001
+98A91550 99491551
+2C050000 41A20030
+3960FFFF 3D8080CF
+2C030001 41820014
+90AC597C 914C5980
+916C64E4 48000010
+90AC64E4 914C64E8
+916C597C 4E800020
+
+
+CODE XPLAIND:
+Here's code 2, code 1 is the smae shit
+# This is a C0 code, it runs once per frame
+# This code uses exception vector area bytes 0x800001b6, 0x80001550 and 0x80001551. 1550 and 1551 are the same as Ferrer's item modifier, but since this code replaces that item modifier, it's ok
+
+##### PART 1 - CHECK IF TRAINING MODE IS ON #####
+lis r9, 0x8000			# Load 0x800001b6, address of training mode status
+lbz r3, 0x1b6 (r9)			# Load TRAINING MODE STATUS in r3
+cmpwi r3, 0			# Check if Training mode is off and if so, jump to end 
+beq+ END
+
+##### PART 2 - BUTTON COMBOS #####
+lis r12, 0x8058			# Load 0x80585ee2, address of controller inputs
+lhz r11, 0x5ee2 (r12)			# Load current inputs in r11
+lbz r5, 0x1550 (r9)			# Load current selected item
+lbz r10, 0x1551 (r9)			# Load current selected item's quantity
+
+cmpwi r11, 0x0101 			# Check if 2 and D-Pad Left are pressed
+bne+ DONT_GIVE_SHROOM
+li r5, 7
+DONT_GIVE_SHROOM:
+
+cmpwi r11, 0x0102 			# Check if 2 and D-Pad Right are pressed
+bne+ DONT_GIVE_SPECIAL
+li r5, 0x10
+DONT_GIVE_SPECIAL:
+
+cmpwi r11, 0x0104 			# Check if 2 and D-Pad Down are pressed
+bne+ DONT_GIVE_SMOL_NANAS
+li r5, 4
+li r10, 25		
+DONT_GIVE_SMOL_NANAS:
+
+cmpwi r11, 0x0108 			# Check if 2 and D-Pad Up are pressed
+bne+ DONT_GIVE_BEEG_NANA
+li r5, 4
+li r5, 1
+DONT_GIVE_BEEG_NANA:
+stb r5, 0x1550	(r9)		# Store item you picked into 0x80001550
+stb r10, 0x1551	(r9)		# Store item you picked into 0x80001551
+
+##### PART 3 - STORE ITEMS #####
+cmpwi r5, 0			# Check if an item has been selected, otherwise jump to end (0 would usually mean green shell, but for my code it means no item (I did this to make the code simpler)
+beq+ END
+li r11, 0xFFFFffff			# Load -1 in r11
+lis r12, 0x80cf
+cmpwi r3, 1			# Check if training mode is on for home or if it's for away
+beq- GIVE_ITEM_TO_AWAY 
+stw r5, 0x597c (r12)			# Store home's new item
+stw r10, 0x5980 (r12)			# Store home's new item quantity
+stw r11, 0x64e4 (r12)			# Remove away's items
+b END
+
+GIVE_ITEM_TO_AWAY:
+stw r5, 0x64e4 (r12)			# Store away's new item
+stw r10, 0x64e8 (r12)			# Store away's new item quantity
+stw r11, 0x597c (r12)			# Remove home's items
+
+END:
+blr
