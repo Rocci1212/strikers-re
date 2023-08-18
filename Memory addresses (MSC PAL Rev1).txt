@@ -170,8 +170,9 @@ ITEM SLOTS (word):
 ------------------------------------------------------------------------------------------------------------------------
 CHARACTER COLORS/RGB...
 
+NOTE: THIS SECTION WAS WRITTEN WHEN I (Feder) HAD STILL VERY LIMITED MODDING KNOWLEDGE, SO SOME OF THIS INFO COULD BE UNACCURATE AND CONFUSING. I'll update it at some point
 
-The higher a priority value is, the lower the priority is, so if you a character's priority to FF, they will change their color vs anyone with the same color (unless they're not the only character with FF)
+The higher a priority value is, the lower the priority is, so if you set a character's priority to 0xFF, they will change their color vs anyone with the same color (unless they're not the only character with FF)
 If 2 characters have the same prio noone changes color
 
 
@@ -181,35 +182,35 @@ The first three bits are unused, the other five bits are YELLOW, PURPLE, PINK, G
 If 2 characters share at least a color in common, one of them (The one with the lower priority) has to change color. 
 
 
-80504d03 Mario's color
-80504d07 Mario's prio
-80504d5f Bowser's color
-80504d63 Bowser's prio
+80504d00 Mario's color
+80504d04 Mario's prio
+80504d5c Bowser's color
+80504d60 Bowser's prio
 
-80504dbb Daisy's color
-80504dbf Daisy's prio
-80504e17 DK's color
-80504e1b DK's prio
+80504db8 Daisy's color
+80504dbc Daisy's prio
+80504e14 DK's color
+80504e18 DK's prio
 
-80504e73 Luigi's color
-80504e77 Luigi's prio
-80504ecf Peach's color
-80504ed3 Peach's prio
+80504e70 Luigi's color
+80504e74 Luigi's prio
+80504ecc Peach's color
+80504ed0 Peach's prio
 
-80504f2b Walu's color
-80504f2f Walu's prio
-80504f87 Wario's color
-80504f8a Wario's prio
+80504f28 Walu's color
+80504f2c Walu's prio
+80504f84 Wario's color
+80504f88 Wario's prio
 
-80504fe3 Yoshi's color
-80504fe7 Yoshi's prio
-8050503f BJ's color
-80505043 BJ's prio
+80504fe0 Yoshi's color
+80504fe4 Yoshi's prio
+8050503c BJ's color
+80505040 BJ's prio
 
-8050509b Diddy's color
-8050509f Diddy's prio
-805050f7 Petey's color
-805050fb Petey's prio
+80505098 Diddy's color
+8050509c Diddy's prio
+805050f4 Petey's color
+805050f8 Petey's prio
 
 
 Examples of cheat codes to change priorities:
@@ -218,8 +219,7 @@ Examples of cheat codes to change priorities:
 0450509f 000000f2  <- diddy prio lowest
 
 
-
-80504ff3 = the character that shows up if you select bowser jr.'s slot (if you chang this and click on bowser jr's slot you will select a different character instead)
+80504ff3 = the character that shows up if you select bowser jr.'s slot (if you change this and click on bowser jr's slot you will select a different character instead)
 
 
 CAPTAINS IDs:
@@ -240,7 +240,7 @@ CAPTAINS IDs:
 
 80504ff4 = if you edit a value of this word, BJ's picture doesn't show up when you select him
 
-80505003 = ?????? if you change it, junior loses all his stats
+80505003 = ?????? if you change it, junior loses all his stats. EDIT: probably some pointer
 
 RGB ADDRESSES:
 80504d08 = Mario
@@ -266,9 +266,6 @@ RGB ADDRESSES:
 
 ^The Words containing the RGB values should be located right after the Priority value of each character
 Format: 00RRGGBB
-
-
-
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -337,11 +334,28 @@ PLAYER OBJECTS:
 8056a754 - Address of Away Top Sidekick "Player" Object
 8056a758 - Address of Away Bottom Sidekick "Player" Object
 8056a75c - Address of Away Back Sidekick "Player" Object
-Offset 0x324: Address of the player's stats (10 pointers that point at the stats of a specific character)
-Offset 0x5d0: X position
-Offset 0x5d4: Y position
+Offsets:
+0x324 - Address of the player's stats (10 pointers that point at the stats of a specific character)
+0x5d0 - X position
+0x5d4 - Y position
 
 8001ba24 - instruction that stat values??
+
+--------
+THWOMPS:
+There are 8 thwomps objects and their pointers are located in the following 8 addresses:
+8056f5bc
+8056f5fc
+8056f63c
+8056f67c
+8056f6bc
+8056f6fc
+8056f73c
+8056f77c
+Offsets:
+0x98 - X position
+0x9c - Y position
+0xa0 - Z position
 
 ------------------------------------------------------------------------------------------------------------------------
 TEAMS (Characters that play in each team)
@@ -468,7 +482,7 @@ TERRAINS:
 909B655C Stadium Slipperyness
 909B654C Stadium Friction
 909B653C Stadium Bounce
-^it's dynamic mem, it means the games loads a lot of other random stuff which makes it a pain to work with these registers
+^it's dynamic mem, it means the games loads a lot of other random stuff which makes it a pain to work with these addresses
 
 800081ec - possible instruction that updates terrain speed?
 
