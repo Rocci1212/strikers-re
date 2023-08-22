@@ -336,6 +336,17 @@ PLAYER OBJECTS:
 8056a75c - Address of Away Back Sidekick "Player" Object
 Offsets:
 0x324 - Address of the player's stats (10 pointers that point at the stats of a specific character)
+0x430 - Something I like to call action and that can be one of the following values:
+  0xffffffff (-1) = Unknown (Sometimes it just becomes this value for a few frames)
+  0x1 = Deke
+  0x9 = Intercepting a ball
+  0x11 = receiving a pass
+  0x12 = Normal
+  0x13 = Z Chip animation
+  0x14 = Has ball
+  0x17 = Something similar to 0x9 I think??
+  0x1e = Charging a shot
+  (There's more values, but these are the ones that have been found so far)
 0x5d0 - X position
 0x5d4 - Y position
 
@@ -356,6 +367,10 @@ Offsets:
 0x98 - X position
 0x9c - Y position
 0xa0 - Z position
+
+------------------------------------------------------------------------------------------------------------------------
+MATCH PHYSICS/MECHANICS:
+801118c4-801118f4 - THE LOOP THAT'S CAUSING HOME ADVANTAGE
 
 ------------------------------------------------------------------------------------------------------------------------
 TEAMS (Characters that play in each team)
