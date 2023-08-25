@@ -22,7 +22,7 @@ If you need to use the Exception Vector Area in your gecko code to store data, d
 800002F8 - 800002FB: Is CRC Out of Sync (opportunity for space here, it's 1 if so / 0 if not)
 800002FA: Is Wiimote Shaking
 800002F9: Is Nunchuk Shaking
-80001550 - 0000155F: Total Item Modifier [Ferrer]
+80001550 - 8000155F: Total Item Modifier [Ferrer]
 80001550 - 80001552: Better training mode v1.2+ (Items) [Feder]
-800015A0 - 000015C7: Transform MSC gameplay to MSC 7 [Ferrer]
-800015C8 - 000015D7: Kritter scores [Ferrer]
+800015A0 - 800015C7: Transform MSC gameplay to MSC 7 [Ferrer]
+800015C8 - 800015D7: Kritter scores [Ferrer]
