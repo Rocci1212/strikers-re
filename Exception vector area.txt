@@ -9,10 +9,20 @@ If you need to use the Exception Vector Area in your gecko code to store data, d
 
 ---------------------------------------------------------------------------------
 
-0x800001b4-0x800001b5: Control Kritters v0.3 [Feder]
-0x800001b6: Better training mode v0.1+ [Feder]
-0x800001b7-0x800001d0: Restore match status after disconnection [Feder] (Work in progress, might change in the future)
-0x80001550-0x0000155F: Total Item Modifier [Ferrer]
-0x80001550-0x80001552: Better training mode v1.2+ [Feder]
-0x800015A0-0x000015C7: Transform MSC gameplay to MSC 7 [Ferrer]
-0x800015C8-0x000015D7: Kritter scores [Ferrer]
+800001b4 - 800001b5: Control Kritters v0.3 [Feder]
+800001b6: Better training mode v0.1+ (Is it active or not) [Feder]
+800001b7 - 800001d0: Restore match status after disconnection [Feder] (Work in progress, might change in the future)
+  800001b8 - 800001bb: Item quantities
+  800001bc - 800001cb: Item IDs
+  800001cc - 800001cd: Scores
+  800001ce - 800001d0: other...
+800002FF: Game Status (0 = Not In Game; 1 = In Game; 2 = Desynced; 4 = Game Loading)
+800002FE: Sidekick Possession Flag
+800002FD: Player Cheat
+800002F8 - 800002FB: Is CRC Out of Sync (opportunity for space here, it's 1 if so / 0 if not)
+800002FA: Is Wiimote Shaking
+800002F9: Is Nunchuk Shaking
+80001550 - 0000155F: Total Item Modifier [Ferrer]
+80001550 - 80001552: Better training mode v1.2+ (Items) [Feder]
+800015A0 - 000015C7: Transform MSC gameplay to MSC 7 [Ferrer]
+800015C8 - 000015D7: Kritter scores [Ferrer]
