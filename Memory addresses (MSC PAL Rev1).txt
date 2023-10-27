@@ -412,7 +412,7 @@ SIDEKICKS IDs:
 06 = monty
 07 = shyguy
 
-from 804DB71B to 804DB7E7 - Default teams (the teams you get when clicking on the 'default' button)
+from 804DB75B to 804DB82F - Default teams (the teams you get when clicking on the 'default' button. This might actually be dynamic memory!)
 
 ------------------------------------------------------------------------------------------------------------------------
 MATCH STATS
