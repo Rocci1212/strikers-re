@@ -506,7 +506,7 @@ TEXT
 80c229d0 - Pointer to an array(??) with all the text strings of the game
 
 Some of the offsets:
-0x8CE9 - "SELECT ANY OF THE SEVEN ICONS..."
+0x8CEA - "SELECT ANY OF THE SEVEN ICONS..."
 0x1d0cb - "SEASON TIME..."
 0x1fdec - "SAFE MEGASTRIKES"
 0x7548 - "HIGH VOLTAGE"
