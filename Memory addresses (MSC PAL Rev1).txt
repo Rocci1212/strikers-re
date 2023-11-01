@@ -505,11 +505,13 @@ TERRAINS:
 TEXT
 80c229d0 - Pointer to an array(??) with all the text strings of the game
 
-Offsets:
+Some of the offsets:
 0x1d0cb - "SEASON TIME..."
 0x1fdec - "SAFE MEGASTRIKES"
 0x7548 - "HIGH VOLTAGE"
 0x2555E - "MORE POWER TO THE ELECTRIC FENCE"
+0x18442 - "POWER SHORTAGE"
+0x28ECA - "ELECTRIC FENCE DOESN'T HURT PLAYERS"
 
 contains "NINTENDO WFC":
 0x52d4 - "CONNECTING TO NINTENDO WFC"
