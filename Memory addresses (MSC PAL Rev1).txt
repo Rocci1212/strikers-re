@@ -11,9 +11,9 @@ its value is often 0x80CF58F0, which can trick people into thinking this struct'
 
 Offsets:
 SCORES (halfword):
-0x6 - home score
+0x4 - home score (word)
 0x182a - home score display
-0xb6e - away score
+0xb6c - away score (word)
 0x182e - away score display
 
 ITEM SLOTS (word):
