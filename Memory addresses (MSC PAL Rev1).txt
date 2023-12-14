@@ -64,7 +64,7 @@ RANDOM STUFF:
 80c5f340 - 1 = Online, 0 = Offline
 80c5f22f 80c7f3bf - both have initial time in challenge mode. the second one doesn't update in vs mode
 80c7f3cb - Possible ID of home captain?? (maybe only for challenges)
-80ce579b - Scene (Byte) WARNING: THIS ADDRESS IS ACTUALLY DYNAMIC
+80ce579b - Scene (Byte) WARNING: THIS ADDRESS IS ACTUALLY DYNAMIC (gets updated by instruction at 801c51f0)
 0x0 = title screen
 0x1 = main menu
 0x2 = domination/online mode captain selection
