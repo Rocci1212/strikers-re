@@ -79,6 +79,7 @@ RANDOM STUFF:
 0x11 = hologram cutscene before starting match
 0x17 = credits
 0x1b = domination/online mode options
+0x1c = online environment cheats selection
 0x1f = strikers cup "cup central"
 0x20 = strikers cup schedule
 0x24 = strikers cup group table
