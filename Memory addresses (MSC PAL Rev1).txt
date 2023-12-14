@@ -72,7 +72,7 @@ RANDOM STUFF:
 0x4 = domination mode side selection
 0x5 = stadium select
 0x8 = strikers cup side selection
-0xa = "low battery"/strikers cup difficulty selection
+0xa = "low battery"/strikers cup difficulty selection/"you sure you want to quit" (most black background screens)
 0xd = options
 0xe = audio options
 0xf = visual options
@@ -93,7 +93,7 @@ RANDOM STUFF:
 0x2e = leaderboard
 0x2f = friend roster
 0x30 = enter friend code
-0x31 ranked matchmaking
+0x31 = ranked matchmaking
 0x32 = domination draft (waiting for opponent to pick char)
 0x33 = connecting...
 0x36 = online mii selection
@@ -109,6 +109,12 @@ RANDOM STUFF:
 0x4c = abc scenario selection
 0x4d = abc/strikers challenges strikers times
 0x4e = abc/strikers challenges side selection
+0x50 = pause
+0x51 = pause side selection
+0x52 = pause audio options
+0x53 = pause visual options
+0x5c = pause stats
+0x68 = controller map
 
 
 STRIKER CHALLENGE CONDITIONS:
