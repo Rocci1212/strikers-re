@@ -64,24 +64,51 @@ RANDOM STUFF:
 80c5f340 - 1 = Online, 0 = Offline
 80c5f22f 80c7f3bf - both have initial time in challenge mode. the second one doesn't update in vs mode
 80c7f3cb - Possible ID of home captain?? (maybe only for challenges)
-80ce579b - Scene?? (Byte)
+80ce579b - Scene (Byte) WARNING: THIS ADDRESS IS ACTUALLY DYNAMIC
 0x0 = title screen
 0x1 = main menu
-0x2 = domination mode captain selection
-0x3 = domination mode sidekick selection 
-0x4 = domination mode side selection 
+0x2 = domination/online mode captain selection
+0x3 = domination/online mode sidekick selection 
+0x4 = domination mode side selection
+0x5 = stadium select
 0x8 = strikers cup side selection
 0xa = "low battery"/strikers cup difficulty selection
-0x1b = domination mode options
+0xd = options
+0xe = audio options
+0xf = visual options
+0x11 = hologram cutscene before starting match
+0x17 = credits
+0x1b = domination/online mode options
 0x1f = strikers cup "cup central"
 0x20 = strikers cup schedule
 0x24 = strikers cup group table
 0x25 = strikers cup gold foot standings
 0x26 = strikers cup brick wall standings
 0x27 = strikers cup strikers times?
+0x28 = online main menu
+0x29 = ranked options
+0x2a = friendly options
+0x2b = friendly/ranked with guest (add controller)
+0x2c = lobby (screen when inviting friend)
+0x2e = leaderboard
+0x2f = friend roster
+0x30 = enter friend code
+0x31 ranked matchmaking
+0x32 = domination draft (waiting for opponent to pick char)
+0x33 = connecting...
+0x36 = online mii selection
+0x38 = online side selection
+0x39 = connection quality
+0x3b = hall of fame trophies
+0x3c = hall of fame stadia and characters
+0x3d = hall of fame strikers challenges
+0x3e = hall of fame fire cup
+0x3f = hall of fame striker cup
+0x40 = hall of fame crystal cup
+0x4b = strikers challenges
 0x4c = abc scenario selection
-0x4d = abc strikers times
-0x4e = abc side selection
+0x4d = abc/strikers challenges strikers times
+0x4e = abc/strikers challenges side selection
 
 
 STRIKER CHALLENGE CONDITIONS:
