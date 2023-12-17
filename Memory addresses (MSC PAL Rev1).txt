@@ -331,7 +331,8 @@ CONTROLLERS:
 805862C2 - controller 3 button inputs
 805864B2 - controller 4 button inputs
 (Sometimes controllers swap randomly during loading screen, so P1 inputs will be stored at the P2 controller address and vice versa)
-
+Add 0x5e to the button input address of a controller to find its nunchuck stick X (Float between -1 and 1)
+Add 0x62 to find its nunchuck stick Y (Float between -1 and 1)
 
 Button values (source: https://mariokartwii.com/showthread.php?tid=44 ):
 0001 = Left
@@ -348,8 +349,7 @@ Button values (source: https://mariokartwii.com/showthread.php?tid=44 ):
 4000 = C
 8000 = Home
 
-
-8021d06c - instruction that assigns a certain player to a team when changing teams from the 'chose sides' menu or the pause menu
+8021d06c - instruction that assigns a certain player to a team when changing teams from the 'chose sides' menu or the pause menu (??)
 
 ------------------------------------------------------------------------------------------------------------------------
 OBJECTS AND OTHER DYNAMIC STUFF
