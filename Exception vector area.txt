@@ -11,11 +11,11 @@ If you need to use the Exception Vector Area in your gecko code to store data, d
 
 800001b4 - 800001b5: Control Kritters v0.3 [Feder]
 800001b6: Better training mode v0.1+ (Is it active or not) [Feder]
-800001b7 - 800001d0: Restore match status after disconnection [Feder] (Work in progress, might change in the future)
+800001b7 - 800001df: Restore match status after disconnection [Feder] (Work in progress, might change in the future)
   800001b8 - 800001bb: Item quantities
   800001bc - 800001cb: Item IDs
   800001cc - 800001cd: Scores
-  800001ce - 800001d0: other...
+  800001ce - 800001df: other...
 800001e0 - 800001e3: Control cursor with d-pad (cursor speed)
 800001ff: Is defense advantage on?
 800002FF: Game Status (0 = Not In Game; 1 = In Game; 2 = Desynced; 4 = Game Loading)
