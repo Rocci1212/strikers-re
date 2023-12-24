@@ -425,6 +425,9 @@ Offsets:
 MATCH PHYSICS/MECHANICS:
 801118c4-801118f4 - THE LOOP THAT'S CAUSING HOME ADVANTAGE
 
+[0x80CF6780] + 0x1748 home captain on sand???
+[0x80E86D00] + 0x7578 home top sk on sand?????
+
 ------------------------------------------------------------------------------------------------------------------------
 TEAMS (Characters that play in each team)
 
