@@ -468,8 +468,9 @@ SIDEKICKS IDs:
 from 804DB75B to 804DB82F - Default teams (the teams you get when clicking on the 'default' button. This might actually be dynamic memory!)
 
 ------------------------------------------------------------------------------------------------------------------------
-MATCH STATS
+MATCH STATS (W.I.P.)
 (These don't get reset after the match is finished)
+WARNING: these addresses are actually part of a dynamically allocated struct. It's pointer is at 806DFB38. I'm too lazy to replace the addresses with the accurate offset rn.
 Home:
 80c7e3d1 - Red ball shots
 80c7e3d3 - Orange ball shots
@@ -485,24 +486,24 @@ Home:
 Add 0x70 to these addresses to get the away equivalent
 
 
-MATCH STATS
+MATCH STATS PART 2
 (These are reset after the match is finished)
-(Offline mode)
+(Offsets relative to pointer at 0x806DFB38)
 Home:
-80c7e831 - Red ball shots
-80c7e833 - Orange ball shots
-80c7e835 - Yellow/White ball shots
-80c7e847 - Total megastrike shots
-80c7e849 - Megastrike goals
+0x488 - Red ball shots (halfword)
+0x48a - Orange ball shots (halfword)
+0x48c - Yellow/White ball shots (halfword)
+? - Total megastrike shots
+? - Megastrike goals
 
 Away:
-80c7e7df - Red ball shots
-80c7e7e1 - Orange ball shots
+0x436 - Red ball shots
+0x438 - Orange ball shots
 80c7e7e3 - Yellow/White ball shots
 80c7e7f3 - Total megastrike shots
 80c7e7f5 - Megastrike goals
 
-(Online mode)
+(OUTDATED AND UNACCURATE)(Online mode)
 Opponent:
 80c7e7dd - Red ball shots
 80c7e7df - Orange ball shots
