@@ -1,0 +1,11 @@
+Lock RNG seed [Feder]
+042b4d90 60000000
+042b4df8 60000000
+046de030 XXXXXXXX
+*Replace the Xs with whatever seed you want
+*This code can cause freezes and glitches
+
+CODE EXPLAINED:
+042b4d90 60000000  # Make the randomint function unable to overwrite the seed
+042b4df8 60000000  # Make the randomfloat function unable to overwrite the seed
+046de030 XXXXXXXX  # Set the seed to the value XXXXXXXX
