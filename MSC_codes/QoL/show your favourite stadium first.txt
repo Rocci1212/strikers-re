@@ -1,0 +1,5 @@
+Show your favourite stadium first [Feder]
+041e3f68 3BC0000X
+*When you open the stadium select menu the game shows vide first, but with this code you can change that!
+*Replace X with the ID (in hex) of your favourite stadium.
+*For instance: 3 = classroom, 4 = lava, b = bowsers, etc...
