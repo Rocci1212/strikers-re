@@ -1,0 +1,24 @@
+Online match options menu skip [Feder]
+C21C4218 00000006
+2D04001B 40AA0020
+2D050000 40AA0018
+3D8080C6 818CF340
+2D0C0001 41AA0008
+38800005 7C9D2378
+60000000 00000000
+*Attempt at skipping scenes
+*Currently cannot control which settings you choose. It defaults to bo3 with 3 mins, but at least it doesn't crash
+
+CODE EXPLAINED:
+#To be inserted at 801c4218
+cmpwi cr2, r4, 0x1b  # check if trying to access match options
+bne+ cr2, DONT_SKIP
+cmpwi cr2, r5, 0x0  # make sure the match options menu is not being accessed by clicking back on stadium menu
+bne+ cr2, DONT_SKIP
+lis r12, 0x80c6
+lwz r12, 0xFFFFf340 (r12)
+cmpwi cr2, r12, 0x1  # check if online
+beq+ cr2, DONT_SKIP
+  li r4, 0x5
+DONT_SKIP:
+mr r29, r4	 # default instruction (original instruction)
