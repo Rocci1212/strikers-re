@@ -389,8 +389,8 @@ PLAYER OBJECTS:
 8056a75c - Address of Away Back Sidekick "Player" Object
 Offsets:
 0x324 - Address of the player's stats (10 pointers that point at the stats of a specific character)
-0x430 - Something I like to call action and that can be one of the following values:
-  0xffffffff (-1) = Unknown (Sometimes it just becomes this value for a few frames)
+0x378 - Horizontal speed the player gives to the ball in the moment when they're z-chipping it
+0x430 - Something I like to call action and that can be one of the following values:  0xffffffff (-1) = Unknown (Sometimes it just becomes this value for a few frames)
   0x1 = Deke
   0x9 = Intercepting a ball
   0x11 = receiving a pass
