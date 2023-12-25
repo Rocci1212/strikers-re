@@ -1,0 +1,8 @@
+Black bowser [Feder]
+04504d64 00000000
+04504d5c 00000080
+*To use when you have black bowser texture on
+
+CODE EXPLAINED:
+04504d64 00000000 # Set indicator RGB to black
+04504d5c 00000080 # Set the red color flag off and set a different flag (8th bit from the right) on which will be used for black in other mods like this one
