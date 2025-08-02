@@ -1,0 +1,14 @@
+04504ed0 000000f0
+04504dbf 000000f1
+0450509f 000000f2
+(source 1.asm)
+(rest of the source code can be found in "blue peach - original" folder)
+
+
+The first line of code sets peaches priority to 240.
+The first line of code sets daisy's priority to 241.
+The first line of code sets diddy kong's priority to 242.
+Remember, higher value means lower priority, so diddy kong will change outfit vs anyone who has the same color. Daisy will do that vs anyone who has the same color, except diddy kong. Peach will do it vs anyone that has the same color except Daisy or Diddy
+
+
+

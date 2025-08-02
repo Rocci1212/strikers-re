@@ -1,0 +1,10 @@
+04504ed0 000000ff 
+(rest of the source code can be found in "blue peach - original" folder)
+
+
+The first line of code sets peaches priority to 255.
+This causes her to change color against anyone that has a matching color
+And since "source 1.asm" sets her color bitfield to 00011111, which means yellow=true, purple=true, pink=true, green=true, red=true, she will use her blue outfit against anyone
+
+
+

@@ -1,0 +1,48 @@
+Custom captain stats (PAL, rev1) [Feder]
+C0000000 00000014
+3860000X 7CA802A6
+3D408057 3D8080C8
+816CE3B4 7C0B1800
+41820018 816CE424
+7C0B1800 40A20070
+816AA750 48000008
+816AA740 7C0B6040
+4081005C 816B0324
+396B0030 3920000A
+7D2903A6 48000031
+00000000 GGGGGGGG
+HHHHHHHH JJJJJJJJ
+KKKKKKKK LLLLLLLL
+MMMMMMMM NNNNNNNN
+PPPPPPPP QQQQQQQQ
+RRRRRRRR 7D8802A6
+814B0000 396B0010
+852C0004 912A0000
+4200FFF0 7CA803A6
+4E800020 00000000
+*X = Captain ID
+*00 = mario
+*01 = bowser
+*02 = daisy
+*03 = DK
+*04 = Luigi
+*05 = peach
+*06 = walu
+*07 = wario
+*08 = yoshi
+*09 = BJ
+*0A = Diddy
+*0B = Petey
+*(The following values are all floating point values)
+*G = Turning radius
+*H = Speed
+*J = Accelleration
+*K = Slide tackle
+*L = Size (it does nothing???)
+*M = Hitting distance (which btw doesn't actually affect hitting distance :kekw:)
+*N = Shooting windup
+*P = Total Shooting Windup
+*Q = Shooting
+*R = Passing
+*
+*IMPORTANT: Captain Special Items stats are broken with this code (Super Mario has same stats as normal Mario)

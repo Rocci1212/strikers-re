@@ -1,0 +1,3 @@
+Always blue daisy (PAL, rev1) [Feder]
+04504db8 000000ff
+04504dbc 0000ffff

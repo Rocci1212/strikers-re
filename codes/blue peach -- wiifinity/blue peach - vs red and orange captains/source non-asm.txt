@@ -1,0 +1,10 @@
+04504ed0 000000ff 
+(source 1.asm)
+(rest of the source code can be found in "blue peach - original" folder)
+
+
+The first line of code sets peaches priority to 255.
+This causes her to change color against anyone that has a matching color
+
+
+

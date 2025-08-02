@@ -1,0 +1,4 @@
+Camera fixed at mid-field (PAL, rev1) [Feder]
+C20f4d9c 00000002
+EC631828 D07F000C
+60000000 00000000

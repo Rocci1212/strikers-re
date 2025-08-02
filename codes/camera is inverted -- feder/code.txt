@@ -1,0 +1,4 @@
+Camera is inverted (PAL, rev1) [Feder]
+C20f4e78 00000002
+FC200850 D03F0058
+60000000 00000000

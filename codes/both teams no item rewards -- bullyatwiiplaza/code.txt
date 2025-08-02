@@ -1,0 +1,3 @@
+Both Teams: No Item Rewards (PAL, rev1) [Bully@Wiiplaza]
+040A6280 60000000
+040A6288 60000000

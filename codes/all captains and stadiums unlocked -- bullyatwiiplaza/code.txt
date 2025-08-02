@@ -1,0 +1,9 @@
+All Captains/ Stadiums Unlocked (PAL, rev1) [Bully@Wiiplaza]
+C210F71C 00000002
+3800FFFF B00386AC
+60000000 00000000
+
+All Captains/ Stadiums Unlocked (NTSC-U) [Bully@Wiiplaza]
+C210FF88 00000002
+3800FFFF B00386AC
+60000000 00000000

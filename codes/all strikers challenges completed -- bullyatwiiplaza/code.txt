@@ -1,0 +1,9 @@
+All Striker Challenges Completed (PAL, rev1) [Bully@Wiiplaza]
+C210F63C 00000002
+3860FFFF 907F0068
+60000000 00000000
+
+All Striker Challenges Completed (NTSC-U) [Bully@Wiiplaza]
+C210FEA8 00000002
+3860FFFF 907F0068
+60000000 00000000

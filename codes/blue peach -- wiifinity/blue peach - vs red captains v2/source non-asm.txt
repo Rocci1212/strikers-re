@@ -1,0 +1,9 @@
+04504ed0 000000f0
+(source 1.asm)
+(rest of the source code can be found in "blue peach - original" folder)
+
+
+The first line of code sets peaches priority to 240.
+
+
+
