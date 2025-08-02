@@ -1,0 +1,7 @@
+Skip match intros [Rocci]
+C2284110 00000004
+3CA08000 88A502FF
+2C050004 40A20008
+38600001 80BF0150
+987F00B1 00000000
+*Works online even if opponent does not have the code

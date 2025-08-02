@@ -1,0 +1,17 @@
+Faster Stadium Selection - Bowser stadium edition (PAL, Rev1) [Feder]
+C21E50F0 00000005
+3D808058 A18C5EE2
+718C2000 41A20008
+38840003 2C040010
+40A10008 3884FFEF
+909F00C4 00000000
+C21E5074 00000007
+3D808058 A18C5EE2
+718C2000 41A20014
+3884FFFD 2C04000D
+40A20008 3880000B
+2C040000 40A00008
+38840011 909F00C4
+60000000 00000000
+*Hold Z while selecting stadiums to move by 4 slots instead of 1
+*If you're looking at vice, you hold Z and you go back you'll go directly to the bowser stadium!

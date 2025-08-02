@@ -1,0 +1,9 @@
+Player has no kritter in Challenges (PAL, Rev1) [Feder]
+28c5f33e 00000004
+48000000 8056A760
+DE000000 80008180
+14000678 C1f00000
+1400067C 41600000
+E0000000 80008000
+*edit of "put the keepers to bench" code by Ferrer
+*makes strikers challenges more difficult

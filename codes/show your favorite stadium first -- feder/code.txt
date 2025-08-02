@@ -1,0 +1,5 @@
+Show your favorite stadium first (PAL, rev1) [Feder]
+041e3f68 3BC0000X
+*When you open the stadium select menu, the game usually shows The Vice first, but with this code you can change that!
+*Replace X with the ID (in hex) of your favorite stadium.
+*For instance: 3 = classroom, 4 = lava, b = bowsers, etc...

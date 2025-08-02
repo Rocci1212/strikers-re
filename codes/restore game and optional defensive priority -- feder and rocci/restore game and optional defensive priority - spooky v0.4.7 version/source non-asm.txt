@@ -1,0 +1,14 @@
+041118CC 3BBDA740
+041118EC 3BBD0004
+48000000 806DF7A0
+DE000000 80008180
+38000218 7FFF0000
+280001fe FF000001
+041118CC 3BBDA764
+041118EC 3BBDFFFC
+E0000000 80008000
+(source 1.asm) This code displays score and items in the online menu. It also has "DEF PRIO" and "RESTORE" cheats custom texts.
+(source 2.asm) This code is a combination of the "flag state" code and the "restore status" code. It makes stuff like "skip cutscenes" gecko code work. It is also responsible for loading items and score when you start a match with the RESTORE STATUS feature
+(source 3.asm) This code records which items and scores the players had during a match. It's necessary for "source 2.asm" to function correctly, or else the RESTORE STATUS feature would make the match start with no scores or items.
+(source 4.asm) Mark connections lost
+(source 5.asm) Mark random seed desyncs

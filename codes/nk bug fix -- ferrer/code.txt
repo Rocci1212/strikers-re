@@ -1,0 +1,6 @@
+Remove NK Bug (PAL, rev1) [Ferrer]
+48000000 806df7a0
+de000000 80008180
+14000178 01010012
+e0000000 80008000
+*DON'T USE ONLINE, it desyncs if opponent doesn't have the code

@@ -1,0 +1,68 @@
+Training mode v1.0 (PAL, rev1) [Feder]
+C0000000 00000022
+3D808058 A16C5EE2
+3D808000 2C0B0110
+40A2000C 39400002
+994C01B6 2C0B1100
+40A2000C 39400001
+994C01B6 2C0B0500
+418200CC 3D2080C6
+8949F340 2C0A0001
+41A200BC 894C01B6
+2C0A0000 41A200B0
+3CA00000 98A9F22B
+3D2080CF 90A950F8
+2C0A0001 3D808057
+4182004C 812CA750
+814CA754 816CA758
+818CA75C 2C0C0000
+4182007C 3CA041B0
+90AC05D0 90AB05D0
+90AA05D0 3CA00000
+90A905D0 3CA04100
+90AC05D4 90AB05D4
+90AA05D4 90A905D4
+48000058 812CA740
+814CA744 816CA748
+818CA74C 2C0C0000
+41820034 3CA0C1B0
+90AC05D0 90AB05D0
+90AA05D0 3CA00000
+90A905D0 3CA04100
+90AC05D4 90AB05D4
+90AA05D4 90A905D4
+48000010 3D808000
+38600000 986C01B6
+4E800020 00000000
+C0000000 00000011
+3D808000 886C01B6
+2C030000 41A20074
+38A0FFFE 39400001
+3D808058 A16C5EE2
+2C0B0101 40A20008
+38A00007 2C0B0102
+40A20008 38A00010
+2C0B0104 40A2000C
+38A00004 3940000F
+2C0B0108 40A2000C
+38A00004 39400001
+2C05FFFE 41A20024
+3D8080CF 2C030001
+41820010 90AC597C
+914C5980 4800000C
+90AC64E4 914C64E8
+4E800020 00000000
+* Works in both ABC and Domination mode
+* During the match...
+* Press 2 and + together to enable it and make away team disappear
+* Press 2 and - together to enable it and make home team disappear
+* Press 2 and B together to disable this code (use this if ball gets stuck in a wall)
+* Press 2 and a D-Pad button to get an item...
+* Press 2 and Left to get a shroom
+* Press 2 and Right to get a special
+* Press 2 and Down to get small bananas
+* Press 2 and Up to get a big bananas
+* You can't enable this code in online mode, so you're safe from accidental desyncs
+* Known bugs:
+* On some stadiums, timer isn't infinite and items don't work
+* If multiple controllers are connected, the code will respond to only one of them (randomly selected)

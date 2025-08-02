@@ -1,0 +1,22 @@
+Daisy's super clear (PAL, rev1) [Feder]
+040003f8 3f800000
+040003fc 40400000
+C0000000 0000000F
+3D808056 618CA740
+816C0000 2C0B0000
+41820060 816B0024
+2C0B0002 41820018
+398C0010 816C0000
+816B0024 2C0B0002
+40820040 816C0000
+816B030C 2C0B0000
+41820030 816B02DC
+A16B0012 3D408000
+812A03F8 716B2000
+41820008 812A03FC
+818C0000 818C0324
+818C0080 912C0000
+4E800020 00000000
+* This code gives daisy the option to either clear the ball at regular distance or do it with a really long distance...
+* Hold Z while clearing for a super clear.
+* I made this code because I needed an unique gimmick for the first ever "custom character": Rosalina (daisy but retextured and with some stat changes)
