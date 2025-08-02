@@ -1,2 +1,3 @@
 # strikers-re
-Information and notes about MSC and SMS
+Information and notes about MSC
+
