@@ -10760,7 +10760,7 @@
 8031a960 00000048 8031a960 0 PhysicsCharacterBase::SetCharacterPosition(nlVector3 &)
 8031a9a8 00000144 8031a9a8 0 zz_8031a9a8_
 8031aaec 00000004 8031aaec 0 DBClose 	NdevExi2A.a DebuggerDriver.o
-8031aaf0 0000001c 8031aaf0 0 zz_8031aaf0_
+8031aaf0 0000001c 8031aaf0 0 crumb?_PhysicsCharacterBase::ContainObject
 8031ab0c 00000068 8031ab0c 0 zz_8031ab0c_
 8031ab14 00000060 8031ab14 0 zz_8031ab14_
 8031ab74 00000050 8031ab74 0 zz_8031ab74_
@@ -10785,7 +10785,7 @@
 8031b7f0 00000054 8031b7f0 0 zz_8031b7f0_
 8031b844 000000d8 8031b844 0 zz_8031b844_
 8031b91c 00000164 8031b91c 0 zz_8031b91c_
-8031ba80 000000e8 8031ba80 0 zz_8031ba80_
+8031ba80 000000e8 8031ba80 0 crumb_PhysicsCompositeObject::AddObject
 8031bb68 000000d0 8031bb68 0 zz_8031bb68_
 8031bc38 00000010 8031bc38 0 zz_8031bc38_
 8031bc48 000000e4 8031bc48 0 zz_8031bc48_
@@ -10818,12 +10818,12 @@
 8031e61c 0000005c 8031e61c 0 zz_8031e61c_
 8031e678 00000394 8031e678 0 zz_8031e678_
 8031ea0c 00000040 8031ea0c 0 zz_8031ea0c_
-8031ea14 00000038 8031ea14 0 zz_8031ea14_
+8031ea14 00000038 8031ea14 0 crumb_cFielder::UpdatePlay
 8031ea1c 00000030 8031ea1c 0 zz_8031ea1c_
-8031ea4c 0000006c 8031ea4c 0 zz_8031ea4c_
+8031ea4c 0000006c 8031ea4c 0 crumb_PhysicsObject::Disconnect
 8031eab8 00000050 8031eab8 0 zz_8031eab8_
 8031eb08 0000006c 8031eb08 0 zz_8031eb08_
-8031eb74 00000050 8031eb74 0 zz_8031eb74_
+8031eb74 00000050 8031eb74 0 crumb_PhysicsObject::MakeStatic
 8031ebc4 00000078 8031ebc4 0 zz_8031ebc4_
 8031ec3c 00000b48 8031ec3c 0 zz_8031ec3c_
 8031f784 00000064 8031f784 0 zz_8031f784_
@@ -10839,7 +10839,7 @@
 8031fe98 0000005c 8031fe98 0 zz_8031fe98_
 8031fef4 00000048 8031fef4 0 zz_8031fef4_
 8031ff3c 0000008c 8031ff3c 0 JStudio::TObject::~TObject(void) 	JStudio.a jstudio-object.o
-8031ffc8 000000d8 8031ffc8 0 zz_8031ffc8_
+8031ffc8 000000d8 8031ffc8 0 crumb_PhysicsTransform::Attach
 803200a0 00000134 803200a0 0 crumb_PhysicsTransform::Release  ?_ball_rotation_zero
 803201d4 00000078 803201d4 0 zz_803201d4_
 803201dc 00000070 803201dc 0 zz_803201dc_
@@ -11445,10 +11445,10 @@
 80343be0 00000020 80343be0 0 zz_80343be0_
 80343c00 00000008 80343c00 0 GXInitTexObjUserData 	gx.a GXTexture.o
 80343c08 00000008 80343c08 0 CBGetBytesAvailableForRead 	TRK_Hollywood_Revolution.a C:\products\RVL\runtime_libs\gamedev\cust_connection\utils\common\Circle
-80343c10 0000015c 80343c10 0 zz_80343c10_
+80343c10 0000015c 80343c10 0 crumb_dGeomSetBody
 80343d6c 00000008 80343d6c 0 CBGetBytesAvailableForRead 	TRK_Hollywood_Revolution.a C:\products\RVL\runtime_libs\gamedev\cust_connection\utils\common\Circle
-80343d74 00000084 80343d74 0 zz_80343d74_
-80343da4 00000054 80343da4 0 zz_80343da4_
+80343d74 00000084 80343d74 0 crumb?_dGeomSetPosition
+80343da4 00000054 80343da4 0 crumb_dGeomSetRotation
 80343df8 00000008 80343df8 0 CBGetBytesAvailableForRead 	TRK_Hollywood_Revolution.a C:\products\RVL\runtime_libs\gamedev\cust_connection\utils\common\Circle
 80343e00 00000008 80343e00 0 CBGetBytesAvailableForRead 	TRK_Hollywood_Revolution.a C:\products\RVL\runtime_libs\gamedev\cust_connection\utils\common\Circle
 80343e08 00000020 80343e08 0 zz_80343e08_
@@ -11467,7 +11467,7 @@
 8034411c 000001ac 8034411c 0 zz_8034411c_
 803442c8 00000008 803442c8 0 CBGetBytesAvailableForRead 	TRK_Hollywood_Revolution.a C:\products\RVL\runtime_libs\gamedev\cust_connection\utils\common\Circle
 803442d0 00000090 803442d0 0 zz_803442d0_
-80344360 00000088 80344360 0 zz_80344360_
+80344360 00000088 80344360 0 crumb_dGeomMoved
 803443e8 000000cc 803443e8 0 zz_803443e8_
 803444b4 00000134 803444b4 0 zz_803444b4_
 803445e8 0000006c 803445e8 0 zz_803445e8_
@@ -11479,7 +11479,7 @@
 803449b8 000000bc 803449b8 0 zz_803449b8_
 80344a74 00000088 80344a74 0 zz_80344a74_
 80344afc 0000002c 80344afc 0 zz_80344afc_
-80344b00 00000028 80344b00 0 zz_80344b00_
+80344b00 00000028 80344b00 0 crumb?_NSNMessengerScene::SceneCreated 2
 80344b10 00000018 80344b10 0 crumb?_NSNMessengerScene::SceneCreated
 80344b20 00000008 80344b20 0 CBGetBytesAvailableForRead 	TRK_Hollywood_Revolution.a C:\products\RVL\runtime_libs\gamedev\cust_connection\utils\common\Circle
 80344b28 000001cc 80344b28 0 zz_80344b28_
@@ -11527,7 +11527,7 @@
 803499a8 000002b8 803499a8 0 zz_803499a8_
 80349c60 000003d0 80349c60 0 zz_80349c60_
 8034a030 0000008c 8034a030 0 zz_8034a030_
-8034a0bc 0000006c 8034a0bc 0 zz_8034a0bc_
+8034a0bc 0000006c 8034a0bc 0 crumb_dGeomTransformSetGeom
 8034a128 00000008 8034a128 0 GXInitTexObjUserData 	gx.a GXTexture.o
 8034a130 00000178 8034a130 0 zz_8034a130_
 8034a2a8 000000c0 8034a2a8 0 zz_8034a2a8_
@@ -11581,8 +11581,8 @@
 80352b88 00000008 80352b88 0 IPCSetBufferLo 	ipc.a ipcMain.o
 80352b90 00000008 80352b90 0 IPCSetBufferLo 	ipc.a ipcMain.o
 80352b98 00000008 80352b98 0 IPCSetBufferLo 	ipc.a ipcMain.o
-80352ba0 0000003c 80352ba0 0 zz_80352ba0_
-80352bb8 00000024 80352bb8 0 zz_80352bb8_
+80352ba0 0000003c 80352ba0 0 crumb_dAlloc
+80352bb8 00000024 80352bb8 0 crumb_dFree
 80352bdc 00000228 80352bdc 0 zz_80352bdc_
 80352e04 00000048 80352e04 0 zz_80352e04_
 80352e4c 0000014c 80352e4c 0 zz_80352e4c_
@@ -11601,11 +11601,11 @@
 8035383c 00000134 8035383c 0 zz_8035383c_
 80353970 000000c0 80353970 0 zz_80353970_
 80353a30 000001bc 80353a30 0 zz_80353a30_
-80353bec 000000f4 80353bec 0 zz_80353bec_
+80353bec 000000f4 80353bec 0 crumb_dBodyDestroy
 80353ce0 00000008 80353ce0 0 GXInitTexObjUserData 	gx.a GXTexture.o
 80353ce8 00000008 80353ce8 0 CBGetBytesAvailableForRead 	TRK_Hollywood_Revolution.a C:\products\RVL\runtime_libs\gamedev\cust_connection\utils\common\Circle
-80353cf0 00000054 80353cf0 0 zz_80353cf0_
-80353d44 00000088 80353d44 0 zz_80353d44_
+80353cf0 00000054 80353cf0 0 crumb_dBodySetPosition
+80353d44 00000088 80353d44 0 crumb?_dBodySetRotation
 80353dcc 00000080 80353dcc 0 zz_80353dcc_
 80353e4c 00000010 80353e4c 0 nlVector3::Set(float, float, float)
 80353e5c 00000010 80353e5c 0 nlVector3::Set(float, float, float)
