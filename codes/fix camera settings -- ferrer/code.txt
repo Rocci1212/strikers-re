@@ -1,0 +1,4 @@
+Fix camera settings (PAL, Rev1) [Ferrer]
+04C5F2D8 00000000
+04C5F2DC 00000000
+*Fix cam settings to Static 1

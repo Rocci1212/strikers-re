@@ -1,0 +1,10 @@
+Striker Challenges First to X by editing .ini files (PAL, Rev1) [Feder]
+C20FC714 00000006
+3C8080C8 8184F3BC
+2C0C0FA1 41800018
+2C0C1004 41810010
+386CF060 907C0010
+38600001 907C0008
+60000000 00000000
+*Edit .ini files and set a time value between 4001 and 4100
+*Score limit will be set to (time - 4000). So for instance, if you set the time to 4010, the challenge will be a first to 10 goals

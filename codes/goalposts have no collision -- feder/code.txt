@@ -1,0 +1,3 @@
+Disable goalpost collision (PAL, Rev1) [Feder]
+046df948 3f800000
+*No more annoying posts that stop your serve-it ups

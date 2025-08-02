@@ -1,0 +1,21 @@
+PAL rev1 ADDRESSES WE WANT TO PORT TO OTHER REGIONS:
+800fbf74 (insertion addr of code1)
+80c663f8 (home captain ID)
+801C51EC (insertion addr of code2. It's the update scene function. We can look at Wiifinity's blue peach code for this)
+
+Blue peach Revision 1 code is inserted at addr 801C51F0
+My code is inserted at the address before that address, just so it doesn't conflict with that code.
+Blue peach NTSC-U is inserted at C21C5E78, so we'll insert our code at C21C5E74.
+Blue peach PAL rev2 is inserted at C21C54A0, so we'll insert our code at C21C549C.
+
+
+NTSC-U:
+800FBF74 -> 800FC698
+80C663F8 -> 80C67858
+801C51EC -> 801C5E74
+
+
+PAL rev2:
+800FBF74 -> 800FC278
+80C663F8 -> 80C66978
+801C51EC -> 801C549C

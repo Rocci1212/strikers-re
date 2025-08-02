@@ -1,0 +1,4 @@
+Fully Charged Ball (PAL, rev1) [Bully@Wiiplaza]
+C20155F0 00000002
+3D804100 918300C0
+C02300C0 00000000

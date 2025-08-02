@@ -1,0 +1,5 @@
+First to X goals wins (PAL, Rev1) [Feder]
+C20FC3BC 00000002
+388000XX 909C0010
+60000000 00000000
+*Replace XX with the amount of goals you want (in hex)

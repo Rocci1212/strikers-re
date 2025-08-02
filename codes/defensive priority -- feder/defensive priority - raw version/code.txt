@@ -1,0 +1,12 @@
+Defensive priority (PAL, rev1) [Feder]
+041118CC 3BBDA740
+041118EC 3BBD0004
+48000000 806DF7A0
+DE000000 80008180
+38000218 7FFF0000
+041118CC 3BBDA764
+041118EC 3BBDFFFC
+E0000000 80008000
+* If ball's on away half then home advantage is inverted and becomes away advantage.
+* This version of the code is always active no matter which cheat you select.
+* Desyncs online if playing against someone who doesn't have this code.

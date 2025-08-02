@@ -1,0 +1,3 @@
+Every goal has SMS crater height (PAL, rev1) [Feder]
+046da970 40a00000
+*Sets goal height to 5 units

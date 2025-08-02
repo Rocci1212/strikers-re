@@ -1,0 +1,3 @@
+Disable fog (PAL, Rev1) [Feder]
+0059adf6 00000000
+*It's great for foggy stadiums such as pipeline
