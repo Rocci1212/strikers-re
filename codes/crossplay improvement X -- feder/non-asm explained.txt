@@ -1,0 +1,25 @@
+# First non-asm code: write "X" instead of "FREEZING"
+48000000 80c229d0  # load [0x80c229d0] into po
+de000000 90009340  # stop execution if po < 0x90000000 or po > 0x93400000 (tldr stop if pointer is null)
+1400B0E4 00580000  # at po + 0xB0E4, write the ASCII for "X" followed by a null.
+e0000000 80008000  # end of the code.
+
+# Second non-asm code: "freezing" powerup cheat doesn't change items
+0409b8c4 48000028  # inject a branch that skips over the instructions that set to zero the probability of items different than freeze shells.
+
+(source 1.asm)
+(source 2.asm)
+(source 3.asm)
+
+# Third non-asm code: Disable the three ASM code if offline or if freezing cheat not selected
+# IMPORTANT: this code needs to be AFTER the asm, so that it overwrites the insertion address instructions.
+2AC5F340 FF000001  # check if in online mode. if not in online mode, skip to the next "E000..." line
+043563FC EC00082A  # at 803563FC, overwrite the branch of "source 1.asm" with the original instruction
+04356420 EC00082A  # at 80356420, overwrite the branch of "source 2.asm" with the original instruction
+04356444 EC00082A  # at 80356444, overwrite the branch of "source 3.asm" with the original instruction
+E0000000 00000000
+2AC5F296 00000002  # check if "freezing" cheat is selected. if not, skip to the next "E000..." line
+043563FC EC00082A  # at 803563FC, overwrite the branch of "source 1.asm" with the original instruction
+04356420 EC00082A  # at 80356420, overwrite the branch of "source 2.asm" with the original instruction
+04356444 EC00082A  # at 80356444, overwrite the branch of "source 3.asm" with the original instruction
+E0000000 80008000
