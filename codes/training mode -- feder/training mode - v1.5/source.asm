@@ -90,17 +90,14 @@ ITEM_STUFF:
     # r12 needs to still be 0x80000000
     lbz r5, 0x1550 (r12)			# Load current selected item
     lbz r10, 0x1551 (r12)			# Load current selected item's quantity
-    cmpwi r5, 0xff			# If r5 = 0xff then it becomes 0xffffffff, otherwise it would break the game
-    bne SET_ITEM_QUANTITY_NOT_ZERO
-    li r5, 0xFFFFFFFF
 
 SET_ITEM_QUANTITY_NOT_ZERO:
-    cmpwi r10, 0			# If r10 = 0 then certain items won't work because quantity = 0
+    cmpwi r10, 0			    # If r10 = 0 then certain items won't work because quantity = 0
     bne CHECK_IF_INPUTS_LOCKED
     li r10, 1
 
 CHECK_IF_INPUTS_LOCKED:
-    lbz r16, 0x1552 (r12)      # load controller number of who pressed dpad on this or on last frame. 4 if nobody
+    lbz r16, 0x1552 (r12)       # load controller number of who pressed dpad on this or on last frame. 4 if nobody
     cmpwi r16, 4
     bne- CHECK_IF_SAME_CONTROLLER
 
@@ -108,17 +105,14 @@ CHECK_INPUT_LEFT:
     cmpwi r8, 0x0101 			# Check if 2 and D-Pad Left are pressed
     bne+ CHECK_INPUT_RIGHT
     subi r5, r5, 1              # decrement item ID
-	cmpwi r5, 0xFFFFfffe        # if too low, loop to 12 (bowser special)
-	bne CHECK_INPUT_RIGHT
+	cmpwi r5, 0                 # if its negative, go to 12 (bowser special)
+	bge CHECK_INPUT_RIGHT
 	li r5, 0x0c 
 	
 CHECK_INPUT_RIGHT:
     cmpwi r8, 0x0102 			# Check if 2 and D-Pad Right are pressed
     bne+ CHECK_INPUT_DOWN
     addi r5, r5, 1              # increment item ID
-	cmpwi r5, 0x0d              # if too high, loop to -1 (no item)
-	bne CHECK_INPUT_DOWN
-	li r5, 0xFFFFffff
     
 CHECK_INPUT_DOWN:
     cmpwi r8, 0x0104 			# Check if 2 and D-Pad Down are pressed
@@ -151,6 +145,11 @@ LOCK_INPUTS:
 
 UPDATE_INPUT_LOCK_BYTE:
     stb r16, 0x1552 (r12)	# Update the value at 0x80001552
+
+ITEM_ID_CHECK_IF_TOO_HIGH:  # WIP - move all conditions of this kind down here
+    cmpwi r5, 0x0d              # if too high, loop to 0 (green shell)
+	blt SAVE_ITEM_SELECTION
+	li r5, 0
 
 SAVE_ITEM_SELECTION:
     stb r5, 0x1550	(r12)		# Store the item you picked into 0x80001550
