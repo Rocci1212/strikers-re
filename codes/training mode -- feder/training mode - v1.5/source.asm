@@ -58,7 +58,7 @@ STOP_TIMER:
 
 
 MAKE_TEAM_DISAPPEAR:    
-    li r15, 4               # r15 is the loop counter. 4 iterations.
+    li r15, 0               # r15 is the loop counter. 4 iterations.
     lis r11, 0x4100         # r11 = float 6     Y coord we're sending everyone to        
     lis r10, 0xC1B0         # r10 = float -22   X coord we're sending home sidekicks to
     # r5 = float 0      X coord we're sending the captain to
@@ -74,16 +74,15 @@ MAKE_TEAM_DISAPPEAR:
     lis r10, 0x41B0                 # and set r10 = float +22. We'll need to send them to positive coords
 
 TEAM_DISAPPEAR_LOOP:
-    lwz r3, 0 (r16)     # load the object
+    lwzx r3, r15, r16     # load the object
     cmpwi r3, 0         # check if object null and disable training mode if so
     beq DISABLE_TRAINING_MODE
     stw r5, 0x5d0 (r3)  # update X position
     stw r11, 0x5d4 (r3) # update Y position
-    mr r5, r10			# from the second iteration, r5 will become +22 (or -22) insead of 0
-    addi r16, r16, 4    # increment address (move on to the next player)
-    subi r15, r15, 1    # decrement counter and check if it reached zero
-    cmpwi r15, 0
-    bgt+ TEAM_DISAPPEAR_LOOP
+    mr r5, r10			# from the second iteration, r5 will become +22 (or -22) instead of 0
+    addi r15, r15, 4    # increment counter and check if it reached 16
+    cmpwi r15, 16
+    blt+ TEAM_DISAPPEAR_LOOP
 
 
 ITEM_STUFF:
