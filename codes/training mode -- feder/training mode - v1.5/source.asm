@@ -10,6 +10,9 @@
 # Known safe registers: r12, r11, r3, r5, r15, r16, r17, r18, r10
 # Useful registers: r8 input bitfield, r28 controller number (starting from 0)
 
+# Known bugs:
+# Possible crash when exiting a match on lava pit
+
 
 CHECK_INPUT_ENABLE_FOR_HOME:
     lis r12, 0x8000             # r12 needs to remain untouched for the rest of the code
@@ -46,20 +49,33 @@ CHECK_TRAINING_MODE_ACTIVE:
     blt cr7, DISABLE_TRAINING_MODE
 
 STOP_TIMER:
-    lis r5, 0			
-    stb r5, 0xFFFFf22b (r15)  # Store 0 at the address that holds "isFirstToX" boolean value (set the gamemode to timed) 
-    lis r15, 0x80cf			# Load 0x80cf50f8, address with timer
+    lis r11, 0x4100         # r11 = a really big int (and also float 6, which we'll need later)  			
+    stw r11, 0xFFFFF230 (r15)  # Set target score to a huge number
+    # PAL rev1: 80C5F230
+    # PAL rev2:
+    # NTSC-U:
+    # NTSC-J:
+    # NTSC-K:
+    li r5, 1
+    stb r5, 0xFFFFF22B (r15)  # Store 1 at the address that holds "isFirstToX" boolean value (try to set the gamemode to first to X. Will only work in VS mode) 
     # PAL rev1: 80C5F22B
     # PAL rev2:
     # NTSC-U:
     # NTSC-J:
     # NTSC-K:
-    stw r5, 0x50f8 (r15)	# Set it to 0
+    lis r5, 0
+    lis r15, 0x80CF			# Load 0x80CF50F8, address of timer
+    stw r5, 0x50F8 (r15)	# Set it to 0
+    # PAL rev1: 80CF50F8
+    # PAL rev2:
+    # NTSC-U:
+    # NTSC-J:
+    # NTSC-K:
 
 
 MAKE_TEAM_DISAPPEAR:    
     li r15, 0               # r15 is the loop counter. 4 iterations.
-    lis r11, 0x4100         # r11 = float 6     Y coord we're sending everyone to        
+    # r11 = float 6     Y coord we're sending everyone to        
     lis r10, 0xC1B0         # r10 = float -22   X coord we're sending home sidekicks to
     # r5 = float 0      X coord we're sending the captain to
     lis r17, 0x8056			# Load address for Player objects in r16
