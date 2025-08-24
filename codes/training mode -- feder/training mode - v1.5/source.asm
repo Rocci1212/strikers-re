@@ -1,8 +1,8 @@
 #To be inserted at 803aae4c
-# PAL rev2:
-# NTSC-U:
-# NTSC-J:
-# NTSC-K:
+# PAL rev2: 803AB3DC
+# NTSC-U:   803AC904
+# NTSC-J:   803ACD64
+# NTSC-K:   I can't find this. Korean version utilizes different functions for controller inputs afaik.
 
 # TRAINING MODE WITH BUILT-IN ITEM MODIFIER!
 # Version 1.5
@@ -11,7 +11,7 @@
 # Useful registers: r8 input bitfield, r28 controller number (starting from 0)
 
 # Known bugs:
-# Possible crash when exiting a match on lava pit
+# Possible crash when exiting a match on lava pit. Idk how to fix this, just play classroom please.
 
 
 CHECK_INPUT_ENABLE_FOR_HOME:
@@ -37,9 +37,9 @@ CHECK_TRAINING_MODE_ACTIVE:
     # First check: load "isOnline" and disable training mode if true
     lbz r10, 0xFFFFf340 (r15)	
     # PAL rev1: 80C5F340
-    # PAL rev2:
-    # NTSC-U:
-    # NTSC-J:
+    # PAL rev2: 80C5F8C0
+    # NTSC-U:   80C607A0
+    # NTSC-J:   80C60BE0
     # NTSC-K:
     cmpwi r10, 1
     beq+ DISABLE_TRAINING_MODE
@@ -52,24 +52,17 @@ STOP_TIMER:
     lis r11, 0x4100         # r11 = a really big int (and also float 6, which we'll need later)  			
     stw r11, 0xFFFFF230 (r15)  # Set target score to a huge number
     # PAL rev1: 80C5F230
-    # PAL rev2:
-    # NTSC-U:
-    # NTSC-J:
-    # NTSC-K:
-    li r5, 1
-    stb r5, 0xFFFFF22B (r15)  # Store 1 at the address that holds "isFirstToX" boolean value (try to set the gamemode to first to X. Will only work in VS mode) 
-    # PAL rev1: 80C5F22B
-    # PAL rev2:
-    # NTSC-U:
-    # NTSC-J:
+    # PAL rev2: 80C5F7B0
+    # NTSC-U:   80C60690
+    # NTSC-J:   80C60AD0
     # NTSC-K:
     lis r5, 0
     lis r15, 0x80CF			# Load 0x80CF50F8, address of timer
     stw r5, 0x50F8 (r15)	# Set it to 0
     # PAL rev1: 80CF50F8
-    # PAL rev2:
-    # NTSC-U:
-    # NTSC-J:
+    # PAL rev2: 80CFAC98
+    # NTSC-U:   80CFC598
+    # NTSC-J:   80CFDA58
     # NTSC-K:
 
 
@@ -81,10 +74,10 @@ MAKE_TEAM_DISAPPEAR:
     lis r17, 0x8056			# Load address for Player objects in r16
     ori r16, r17, 0xA740
     # PAL rev1: 8056A740
-    # PAL rev2:
-    # NTSC-U:
-    # NTSC-J:
-    # NTSC-K:
+    # PAL rev2: 8056AC80
+    # NTSC-U:   8056B800
+    # NTSC-J:   8056BC40
+    # NTSC-K:   805309C0
     beq cr7, TEAM_DISAPPEAR_LOOP    # if training mode status == 1, we need to kill home
     addi r16, r16, 0x10             # else, we need to kill away, so increment address by 0x10...
     lis r10, 0x41B0                 # and set r10 = float +22. We'll need to send them to positive coords
@@ -161,7 +154,7 @@ LOCK_INPUTS:
 UPDATE_INPUT_LOCK_BYTE:
     stb r16, 0x1552 (r12)	# Update the value at 0x80001552
 
-ITEM_ID_CHECK_IF_TOO_HIGH:  # WIP - move all conditions of this kind down here
+ITEM_ID_CHECK_IF_TOO_HIGH:  
     cmpwi r5, 0x0d              # if too high, loop to 0 (green shell)
 	blt SAVE_ITEM_SELECTION
 	li r5, 0
@@ -180,10 +173,10 @@ GIVE_ITEMS:
     lis r16, 0x806E
     lwz r16, 0xFFFFF9D8 (r16)	# Load pointer to the struct that contains the player's item
     # PAL rev1: 806DF9D8
-    # PAL rev2:
-    # NTSC-U:
-    # NTSC-J:
-    # NTSC-K:
+    # PAL rev2: 806DFF58 (or maybe 806DFF60, not sure)
+    # NTSC-U:   806E0DF8
+    # NTSC-J:   806E1238
+    # NTSC-K:   806044B8
     stw r5, 0x8C (r16)		    # Store home's new item
     stw r10, 0x90 (r16)		    # Store home's new item quantity
     stw r11, 0xBF4 (r16)	    # Remove away's items
