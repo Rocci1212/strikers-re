@@ -1,14 +1,15 @@
 #To be inserted at 803aae4c
 # PAL rev2: 803AB3DC
 # NTSC-U:   803AC904
-# NTSC-J:   803ACD64
+# NTSC-J:   803ACD64 (not sure if this is right. The code in this version seems to be very different)
 # NTSC-K:   I can't find this. Korean version utilizes different functions for controller inputs afaik.
 
 # TRAINING MODE WITH BUILT-IN ITEM MODIFIER!
 # Version 1.5
 # Exception vector area bytes used: 0x80001550-0x80001553
 # Known safe registers: r12, r11, r3, r5, r15, r16, r17, r18, r10
-# Useful registers: r8 input bitfield, r28 controller number (starting from 0)
+# input bitfield: r8 on PALs and NTSC-U
+# controller number (starting from 0): r28 on both PAL versions, r27 on NTSC-U
 
 # Known bugs:
 # Possible crash when exiting a match on lava pit. Idk how to fix this, just play classroom please.
@@ -140,6 +141,7 @@ CHECK_IF_SAME_CONTROLLER:
     cmpwi r16, 4            # If nobody pressed dpad on last frame, check if somebody is now.
     beq DETERMINE_IF_SHOULD_LOCK_INPUTS
     cmpw r16, r28           # If this is not the same controller that started holding d-pad, skip this. The input lock byte will stay as is.
+    # IMPORTANT: change r28 to r27 for NTSC-U
     bne UPDATE_INPUT_LOCK_BYTE 
     li r16, 4               # If this is the same controller that started holding d-pad, check if is still holding. If not store 4 at 80001552
 
@@ -150,6 +152,7 @@ DETERMINE_IF_SHOULD_LOCK_INPUTS:
 	
 LOCK_INPUTS:
     mr r16, r28			    # If a d-pad button was pressed by this controller, save its number
+    # IMPORTANT: change r28 to r27 for NTSC-U
 
 UPDATE_INPUT_LOCK_BYTE:
     stb r16, 0x1552 (r12)	# Update the value at 0x80001552
