@@ -30,7 +30,7 @@ Each chunk is structured as follows:
 
 
 
-If you need to read any data from the mesh id section, use the following formula to find the location of that data:
+If you need to read any data from the mesh data section, use the following formula to find the location of that data:
 ( section body start ) + ( 0x30 * number of the mesh ) + offset of the value to look for
 
 For example, we need mesh 5's vetex_count.
@@ -38,3 +38,4 @@ Let's pretend our rlg file has a mesh data section body that starts at 0x1000, t
 0x1000 + ( 0x30 * 5 ) + 0x8 =
 0x1000 + 0xF0 + 0x8 =
 0x10F8
+
