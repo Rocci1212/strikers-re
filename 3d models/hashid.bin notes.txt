@@ -1,0 +1,31 @@
+files/Art/hashid.bin
+
+How to find a hashid name inside hashid.bin
+
+
+
+1. Look for the hash id in the file 
+
+For instance, I will be looking for the hash 0xD16EA430 which is mario's eye texture.
+I found this sequence of bytes at 0x17CFC.
+
+
+
+2. Read the 4-byte integer that comes after the hashid
+
+In my case it's 0x00046586
+
+
+
+3. Go to 0x1C8F4 + the number you found and you'll find the name
+
+In my case it's 0x1C8F4 + 0x00046586 = 0x62E7A
+There I found the string "mario/mario_eye0"
+
+
+
+
+
+
+If you're wondering what address 0x1C8F4 is, that's the place where the "string section" starts.
+I am doing this on PAL, revision 1, I don't know if other versions are any different.
