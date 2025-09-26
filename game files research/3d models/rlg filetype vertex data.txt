@@ -1,0 +1,32 @@
+Vertex attributes: section identifier B006
+
+Section header: 
+0x0: flags?
+0x2: identifier B0 06
+0x4: length of the section body
+
+
+Section body:
+contains all vertex data, but to navigate this section you need to look up the sections: mesh data (B004) and vertex attribute pointer (B005).
+That's why you should read this repo's "rlg filetype mesh data.txt" and "rlg filetype vertex attribute pointers.txt" before reading about this section.
+
+
+
+How to read the vertices of a mesh of an rlg file:
+
+Go to the mesh data of the mesh of interest 
+Read the values vertex_count (0x8), vertex_attribute_pointer_count (0xB) and vertex_attribute_pointer_offset (which should be 0xC)
+
+- In the vertex attribute section, go to <vertex_attribute_pointer_offset>
+- Repeat the following for as many times as <vertex_attribute_pointer_count>:
+  - Read the current vertex attribute's data
+  - Now, in the vertex data section (B006), go to the offset you found in the vertex attribute pointer
+  - Repeat <vertex_count> times:
+    - Read a group of bytes of the length of <stride> bytes.
+      This is the data associated with the Nth vertex of the mesh, where N is the number of the iteration of this inner loop
+    - To know what kind of data this is and how to read it, look at the type of the V.A.Pointer.
+  - Once you're done with reading that, go to the next VAP (move forward by 0x8 bytes in the vertex attribute section) 
+    (or exit the loop if you did this <vertex_attribute_pointer_count> times already)
+
+
+

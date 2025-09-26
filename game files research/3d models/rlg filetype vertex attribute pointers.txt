@@ -52,32 +52,52 @@ A vertex attribute is structured as follows:
       - The value is always an array of 3 single floats. 
       - Stride is always 12 afaik
 
-0xfe  is for the vertex's normal. 
+0xFE  is for the vertex's normal. 
       - The value is an array of 3 numbers... 
       - If stride is 12, it's there single floats. From my experience, the files I analyzed were always like this.
       - According to KillzXGaming, the stride could be 3, and in that case the value is a array of 3 signed bytes. 
         Divide each of those bytes by 255 to get the floating point equivalent.
 
-0xcc  is uv mapping. 
+0xCC  is uv mapping. 
       - The value is an array of 2 16bit signed ints.
       - Stride is always 4 afaik
         Divide each of these bytes by 1024 to get the floating point equivalent.
         According to the switch-toolbox source code the integers are unsigned, but I found out they're actually signed.
         Some texture have uv coords with a negative value, even though it's extremely rare. mario.rlg contains like 3 negative uv coords in total
 
-0xed  unknown (stride 4)
+0xED  unknown (stride 4)
 0x52  unknown (stride 4)
-0xc0  unknown (stride 4)
-0xd6  unknown (stride 4)
-0xd7  unknown (stride 4)
+0xC0  unknown (stride 4)
+0xD6  unknown (stride 4)
+0xD7  unknown (stride 4)
 
-0xd4  bone ids
+0xD4  bone ids
       - The value is an array of 4 bytes.
       - Stride is always 4 afaik
       - Each byte of the array represents a bone ID
 
-0xb0  bone weights
+0xB0  bone weights
       - The value is an array of 4 32bits numbers.
       - Stride is always 16 afaik
       - I believe each number of the array is a float between 0 and 1 (in fact, it is a weight)
       - I think it works like this: bone_weight[ X ] is the weight associated to the bone that has id of bone_id[ X ]
+
+
+
+The following attribute pointer types are mentioned in the switch-toolbox source code, but I've never seen them.
+Maybe some of these are for glt only?
+
+0x00  from toolbox source code:
+      if (pointer.Stride == 6)
+            vert.pos = new Vector3(reader.ReadInt16() / 1024f, reader.ReadInt16() / 1024f, reader.ReadInt16() / 1024f);
+      else if (pointer.Stride == 12)
+            vert.pos = new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
+
+0x01  this is like the normal, and it can have either stride of 3 or 12. Apparently type 0xFE always has stride of 12
+
+0x03  another uv pointer type
+
+0x26 yet another uv pointer type
+
+0x17 this is called "uv1" in sw-toolbox. I have no idea what this is. I guess a texture can have multiple uvs?
+
