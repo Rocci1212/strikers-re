@@ -1,0 +1,49 @@
+.rlt - probably "Revolution ??? Texture"
+
+0x0 - Constant Header
+
+-------------------------
+offset|size|description
+-------------------------
+0x0     4     magic ("PTLG")
+0x4     4     texture count
+0x8     4      unknown hash
+0xC        4      padding (0)
+
+
+0x10 - Texture Table
+length of this section = (texture count) * 0x10
+
+
+Texture Entry Table Format:
+-------------------------
+offset|size|description
+------------------------- 
+0x0      4   texture hash (determines which textures are applied to which meshes (materials?) 
+0x4      4   offset to beginning of texture entry relative to ((texture count) * 0x10) + 0x10
+0x8      4   size of texture entry 
+0xC      4   offset to beginning of texture data relative to offset at 0x4 ( offset at 0x4 + (0x10 - this value). offset = 0 if this value is 0).
+
+
+Texture Entry Format:
+-------------------------
+offset|size|description
+------------------------- 
+0x0      4   mipmap count
+0x4      4   unk (maybe texture encoding type?)
+0x8      1   unk
+0x9         1   encoding type
+0xA         1     unk
+0xE      2   texture width
+0x10     2   texture height
+0x20         beginning of texture block data
+
+encoding types:
+
+0x8 = RGBA32
+0x7 = RGB565 
+0x6 = CMPR
+0x5 = RGB5A3 
+0x4 = IA4
+0x3 = I8
+0x2 = I4

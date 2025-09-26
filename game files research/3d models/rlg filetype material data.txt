@@ -1,0 +1,50 @@
+Material data: section identifier B016, usually found at the beginning of files.
+
+Section header:
+0x0: flags?
+0x2: identifier B0 16
+0x4: length of section body
+
+
+Section body:
+This section seems to be split in 12 chunks all of the same size (0x68 bytes each, but I'm not sure if the size is fixed or varies depending on the mesh/file).
+Each of the 12 chunks is associated to one of the 12 meshes.
+
+In the mesh data section you can find the offset of a meshe's material
+
+
+
+The textures are actually stored in an .rlt file. This section just contains references to that file
+
+Use PyGLT to extract textures from rlt files. https://github.com/MCMANIRX/pyGLT
+How to use:
+Go to the directory of the script
+Run this command:  python pyGLT.py <rlt file path> dec
+If you get errors it could be that you need to install some python modules which pyGLT relies on (cv2, numpy)
+(alternatively, you can use GLTool: https://github.com/MCMANIRX/GLTool )
+
+
+If everything went correctly you'll find a folder containing all the textures. 
+Each texture will have the hash_id in its name. Those hashes are used by the rlg file to reference the textures
+
+
+
+From my experience, the chunks of the material section are structured as follows:
+0x00-0x03: hash_id of "main" texture (like mario's eye, mario's head, mario's rest, that stuff)
+
+0x08-0x0B: hash_id for some other texture, I think these are reflection textures? (*)
+
+0x10-0x13: hash_id for grayscale texture thing (again, idk what this stuff's called)
+
+0x18-0x1B: hash_id for red/gray texture thing
+
+0x20-0x23: hash_id of mud texture.
+
+0x28-0x2B: hash_id of ice texture.
+
+(*) One of these is something that seems like it's used for reflections, the other is a small black square with a white dot in the middle.
+This might be common knowledge stuff for people who are experienced at 3d modelling, but I have no idea what these are
+
+
+
+Everything not listed above is either irrelevant or I don't know what it means.
