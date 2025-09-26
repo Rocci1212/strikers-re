@@ -29,7 +29,7 @@ What is an "attribute pointer" though?
 It's a data structure that contains information related to the vertices.
 This data is a requirement for being able to navigate the vertex section (B006) 
 
-A vertex attribute is structured as follows:
+A vertex attribute pointer is structured as follows:
 0x0: offset   [UINT32]
 0x4: type     [BYTE]
 0x5: stride   [BYTE]

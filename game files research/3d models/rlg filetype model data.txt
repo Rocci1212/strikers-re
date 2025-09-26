@@ -1,0 +1,19 @@
+Matrix data: section identifier B003
+
+Section header: 
+0x0: flags?
+0x2: identifier B0 03
+0x4: length of the section body
+Model count = length / 12
+
+So far I've always worked with rlg that only contain one model.
+I have no idea how multi-model rlg files work.
+
+
+Section body:
+It contains N chunks of 12 bytes each, where N is model count
+
+This is how each chunk is structured:
+0x0: model_hash_id  (UINT32)
+0x4: mesh_count     (UINT32)
+0x8: unknown        (UINT32)
