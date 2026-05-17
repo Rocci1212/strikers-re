@@ -1,9 +1,11 @@
-Mesh data: section identifier B004
+# Section B004 - RLG Mesh data
 
-Section header:
-0x0: flags?
-0x2: identifier B0 04
-0x4: length of the section body, it's always equal to the number of meshes times 0x30.
+## Section header
+| **offset** | **value**              |
+| 0x0-0x1:   | flags - usually 0x0001 |
+| 0x2-0x3:   | identifier - 0xB003    |
+| 0x4-0x7:   | body size               |
+
 If you want to know how many meshes a .rlg contains, divide this number by 0x30.
 From my experience, most .rlg files contain 12 meshes.
 
