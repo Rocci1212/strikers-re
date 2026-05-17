@@ -1,5 +1,18 @@
 # Section B005 - RLG Vertex Attribute Pointers
 
+### What is a "Vertex Attribute Pointer"?
+A Vertex Attribute Pointer, or VAP for short, is **a record that tells the game where to find the vertices**.  
+This data is a requirement for being able to navigate the vertex section (B006)  
+* The **offset** tells you where in the vertex section the data is
+* The **type** tells you what kind of data it is (position, normals, ...)
+* The **stride** tells you how many bytes of the data to read for each vertex.
+  * For instance, if stride=12:
+    * The bytes 0-11 are associated to the first vertex
+    * The bytes 12-23 are associated to the second vertex
+    * The bytes 24-35 third vertex
+    * and so on...
+
+
 ## Section header
 | **offset** | **attribute**          | **value**                   |
 |------------|------------------------|-----------------------------|
@@ -26,7 +39,7 @@ This is how each record is structured:
 ### V.A.P. types
 Here's a list of types:
 | **value**    | **what it points to**                | **possible stride number** |
-|--------------|-------------------------------------------------------------------|
+|--------------|--------------------------------------|----------------------------|
 | 1            | position                             | 12, 6                      |
 | 2            | normal                               | 12, 3                      |
 | 3            | vertex colors (I think)              | 4                          |
@@ -39,19 +52,6 @@ Here's a list of types:
 I call it "flags", but I am not sure what that byte is really.  
 Each type always has the same "flags", except for UV coordinates.  
 There can be multiple UV coordinate V.A.P.s in a mesh, and each of them will have a different flag, but it can vary across rlg files.
-
-
-### What is an "attribute pointer" though?
-It's a record that tells the game where to find the vertices.  
-This data is a requirement for being able to navigate the vertex section (B006)  
-* The offset tells you where in the vertex section the data is
-* The type tells you what kind of data it is
-* The stride tells you how many bytes of the data to read for each vertex.
-  For instance, if stride=12:
-    The bytes 0-11 are associated to the first vertex
-    The bytes 12-23 are associated to the second vertex
-    The bytes 24-35 third vertex
-    and so on...
 
 
 ### Old notes that I want to keep for preservation
