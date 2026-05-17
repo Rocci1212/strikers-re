@@ -29,11 +29,6 @@ There are multiple occurrences of this section in a rlg file. One per each mesh.
 | 0x0-0x1    | flags                  | usually 0x0001                   |
 | 0x2-0x3    | identifier             | 0xB00B                           |
 | 0x4-0x7    | body size              | number_of_bones_in_mesh*4        |
-Section header:
-0x0: flags
-0x2: identifier B0 0B
-0x4: length of the section body, can vary, usually pretty short.
-     The length reflects the number of bones used by the mesh (number of bones used) / 4
 
 ## Section body
 Array of hashes containing the N bones used by the mesh.  (UINT32[N])
