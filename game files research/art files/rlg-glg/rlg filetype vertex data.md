@@ -1,11 +1,11 @@
-# Section B006 - RLG vertex data
+# Section B006 - RLG Vertex data
 
 ## Section header
 | **offset** | **attribute**          | **value**                   |
 |------------|------------------------|-----------------------------|
 | 0x0-0x1    | flags                  | usually 0x0001              |
 | 0x2-0x3    | identifier             | 0xB006                      |
-| 0x4-0x7    | body size              | depends by many factors     |
+| 0x4-0x7    | body size              | depends on many factors     |
 
 
 ## Section body
