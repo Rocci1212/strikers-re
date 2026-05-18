@@ -7,7 +7,7 @@ cam files contain instruction for the moving cameras
   * 5001 - Unknown int32 value
   * 5000 - Camera name
   * 5002 - 1st 4x4 Transform matrix
-  * 500D - 2nd 4x4 Transform matrix 
+  * 500D - Initial position matrix
   * 500E - Unknown float value
   * 500F - Unknown float value
   * 500C - N, Number of frames of the camera animation?
@@ -116,6 +116,7 @@ For convenience, we'll call this number N.
 
 
 ## Section 5003 - CAM positions
+### Section header
   |               |                                                    |
   |---------------|----------------------------------------------------|
   | flags         | 0x0302                                             |
@@ -127,6 +128,7 @@ The rest of the section is many arrays of 3 floats, which represent the camera p
 
 
 ## Section 5004 - CAM ???
+### Section header
   |               |                                                    |
   |---------------|----------------------------------------------------|
   | flags         | 0x0302                                             |
@@ -138,17 +140,18 @@ The rest of the section is many arrays of 4 floats.
 
 
 ## Section 5005 - CAM ???
+### Section header
   |               |                                                    |
   |---------------|----------------------------------------------------|
   | flags         | 0x0302                                             |
-  | size          | (N*12) + 4                                         |
+  | size          | (N*12)                                             |
 
 ### Section body
-First 4 bytes are 0s.
-The rest of the section is many arrays of 3 floats.
+Many arrays of 3 floats.
 
 
 ## Section 5006 - CAM ???
+### Section header
   |               |                                                    |
   |---------------|----------------------------------------------------|
   | flags         | 0x0302                                             |
@@ -160,6 +163,7 @@ The rest of the section is many arrays of 3 floats.
 
 
 ## Section 5007 - CAM ???
+### Section header
   |               |                                                    |
   |---------------|----------------------------------------------------|
   | flags         | 0x0302                                             |
@@ -171,11 +175,37 @@ The rest of the section is many arrays of 4 floats.
 
 
 ## Section 5008 - CAM ???
+### Section header
   |               |                                                    |
   |---------------|----------------------------------------------------|
   | flags         | 0x0302                                             |
-  | size          | (N*12) + 4                                         |
+  | size          | (N*12)                                             |
+
+### Section body
+Many arrays of 3 floats.
+
+
+## Section 5009 - Zoom/Field of view?
+### Section header
+  |               |                                                    |
+  |---------------|----------------------------------------------------|
+  | flags         | 0x0302                                             |
+  | size          | (N*4) + 4                                          |
 
 ### Section body
 First 4 bytes are 0s.
-The rest of the section is many arrays of 3 floats.
+The rest of the section are floats.
+If you increase these numbers, the field of view increases.
+
+
+## Section 500A - Also zoom?
+### Section header
+  |               |                                                    |
+  |---------------|----------------------------------------------------|
+  | flags         | 0x0302                                             |
+  | size          | (N*4) + 4                                          |
+
+### Section body
+First 4 bytes are 0s.
+The rest of the section are floats.
+I think this is also related to zoom/FOV, but when I tested I couldn't seem to notice a difference.
