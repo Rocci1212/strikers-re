@@ -36,8 +36,11 @@ You'll see many sections of this file have a size that is a multiple of N.
   |               |                              |
   |---------------|------------------------------|
   | flags         | 0x8001                       |
-  | size          | file length - 8              |
+  | size          | (file length - 8)*           |
 
+*It actually is not the file length, but rather the length of one animation.  
+A file can contain multiple animations, and thus multiple 7000 root sections.  
+  
 This section doesn't have content of its own. It's the root of the tree of sections.
 
 
