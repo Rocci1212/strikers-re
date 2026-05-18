@@ -1,90 +1,124 @@
-Shier files are believed to contain bone data that is used by the .rlg files.
+# SHIER filetype
+Shier files contain bone data that is used by the .rlg files.
 
-Disclaimer: I know very little about 3d modelling, so I'm not sure how bones are encoded even in commonly used file types.
-If anyone experience wants to help me with this, please do so.
-
-
-
-0x000: 80 01 80 00  this is the section identifier that is also at the beginning of any .rlg file
-0x004: this is the size of the section. It extends all the way to the end of the file
-There are actually other sections within this section. This is more like a "macro-section", a "section container".
-
-The sections of this file work the same way as the rlg sections.
-The header is 8 bytes long and is structured like this:
-0x0: flags?
-0x2: section identifier
-0x4: length of section body in bytes 
-
-
-SECTION 8001: ???
-no idea what any of this is
+## Section hierarchy
+"section identifier" - "section"
+* 8000 - Root section, contains all the other sections and extends from the beginning to the end of the file
+  * 8001 - Unknown
+  * 8002 - Name
+  * 8003 - Bone hash IDs (kinda)
+  * 8009 - Parent bone IDs
+  * 8004 - Unknown
+  * 8005 - Unknown
+  * 8006 - Unknown
+  * 8007 - Unknown
+  * 8008 - Symmetrical bone IDs
+  * 8010 - 3D float vectors
+  * 8011 - Bone boolean values
 
 
-SECTION 8002: object name
-The body contains a string. It seems to be the name of the object.
+Important: We'll call N **the amount of bones of the model**  
+This number will appear frequently throughout the file.  
+Bones are enumerated from 0 to N-1.  
+This N number can also appear in related files, such as .sanim and .nis files
 
 
-SECTION 8003: hashes (?)
-These look like some really big 32bit ints. Probably hashes.
-(or maybe it's actually bytes?)
-The length of this section seems to be related to the amount of bones.
+## Section 8000 - SHIER root section
+* Section header:
+  * flags: 0x8001
+  * size: file length - 8
+
+This section doesn't have its own content. It's the root of the tree of sections, and the other sections are the leaves
 
 
-SECTION 8009: ???
-Not sure what these are
-These look like 32bit signed ints. Some indices or something?  
-They often range from -1 to ( ( section_length / 4 ) - 2 )
-There are not two equal numbers within the section, they're all different.
-The length seems to be the same as section 8003's
+## Section 8001 - unknown
+* Section header:
+  * flags: 0x0001
+  * size: maybe N + 8?
 
 
-SECTION 8004: ???
-Not sure what these are
-They're 32bit ints that range from 0 to 3 and there are repetitions.
-The length seems to be the same as section 8003's
+## Section 8002 - SHIER object name section
+* Section header:
+  * flags: 0x0001
+  * size: length of the string + padding to align by 4
 
 
-SECTION 8005: ???
-Not sure what these are
-They're 32bit ints that range from 0 to ( ( section_length / 4 ) - 1 )
-No repeat numbers.
-It seems like they're usually ordered from smallest to biggest
-The length seems to be the same as section 8003's
+## Section 8003 - SHIER bone hash IDs
+* Section header:
+  * flags: 0x0001
+  * size: N*4
+
+This section contains bone hash IDs.
+A weird thing I noticed in the file I analyzed is that by checking with the hashid.bin, the first hash ID doesn't seem to be a valid hash ID, the second is called "ball". The rest make more sense, but the third doesn't appear in the "bone matrices (B00A)" or the "mesh bone hashes (B00B)" sections of the RLG file.
 
 
-SECTION 8006: ???
-Not sure what these are
-This section looks the exact same as 8005
-The length seems to be the same as section 8003's
-This section looks the exact same as 8005
+## Section 8009 - SHIER parent bone IDs
+* Section header:
+  * flags: 0x0001
+  * size: N*4
+
+This section tells you which bone is the parent of which.  
+
+### How to tell who's the parent of bone number i
+Look at the word i (with 0 <= i <= N-1) of this section's body.  
+There you will find the index of the parent bone.  
 
 
-SECTION 8007: ???
-Not sure what these are
-They're 32bit ints that range from 1 to ( section_length / 4 )
-No repeat numbers.
-The length seems to be = section 8003's length - 4
+## Section 8004 - unknown
+* Section header:
+  * flags: 0x0001
+  * size: N*4
+
+This section contains numbers from 0 to 3. Could be an enum, a bitfield or something like that.
 
 
-SECTION 8008: ???
-Not sure what these are
-They're 32bit ints that range from 0 to ( ( section_length / 4 ) - 1 )
-No repeat numbers.
-They're the same numbers you can find in section 8005, except in different order
+## Section 8005 - unknown
+* Section header:
+  * flags: 0x0001
+  * size: N*4
+
+This section contains some bone indices.
 
 
-SECTION 8010: Coordinates
-Header:
-0x0: 02 01 80 10  this is interesting, it's the first time I see a section identifier start with anything different than "00"
-                  I think it's a flag. I guess this section has some special property, idk what that is tho.
-                  Not sure if it's like that in every file though. Haven't checked.
-0x4: length, it's triple the length of section 8003
-I am pretty sure this section contains coordinates
-these are clearly floats. Really small floats, I think they're all between -1 and 1.
-rlg file's coordinates seem to also have numbers this small.
+## Section 8006 - unknown
+* Section header:
+  * flags: 0x0001
+  * size: N*4
+
+This section contains some bone indices.
 
 
-SECTION 8011 ???
-bytes with values of zeroes and ones
-no idea what any of these is.
-Could be flags? It's a weird way to store flags though.
+## Section 8007 - unknown
+* Section header:
+  * flags: 0x0001
+  * size: (N-1)*4
+
+This section contains some bone indices.
+
+
+## Section 8008 - SHIER symmetrical bone
+* Section header:
+  * flags: 0x0001
+  * size: N*4
+
+This section tells you who the symmetrical equivalent of a bone is. (I think)  
+If bone number i doesn't have a symmetrical equivalent, the word i of this section will just be the index of the bone i.  
+
+
+## Section 8010 - 3D float vector section
+* Section header:
+  * flags: 0x0201
+  * size: N*12
+
+These are clearly floats. Really small floats. Most of them are between -1 and 1.  
+I don't know what they are for though.
+
+
+## Section 8011 - SHIER bone boolean value section
+* Section header:
+  * flags: 0x0001
+  * size: N
+
+bytes with values of zeroes and ones  
+no idea what any of these is, but in the file I analyzed, the first three are 0, the others are 1.  
+Perhaps 0 means that it doesn't appear in the RLG file.

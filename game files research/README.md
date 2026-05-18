@@ -15,7 +15,7 @@ Most files are made of sections that have an header of this kind (in hexadecimal
   * If the first bit of flags is high (i.e. 0x8000): the body doesn't have it's own data, but it contains other sections instead. Think of this as a tree structure.
 
 
-## Existing filetypes and relative sections
+## Existing filetypes and relative section identifiers
 * 0001 - root section of .bun and .resbun files, which are file archives
 * 3XXX - audio files. This kind of section is found in .resbun or .bun files, inside a 0001 section
 * 4XXX - effects files. This kind of section is found in .bun files, inside a 0001 section
@@ -27,12 +27,13 @@ Most files are made of sections that have an header of this kind (in hexadecimal
 * DXXX - .cph files - small files probably used for physics and collision related stuff.
 
 
-## Filetypes that use multiple kinds of sections
+## Filetypes that use multiple kinds of section identifiers (different T values)
 
-### .nis files, 
+### .nis files 
 .nis files are cutscene files and are a mix of camera and animation files. In fact, they can have both 5XXX and 7XXX.  
-A .nis file usually starts with a 7 root section, then at the end of that section, there's the root section.  
-In other words, it's as if it was a concatenation of a .sanim and a .cam file.  
+A .nis file usually starts with a 7XXX root section, then after the end of that section, there's the 5XXX root section.  
+In other words, it's a concatenation of a .sanim and a .cam file.  
+Some of these just have the .cam part though.
 
 
 ## List of filetypes that do not follow this convention

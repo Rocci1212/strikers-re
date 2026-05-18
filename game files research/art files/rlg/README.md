@@ -7,14 +7,14 @@ They have similar structure, with a few differences.
 ###  Section structure
 See [README.md](https://github.com/Rocci1212/strikers-re/blob/main/game%20files%20research/README.md)
 * An 8-bytes-long Header
-* * 0x0-0x1: Some flags
-* * 0x2-0x3: Section identifier
-* * 0x4-0x7: Section body size
-* A Body, which could contain any kind of data. The format depends on the section type. See the txt files for information about each section.
+  * 0x0-0x1: Some flags
+  * 0x2-0x3: Section identifier
+  * 0x4-0x7: Section body size
+* A Body, which could contain any kind of data. The format depends on the section type. See the .md files for information about each section.
 
 ### Section hierarchy
 "section identifier" - "section"
-* B000 - Main section container, contains all the other sections and extends from the beginning to the end of the file
+* B000 - Root section, contains all the other sections and extends from the beginning to the end of the file
   * B016 - Material data
   * B007 - Index Data
   * B006 - Vertex Data
