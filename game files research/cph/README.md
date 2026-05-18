@@ -1,5 +1,5 @@
 # CPH filetype
-Cph files contain components that are associated to the rlg model and handle collisions.
+Cph files contain components that are associated to the rlg model and (I think) handle collisions.
 
 ## Section hierarchy
 "section identifier" - "section"
