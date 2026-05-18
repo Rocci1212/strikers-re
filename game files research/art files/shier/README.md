@@ -25,28 +25,36 @@ This N number can also appear in related files, such as .sanim and .nis files
 
 ## Section 8000 - SHIER root section
 ### Section header
-  * flags: 0x8001
-  * size: file length - 8
+  |               |                              |
+  |---------------|------------------------------|
+  | flags         | 0x8001                       |
+  | size          | file length - 8              |
 
 This section doesn't have its own content. It's the root of the tree of sections, and the other sections are the leaves
 
 
 ## Section 8001 - unknown
 ### Section header
-  * flags: 0x0001
-  * size: maybe N + 8?
+  |               |                              |
+  |---------------|------------------------------|
+  | flags         | 0x0001                       |
+  | size          | maybe N + 8?                 |
 
 
 ## Section 8002 - SHIER object name section
 ### Section header
-  * flags: 0x0001
-  * size: length of the string + padding to align by 4
+  |               |                                                    |
+  |---------------|----------------------------------------------------|
+  | flags         | 0x0001                                             |
+  | size          | length of the string + padding to align by 4       |
 
 
 ## Section 8003 - SHIER bone hash IDs
 ### Section header
-  * flags: 0x0001
-  * size: N*4
+  |               |                              |
+  |---------------|------------------------------|
+  | flags         | 0x0001                       |
+  | size          | N*4                          |
 
 ### Section body
 This section contains bone hash IDs.
@@ -55,8 +63,10 @@ A weird thing I noticed in the file I analyzed is that by checking with the hash
 
 ## Section 8009 - SHIER parent bone IDs
 ### Section header
-  * flags: 0x0001
-  * size: N*4
+  |               |                              |
+  |---------------|------------------------------|
+  | flags         | 0x0001                       |
+  | size          | N*4                          |
 
 ### Section body
 This section tells you which bone is the parent of which.  
@@ -68,8 +78,10 @@ There you will find the index of the parent bone.
 
 ## Section 8004 - unknown
 ### Section header
-  * flags: 0x0001
-  * size: N*4
+  |               |                              |
+  |---------------|------------------------------|
+  | flags         | 0x0001                       |
+  | size          | N*4                          |
 
 ### Section body
 This section contains numbers from 0 to 3. Could be an enum, a bitfield or something like that.
@@ -77,8 +89,10 @@ This section contains numbers from 0 to 3. Could be an enum, a bitfield or somet
 
 ## Section 8005 - unknown
 ### Section header
-  * flags: 0x0001
-  * size: N*4
+  |               |                              |
+  |---------------|------------------------------|
+  | flags         | 0x0001                       |
+  | size          | N*4                          |
 
 ### Section body
 This section contains some bone indices.
@@ -86,8 +100,10 @@ This section contains some bone indices.
 
 ## Section 8006 - unknown
 ### Section header
-  * flags: 0x0001
-  * size: N*4
+  |               |                              |
+  |---------------|------------------------------|
+  | flags         | 0x0001                       |
+  | size          | N*4                          |
 
 ### Section body
 This section contains some bone indices.
@@ -95,8 +111,10 @@ This section contains some bone indices.
 
 ## Section 8007 - unknown
 ### Section header
-  * flags: 0x0001
-  * size: (N-1)*4
+  |               |                              |
+  |---------------|------------------------------|
+  | flags         | 0x0001                       |
+  | size          | (N-1)*4                      |
 
 ### Section body
 This section contains some bone indices.
@@ -104,8 +122,10 @@ This section contains some bone indices.
 
 ## Section 8008 - SHIER symmetrical bone
 ### Section header
-  * flags: 0x0001
-  * size: N*4
+  |               |                              |
+  |---------------|------------------------------|
+  | flags         | 0x0001                       |
+  | size          | N*4                          |
 
 ### Section body
 This section tells you who the symmetrical equivalent of a bone is. (I think)  
@@ -114,8 +134,10 @@ If bone number i doesn't have a symmetrical equivalent, the word i of this secti
 
 ## Section 8010 - 3D float vector section
 ### Section header
-  * flags: 0x0201
-  * size: N*12
+  |               |                              |
+  |---------------|------------------------------|
+  | flags         | 0x0201                       |
+  | size          | N*12                         |
 
 ### Section body
 These are clearly floats. Really small floats. Most of them are between -1 and 1.  
@@ -124,8 +146,10 @@ I don't know what they are for though.
 
 ## Section 8011 - SHIER bone boolean value section
 ### Section header
-  * flags: 0x0001
-  * size: N
+  |               |                              |
+  |---------------|------------------------------|
+  | flags         | 0x0001                       |
+  | size          | N                            |
 
 ### Section body
 bytes with values of zeroes and ones  
