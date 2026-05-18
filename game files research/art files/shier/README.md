@@ -30,7 +30,7 @@ This N number can also appear in related files, such as .sanim and .nis files
   | flags         | 0x8001                       |
   | size          | file length - 8              |
 
-This section doesn't have its own content. It's the root of the tree of sections, and the other sections are the leaves
+This section doesn't have content of its own. It's the root of the tree of sections, and the other sections are the leaves
 
 
 ## Section 8001 - unknown
