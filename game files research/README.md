@@ -5,16 +5,14 @@ Some of these apply for Super Mario Strikers (GameCube) too.
 
 ## Structure of an MSC filetype
 Most files are made of sections that have an header of this kind (in hexadecimal):  
-WWWWTXXX YYYYYYYY where...
-* W are some flags we don't know much about
-* T identifies the filetype (see below)
-* X identifies the section within the filetype
-* Y is the size of the section body
 
-The section is then followed by a body of YYYYYYYY bytes of length, which contains some content that can vary depending by the section. See the documentation for the specific filetypes to know more about that.  
-If the first bit of the section's flags is high, that means the section is a section container.  
-If it's a section container, that means its content is other sections. You can think of this as a tree structure, where the leaves are the section that have the first flag bit low.  
-Every file starts with a root section, which is a container of sections.  
+* An 8-bytes-long Header WWWWTXXX YYYYYYYY where...
+  * 0x0-0x1: WWWW - Some flags
+  * 0x2-0x3: TXXX - Section identifier
+  * 0x4-0x7: YYYYYYYY - Section body size
+* A YYYYYYYY bytes long body 
+  * If the first bit of flags is low: the body could contain any kind of data. The format depends on the section type. See the .md files for information about each section.
+  * If the first bit of flags is high (i.e. 0x8000): the body doesn't have it's own data, but it contains other sections instead. Think of this as a tree structure.
 
 
 ## Existing filetypes and relative sections

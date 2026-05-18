@@ -35,6 +35,7 @@ Array of hashes containing the N bones used by the mesh.  (UINT32[N])
 | **offset**   | **attribute**          | **type**  |
 |--------------|------------------------|-----------|
 | 0x0-0x3      | bone_hash_id           | UINT32    |
+
 Repeat the content of this table by the amount of bones in the mesh
 
 

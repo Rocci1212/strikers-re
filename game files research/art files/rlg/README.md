@@ -27,12 +27,15 @@ See [README.md](https://github.com/Rocci1212/strikers-re/blob/main/game%20files%
     * B00A - Bone Data
     * B00C - Unknown 
 
+For RLG files, sections must be aligned by 4. That means that if the size is not a multiple of 4, there will be some 0s of padding at the end.  
+
 
 ## External files  
 RLG/GLG files don't contain all the data in themselves.  
 Some data is stored in external files, such as:  
 * [rlt](https://github.com/Rocci1212/strikers-re/blob/main/game%20files%20research/textures/rlt%20filetype.txt)/[glt](https://github.com/Rocci1212/strikers-re/blob/main/game%20files%20research/textures/glt%20filetype.txt) files for [textures](https://github.com/Rocci1212/strikers-re/tree/main/game%20files%20research/textures)
 * [shier](https://github.com/Rocci1212/strikers-re/blob/main/game%20files%20research/3d%20models/shier%20filetype.txt) files for bones
+* gameplay animations use .sanim, .cph, .trg files, and cutscene animations use .nis files. 
 * maybe more? I'm not 100% sure this is all
 These files are linked one another with hash ids.  
 See [hashid.bin](https://github.com/Rocci1212/strikers-re/blob/main/game%20files%20research/hashid.bin%20file.md) to know more about hash IDs
@@ -49,7 +52,7 @@ That documentation is not perfect, there are a few little mistakes here and ther
 ## Switch toolbox source code  
 https://github.com/KillzXGaming/Switch-Toolbox/blob/master/File_Format_Library/FileFormats/NLG/MarioStrikers/StrikersRLG.cs  
 This C# tool can decode .rlg and .glg files to .dae, but cannot generate a new .rlg or .glg file.  
-Most of the mistakes of the first link are actually fixed in this tool's code, but it's harder to read and it barely has any comment.  
+Most of the mistakes of the research linked above are actually fixed in this tool's code, but obviously, it's harder to read.  
   
 ## RLG vertex tool  
 https://github.com/Feder2228/rlg-vertex-tool   

@@ -18,7 +18,7 @@ This is how each record is structured:
 | 0x4-0x5      | index_format                             | UINT16        |
 | 0x6-0x7      | index_count                              | UINT16        |
 | 0x8-0x9      | vertex_count                             | UINT16        |
-| 0xA          | unkown (probably material count)         | BYTE          |
+| 0xA          | unknown (probably material count)        | BYTE          |
 | 0xB          | vertex_attribute_pointer_count           | BYTE          |
 | 0xC-0xF      | vertex_attribyte_pointer_offset          | UINT32        |
 | 0x10-0x13    | material_hash_id                         | UINT32        |
