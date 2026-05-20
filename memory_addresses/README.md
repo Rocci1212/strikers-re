@@ -6,5 +6,5 @@ All the addresses listed in this documentation are relative to PAL revision 1.
   
 The directory structure of this documentation is organized in subfolders based on the topic of each page.  
   
-Some data might be inexact. In particular, addresses listed in this documentation might not be statically allocated, even though they were noted as such.
+Some data might be inexact. In particular, addresses listed in this documentation might not be statically allocated even though they were noted as such.
 
