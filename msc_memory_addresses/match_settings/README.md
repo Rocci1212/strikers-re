@@ -42,4 +42,5 @@ Win condition:
 | 1                   | score X goals over your opponent (see peach challenge)     |
 | 2                   | don't get scored on (daisy challenge)                      |
 | 3                   | score at least X (diddy kong challenge)                    |
+
 X is the value of winparameter.
